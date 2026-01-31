@@ -669,12 +669,260 @@ document.querySelectorAll('.cert-modal-overlay').forEach(overlay => {
     });
 });
 
-// Close certification modals with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        document.querySelectorAll('.cert-modal-overlay.active').forEach(modal => {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
+// ========================================
+// TESTIMONIALS SLIDER
+// ========================================
+
+const testimonialsSlider = document.getElementById('testimonials-slider');
+const testimonialsPrev = document.getElementById('testimonials-prev');
+const testimonialsNext = document.getElementById('testimonials-next');
+const testimonialsDots = document.getElementById('testimonials-dots');
+let testimonialsAutoSlide;
+
+function initTestimonialsSlider() {
+    if (!testimonialsSlider) return;
+
+    // Auto-play videos on scroll into view
+    const videos = testimonialsSlider.querySelectorAll('.testimonial-video');
+    videos.forEach(video => {
+        video.play().catch(() => {});
+    });
+
+    // Navigation
+    if (testimonialsPrev) {
+        testimonialsPrev.addEventListener('click', () => scrollTestimonials(-1));
+    }
+    if (testimonialsNext) {
+        testimonialsNext.addEventListener('click', () => scrollTestimonials(1));
+    }
+
+    // Dots
+    if (testimonialsDots) {
+        testimonialsDots.querySelectorAll('.dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const slide = parseInt(dot.dataset.slide);
+                scrollToTestimonial(slide);
+            });
         });
     }
+
+    // Auto-slide
+    startTestimonialsAutoSlide();
+
+    // Update dots on scroll
+    testimonialsSlider.addEventListener('scroll', updateTestimonialsDots);
+
+    // Sound buttons
+    document.querySelectorAll('.testimonial-sound-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const videoId = this.dataset.video;
+            const video = document.getElementById(`testimonial-video-${videoId}`);
+            if (video) {
+                video.muted = !video.muted;
+                this.querySelector('.sound-off').classList.toggle('hidden');
+                this.querySelector('.sound-on').classList.toggle('hidden');
+            }
+        });
+    });
+}
+
+function scrollTestimonials(direction) {
+    const cards = testimonialsSlider.querySelectorAll('.testimonial-card');
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth + 20;
+    testimonialsSlider.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+    resetTestimonialsAutoSlide();
+}
+
+function scrollToTestimonial(index) {
+    const cards = testimonialsSlider.querySelectorAll('.testimonial-card');
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth + 20;
+    testimonialsSlider.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    resetTestimonialsAutoSlide();
+}
+
+function updateTestimonialsDots() {
+    if (!testimonialsDots) return;
+    const cards = testimonialsSlider.querySelectorAll('.testimonial-card');
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth + 20;
+    const currentSlide = Math.round(testimonialsSlider.scrollLeft / cardWidth);
+    testimonialsDots.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+}
+
+function startTestimonialsAutoSlide() {
+    testimonialsAutoSlide = setInterval(() => {
+        const cards = testimonialsSlider.querySelectorAll('.testimonial-card');
+        const cardWidth = cards[0].offsetWidth + 20;
+        const maxScroll = testimonialsSlider.scrollWidth - testimonialsSlider.clientWidth;
+        if (testimonialsSlider.scrollLeft >= maxScroll - 10) {
+            testimonialsSlider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            testimonialsSlider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+    }, 5000);
+}
+
+function resetTestimonialsAutoSlide() {
+    clearInterval(testimonialsAutoSlide);
+    startTestimonialsAutoSlide();
+}
+
+// ========================================
+// REVIEWS SLIDER
+// ========================================
+
+const reviewsSlider = document.getElementById('reviews-slider');
+const reviewsDots = document.getElementById('reviews-dots');
+let reviewsAutoSlide;
+
+function initReviewsSlider() {
+    if (!reviewsSlider) return;
+
+    // Dots
+    if (reviewsDots) {
+        reviewsDots.querySelectorAll('.dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const slide = parseInt(dot.dataset.slide);
+                scrollToReview(slide);
+            });
+        });
+    }
+
+    // Auto-slide
+    startReviewsAutoSlide();
+
+    // Update dots on scroll
+    reviewsSlider.addEventListener('scroll', updateReviewsDots);
+}
+
+function scrollToReview(index) {
+    const cards = reviewsSlider.querySelectorAll('.review-card');
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth + 20;
+    reviewsSlider.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    resetReviewsAutoSlide();
+}
+
+function updateReviewsDots() {
+    if (!reviewsDots) return;
+    const cards = reviewsSlider.querySelectorAll('.review-card');
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth + 20;
+    const currentSlide = Math.round(reviewsSlider.scrollLeft / cardWidth);
+    reviewsDots.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+}
+
+function startReviewsAutoSlide() {
+    reviewsAutoSlide = setInterval(() => {
+        const cards = reviewsSlider.querySelectorAll('.review-card');
+        const cardWidth = cards[0].offsetWidth + 20;
+        const maxScroll = reviewsSlider.scrollWidth - reviewsSlider.clientWidth;
+        if (reviewsSlider.scrollLeft >= maxScroll - 10) {
+            reviewsSlider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            reviewsSlider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+    }, 4000);
+}
+
+function resetReviewsAutoSlide() {
+    clearInterval(reviewsAutoSlide);
+    startReviewsAutoSlide();
+}
+
+// ========================================
+// BLOGS SLIDER
+// ========================================
+
+const blogsSlider = document.getElementById('blogs-slider');
+const blogsPrev = document.getElementById('blogs-prev');
+const blogsNext = document.getElementById('blogs-next');
+const blogsDots = document.getElementById('blogs-dots');
+let blogsAutoSlide;
+
+function initBlogsSlider() {
+    if (!blogsSlider) return;
+
+    // Navigation
+    if (blogsPrev) {
+        blogsPrev.addEventListener('click', () => scrollBlogs(-1));
+    }
+    if (blogsNext) {
+        blogsNext.addEventListener('click', () => scrollBlogs(1));
+    }
+
+    // Dots
+    if (blogsDots) {
+        blogsDots.querySelectorAll('.dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const slide = parseInt(dot.dataset.slide);
+                scrollToBlog(slide);
+            });
+        });
+    }
+
+    // Auto-slide
+    startBlogsAutoSlide();
+
+    // Update dots on scroll
+    blogsSlider.addEventListener('scroll', updateBlogsDots);
+}
+
+function scrollBlogs(direction) {
+    const cards = blogsSlider.querySelectorAll('.blog-card');
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth + 20;
+    blogsSlider.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+    resetBlogsAutoSlide();
+}
+
+function scrollToBlog(index) {
+    const cards = blogsSlider.querySelectorAll('.blog-card');
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth + 20;
+    blogsSlider.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    resetBlogsAutoSlide();
+}
+
+function updateBlogsDots() {
+    if (!blogsDots) return;
+    const cards = blogsSlider.querySelectorAll('.blog-card');
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth + 20;
+    const currentSlide = Math.round(blogsSlider.scrollLeft / cardWidth);
+    blogsDots.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+}
+
+function startBlogsAutoSlide() {
+    blogsAutoSlide = setInterval(() => {
+        const cards = blogsSlider.querySelectorAll('.blog-card');
+        const cardWidth = cards[0].offsetWidth + 20;
+        const maxScroll = blogsSlider.scrollWidth - blogsSlider.clientWidth;
+        if (blogsSlider.scrollLeft >= maxScroll - 10) {
+            blogsSlider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            blogsSlider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+    }, 6000);
+}
+
+function resetBlogsAutoSlide() {
+    clearInterval(blogsAutoSlide);
+    startBlogsAutoSlide();
+}
+
+// Initialize all new sliders
+document.addEventListener('DOMContentLoaded', function() {
+    initTestimonialsSlider();
+    initReviewsSlider();
+    initBlogsSlider();
 });
