@@ -727,10 +727,14 @@ function initTestimonialsSlider() {
     });
 }
 
+function getSliderGap() {
+    return window.innerWidth >= 640 ? 20 : 16;
+}
+
 function scrollTestimonials(direction) {
     const cards = testimonialsSlider.querySelectorAll('.testimonial-card');
     if (cards.length === 0) return;
-    const cardWidth = cards[0].offsetWidth + 20;
+    const cardWidth = cards[0].offsetWidth + getSliderGap();
     testimonialsSlider.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
     resetTestimonialsAutoSlide();
 }
@@ -738,7 +742,7 @@ function scrollTestimonials(direction) {
 function scrollToTestimonial(index) {
     const cards = testimonialsSlider.querySelectorAll('.testimonial-card');
     if (cards.length === 0) return;
-    const cardWidth = cards[0].offsetWidth + 20;
+    const cardWidth = cards[0].offsetWidth + getSliderGap();
     testimonialsSlider.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
     resetTestimonialsAutoSlide();
 }
@@ -747,7 +751,7 @@ function updateTestimonialsDots() {
     if (!testimonialsDots) return;
     const cards = testimonialsSlider.querySelectorAll('.testimonial-card');
     if (cards.length === 0) return;
-    const cardWidth = cards[0].offsetWidth + 20;
+    const cardWidth = cards[0].offsetWidth + getSliderGap();
     const currentSlide = Math.round(testimonialsSlider.scrollLeft / cardWidth);
     testimonialsDots.querySelectorAll('.dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === currentSlide);
@@ -757,7 +761,7 @@ function updateTestimonialsDots() {
 function startTestimonialsAutoSlide() {
     testimonialsAutoSlide = setInterval(() => {
         const cards = testimonialsSlider.querySelectorAll('.testimonial-card');
-        const cardWidth = cards[0].offsetWidth + 20;
+        const cardWidth = cards[0].offsetWidth + getSliderGap();
         const maxScroll = testimonialsSlider.scrollWidth - testimonialsSlider.clientWidth;
         if (testimonialsSlider.scrollLeft >= maxScroll - 10) {
             testimonialsSlider.scrollTo({ left: 0, behavior: 'smooth' });
@@ -803,7 +807,7 @@ function initReviewsSlider() {
 function scrollToReview(index) {
     const cards = reviewsSlider.querySelectorAll('.review-card');
     if (cards.length === 0) return;
-    const cardWidth = cards[0].offsetWidth + 20;
+    const cardWidth = cards[0].offsetWidth + getSliderGap();
     reviewsSlider.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
     resetReviewsAutoSlide();
 }
@@ -812,7 +816,7 @@ function updateReviewsDots() {
     if (!reviewsDots) return;
     const cards = reviewsSlider.querySelectorAll('.review-card');
     if (cards.length === 0) return;
-    const cardWidth = cards[0].offsetWidth + 20;
+    const cardWidth = cards[0].offsetWidth + getSliderGap();
     const currentSlide = Math.round(reviewsSlider.scrollLeft / cardWidth);
     reviewsDots.querySelectorAll('.dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === currentSlide);
@@ -822,7 +826,7 @@ function updateReviewsDots() {
 function startReviewsAutoSlide() {
     reviewsAutoSlide = setInterval(() => {
         const cards = reviewsSlider.querySelectorAll('.review-card');
-        const cardWidth = cards[0].offsetWidth + 20;
+        const cardWidth = cards[0].offsetWidth + getSliderGap();
         const maxScroll = reviewsSlider.scrollWidth - reviewsSlider.clientWidth;
         if (reviewsSlider.scrollLeft >= maxScroll - 10) {
             reviewsSlider.scrollTo({ left: 0, behavior: 'smooth' });
@@ -878,7 +882,7 @@ function initBlogsSlider() {
 function scrollBlogs(direction) {
     const cards = blogsSlider.querySelectorAll('.blog-card');
     if (cards.length === 0) return;
-    const cardWidth = cards[0].offsetWidth + 20;
+    const cardWidth = cards[0].offsetWidth + getSliderGap();
     blogsSlider.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
     resetBlogsAutoSlide();
 }
@@ -886,7 +890,7 @@ function scrollBlogs(direction) {
 function scrollToBlog(index) {
     const cards = blogsSlider.querySelectorAll('.blog-card');
     if (cards.length === 0) return;
-    const cardWidth = cards[0].offsetWidth + 20;
+    const cardWidth = cards[0].offsetWidth + getSliderGap();
     blogsSlider.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
     resetBlogsAutoSlide();
 }
@@ -895,7 +899,7 @@ function updateBlogsDots() {
     if (!blogsDots) return;
     const cards = blogsSlider.querySelectorAll('.blog-card');
     if (cards.length === 0) return;
-    const cardWidth = cards[0].offsetWidth + 20;
+    const cardWidth = cards[0].offsetWidth + getSliderGap();
     const currentSlide = Math.round(blogsSlider.scrollLeft / cardWidth);
     blogsDots.querySelectorAll('.dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === currentSlide);
@@ -905,7 +909,7 @@ function updateBlogsDots() {
 function startBlogsAutoSlide() {
     blogsAutoSlide = setInterval(() => {
         const cards = blogsSlider.querySelectorAll('.blog-card');
-        const cardWidth = cards[0].offsetWidth + 20;
+        const cardWidth = cards[0].offsetWidth + getSliderGap();
         const maxScroll = blogsSlider.scrollWidth - blogsSlider.clientWidth;
         if (blogsSlider.scrollLeft >= maxScroll - 10) {
             blogsSlider.scrollTo({ left: 0, behavior: 'smooth' });
