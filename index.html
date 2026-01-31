@@ -223,9 +223,9 @@
                     <div class="feature-card-image" style="background-image: url('public/images/feature-gesture.jpg')">
                         <div class="feature-tag">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a6 6 0 006 6h4a3 3 0 003-3v-6.5a1.5 1.5 0 00-3 0m-6-3v1.5m0-1.5a1.5 1.5 0 013 0m0 0v1.5m0 0v5m0-5a1.5 1.5 0 013 0v3"/>
+                                <path d="M14 10c0 1-1 2-3 2s-3-1-3-2c0 0 0-4 3-4s3 4 3 4zM8 8c-2 0-3 2-3 4M19 8c2 0 3 2 3 4M5 16c-1 1-2 3 0 4M19 16c1 1 2 3 0 4"/>
                             </svg>
-                            <span>Touch Control</span>
+                            <span>Gesture Control</span>
                         </div>
                         <button class="feature-expand-btn" data-expand="1">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -243,9 +243,9 @@
                     <div class="feature-card-image" style="background-image: url('public/images/feature-cadr.jpg')">
                         <div class="feature-tag">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path d="M4 14h4M6 10h6M4 18h8M14 14c2-2 4-2 6 0M14 10c2-2 5-2 7 0M14 18c1.5-1.5 3-1.5 4.5 0"/>
                             </svg>
-                            <span>Air Delivery</span>
+                            <span>250 m³/hr CADR</span>
                         </div>
                         <button class="feature-expand-btn" data-expand="2">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -265,7 +265,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                             </svg>
-                            <span>H13 HEPA</span>
+                            <span>3-in-1 HEPA H13</span>
                         </div>
                         <button class="feature-expand-btn" data-expand="3">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -321,14 +321,18 @@
     </section>
 
     <!-- Replacement Filter Strip -->
-    <section class="filter-strip">
-        <div class="filter-strip-inner">
-            <div class="filter-strip-content">
-                <p class="filter-strip-title">Designed to be replaced. Built to last.</p>
-                <p class="filter-strip-price">H13 HEPA Replacement Filter — <strong>₹899</strong></p>
-                <p class="filter-strip-note">Replacement cycle varies with air quality and usage</p>
+    <section class="filter-section">
+        <div class="filter-section-inner">
+            <div class="filter-badge">Best Value</div>
+            <div class="filter-content">
+                <p class="filter-label">H13 HEPA Replacement Filter</p>
+                <div class="filter-price-row">
+                    <span class="filter-price">₹899</span>
+                    <span class="filter-price-note">only</span>
+                </div>
+                <p class="filter-desc">Premium filtration at India's most affordable price point</p>
             </div>
-            <button class="filter-strip-btn">Get Filter</button>
+            <a href="#" class="filter-cta">Order Filter</a>
         </div>
     </section>
 
@@ -841,7 +845,7 @@
             <!-- Brand Info -->
             <div class="footer-brand">
                 <div class="footer-logo">
-                    <span class="footer-logo-h">H</span><span class="footer-logo-awaa">AWAA</span>
+                    <span class="footer-logo-text">HAWAA</span>
                 </div>
                 <p class="footer-tagline">Breathe better. Live better.</p>
                 <div class="footer-contact-info">
@@ -868,10 +872,15 @@
                 </div>
             </div>
 
-            <!-- Footer Links -->
+            <!-- Footer Links - Collapsible on mobile -->
             <div class="footer-links">
-                <div class="footer-links-column">
-                    <h4 class="footer-links-title">PRODUCTS</h4>
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">PRODUCTS</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
                     <ul class="footer-links-list">
                         <li><a href="#">Hawaa Edge</a></li>
                         <li><a href="#">Replacement Filters</a></li>
@@ -879,8 +888,13 @@
                     </ul>
                 </div>
 
-                <div class="footer-links-column">
-                    <h4 class="footer-links-title">SUPPORT</h4>
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">SUPPORT</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
                     <ul class="footer-links-list">
                         <li><a href="#">Installation Guide</a></li>
                         <li><a href="#">FAQ</a></li>
@@ -889,8 +903,13 @@
                     </ul>
                 </div>
 
-                <div class="footer-links-column">
-                    <h4 class="footer-links-title">COMPANY</h4>
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">COMPANY</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
                     <ul class="footer-links-list">
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Sustainability</a></li>
@@ -899,8 +918,13 @@
                     </ul>
                 </div>
 
-                <div class="footer-links-column">
-                    <h4 class="footer-links-title">LEGAL</h4>
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">LEGAL</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
                     <ul class="footer-links-list">
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms & Conditions</a></li>
@@ -959,7 +983,21 @@
                     <p class="testimonial-label">Customer Review</p>
                     <p class="testimonial-quote" id="testimonial-quote"></p>
                 </div>
-                <a href="#order" class="feature-learn-more">Learn More</a>
+                <div class="feature-expanded-actions">
+                    <a href="#order" class="feature-learn-more">Learn More</a>
+                    <div class="feature-expanded-nav">
+                        <button class="feature-expanded-arrow" id="expanded-prev">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </button>
+                        <button class="feature-expanded-arrow" id="expanded-next">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

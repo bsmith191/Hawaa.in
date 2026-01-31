@@ -1025,3 +1025,67 @@ if (newsletterForm) {
         this.reset();
     });
 }
+
+// ========================================
+// FOOTER COLLAPSIBLE (Mobile)
+// ========================================
+
+function initFooterCollapse() {
+    const footerSections = document.querySelectorAll('[data-footer-section]');
+
+    footerSections.forEach(section => {
+        const header = section.querySelector('.footer-links-header');
+
+        if (header) {
+            header.addEventListener('click', () => {
+                // Only toggle on mobile
+                if (window.innerWidth < 640) {
+                    section.classList.toggle('active');
+                }
+            });
+        }
+    });
+}
+
+// Initialize footer collapse
+document.addEventListener('DOMContentLoaded', initFooterCollapse);
+
+// ========================================
+// FEATURE EXPANDED NAVIGATION
+// ========================================
+
+let currentExpandedCard = 1;
+
+function initExpandedNavigation() {
+    const expandedPrev = document.getElementById('expanded-prev');
+    const expandedNext = document.getElementById('expanded-next');
+
+    if (expandedPrev) {
+        expandedPrev.addEventListener('click', () => {
+            currentExpandedCard = currentExpandedCard > 1 ? currentExpandedCard - 1 : 4;
+            openFeatureExpanded(currentExpandedCard);
+        });
+    }
+
+    if (expandedNext) {
+        expandedNext.addEventListener('click', () => {
+            currentExpandedCard = currentExpandedCard < 4 ? currentExpandedCard + 1 : 1;
+            openFeatureExpanded(currentExpandedCard);
+        });
+    }
+}
+
+// Update openFeatureExpanded to track current card
+const originalOpenFeatureExpanded = typeof openFeatureExpanded !== 'undefined' ? openFeatureExpanded : null;
+
+document.addEventListener('DOMContentLoaded', function() {
+    initExpandedNavigation();
+
+    // Wrap expand buttons to track current card
+    const expandBtns = document.querySelectorAll('.feature-expand-btn');
+    expandBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            currentExpandedCard = parseInt(btn.dataset.expand);
+        });
+    });
+});
