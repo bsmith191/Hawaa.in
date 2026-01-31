@@ -929,4 +929,99 @@ document.addEventListener('DOMContentLoaded', function() {
     initTestimonialsSlider();
     initReviewsSlider();
     initBlogsSlider();
+    initFAQ();
+    initCertModals();
 });
+
+// ========================================
+// FAQ FUNCTIONALITY
+// ========================================
+
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+
+            // Toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
+// ========================================
+// CERTIFICATION MODALS
+// ========================================
+
+function initCertModals() {
+    // Open modal from eye button
+    document.querySelectorAll('.cert-preview-eye-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const modalId = this.dataset.modal;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Close modal from close button
+    document.querySelectorAll('.cert-modal-close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', function() {
+            const modalId = this.dataset.close;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Close modal when clicking overlay
+    document.querySelectorAll('.cert-modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.cert-modal-overlay.active').forEach(modal => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+    });
+}
+
+// ========================================
+// NEWSLETTER FORM
+// ========================================
+
+const newsletterForm = document.getElementById('newsletter-form');
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('.newsletter-input').value;
+
+        // Show success feedback (you can replace this with actual form submission)
+        alert('Thank you for subscribing! We\'ll keep you updated.');
+        this.reset();
+    });
+}
