@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <!-- Saffron stripe -->
+  <rect width="900" height="200" fill="#FF9933"/>
+  <!-- White stripe -->
+  <rect y="200" width="900" height="200" fill="#FFFFFF"/>
+  <!-- Green stripe -->
+  <rect y="400" width="900" height="200" fill="#138808"/>
+  <!-- Ashoka Chakra (24 spokes wheel) -->
+  <circle cx="450" cy="300" r="60" fill="none" stroke="#000080" stroke-width="4"/>
+  <!-- Chakra spokes -->
+  <g fill="#000080">
+    <line x1="450" y1="244" x2="450" y2="260" stroke="#000080" stroke-width="2"/>
+    <line x1="450" y1="340" x2="450" y2="356" stroke="#000080" stroke-width="2"/>
+    <line x1="394" y1="300" x2="410" y2="300" stroke="#000080" stroke-width="2"/>
+    <line x1="490" y1="300" x2="506" y2="300" stroke="#000080" stroke-width="2"/>
+    <!-- Diagonal spokes -->
+    <line x1="410.4" y1="260.4" x2="421.7" y2="271.7" stroke="#000080" stroke-width="2"/>
+    <line x1="478.3" y1="328.3" x2="489.6" y2="339.6" stroke="#000080" stroke-width="2"/>
+    <line x1="489.6" y1="260.4" x2="478.3" y2="271.7" stroke="#000080" stroke-width="2"/>
+    <line x1="421.7" y1="328.3" x2="410.4" y2="339.6" stroke="#000080" stroke-width="2"/>
+    <!-- More spokes for 24 total -->
+    <line x1="427" y1="249" x2="432" y2="263" stroke="#000080" stroke-width="2"/>
+    <line x1="468" y1="337" x2="473" y2="351" stroke="#000080" stroke-width="2"/>
+    <line x1="473" y1="249" x2="468" y2="263" stroke="#000080" stroke-width="2"/>
+    <line x1="432" y1="337" x2="427" y2="351" stroke="#000080" stroke-width="2"/>
+    <line x1="399" y1="277" x2="413" y2="283" stroke="#000080" stroke-width="2"/>
+    <line x1="487" y1="317" x2="501" y2="323" stroke="#000080" stroke-width="2"/>
+    <line x1="501" y1="277" x2="487" y2="283" stroke="#000080" stroke-width="2"/>
+    <line x1="413" y1="317" x2="399" y2="323" stroke="#000080" stroke-width="2"/>
+    <line x1="399" y1="323" x2="413" y2="317" stroke="#000080" stroke-width="2"/>
+    <line x1="487" y1="283" x2="501" y2="277" stroke="#000080" stroke-width="2"/>
+    <line x1="501" y1="323" x2="487" y2="317" stroke="#000080" stroke-width="2"/>
+    <line x1="413" y1="283" x2="399" y2="277" stroke="#000080" stroke-width="2"/>
+  </g>
+  <!-- Center hub -->
+  <circle cx="450" cy="300" r="10" fill="#000080"/>
+</svg>
