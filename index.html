@@ -57,26 +57,31 @@
             autoplay
             muted
             playsinline
+            loop
             poster="public/images/hero-poster.jpg"
         >
+            <!-- Support both .MP4 and .mp4 extensions -->
+            <source src="public/videos/hero-video.MP4" type="video/mp4">
             <source src="public/videos/hero-video.mp4" type="video/mp4">
             <source src="public/videos/hero-video.webm" type="video/webm">
         </video>
 
-        <!-- Resting Image (shows when video ends) -->
+        <!-- Resting Image (shows when video ends or if no video) -->
         <div class="hero-resting-image" id="hero-resting"></div>
 
-        <!-- Gradient Overlay -->
+        <!-- Gradient Overlay for text readability -->
         <div class="hero-overlay"></div>
 
-        <!-- Content -->
-        <div class="hero-content">
+        <!-- Hero Title - Centered -->
+        <div class="hero-title-container">
             <h1 class="hero-title">
                 <span class="title-hawaa">Hawaa</span>
                 <span class="title-edge">EDGE</span>
             </h1>
+        </div>
 
-            <!-- CTA Buttons -->
+        <!-- CTA Buttons - Bottom positioned -->
+        <div class="hero-bottom">
             <div class="cta-container">
                 <a href="#order" class="cta-btn cta-primary">
                     <span>Order Now</span>
@@ -84,13 +89,6 @@
                 <a href="#explore" class="cta-btn cta-secondary">
                     <span>Explore Edge</span>
                 </a>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <div class="scroll-mouse">
-                <div class="scroll-dot"></div>
             </div>
         </div>
     </section>

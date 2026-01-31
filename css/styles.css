@@ -188,8 +188,8 @@ a {
     width: 100%;
     overflow: hidden;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    background: #1a1a1a;
 }
 
 /* Background Video */
@@ -201,6 +201,7 @@ a {
     height: 100%;
     object-fit: cover;
     transition: opacity 1s ease;
+    z-index: 1;
 }
 
 .hero-video.hidden {
@@ -217,15 +218,17 @@ a {
     background-image: url('../public/images/hero-resting.jpg');
     background-size: cover;
     background-position: center;
+    background-color: #1a1a1a;
     opacity: 0;
     transition: opacity 1s ease;
+    z-index: 0;
 }
 
 .hero-resting-image.visible {
     opacity: 1;
 }
 
-/* Gradient Overlay */
+/* Gradient Overlay - Stronger for better text visibility */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -234,24 +237,24 @@ a {
     height: 100%;
     background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.3) 0%,
-        transparent 40%,
-        transparent 60%,
-        rgba(0, 0, 0, 0.5) 100%
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.2) 30%,
+        rgba(0, 0, 0, 0.2) 60%,
+        rgba(0, 0, 0, 0.7) 100%
     );
+    z-index: 2;
 }
 
-/* Hero Content */
-.hero-content {
-    position: relative;
+/* Hero Title Container - Centered */
+.hero-title-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
-    padding: 80px 16px 40px;
-    max-width: 640px;
-    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
 }
 
 /* Hero Title */
@@ -259,8 +262,8 @@ a {
     font-size: 2.5rem;
     font-weight: 300;
     color: white;
-    margin-bottom: 32px;
     line-height: 1.2;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 640px) {
@@ -271,38 +274,60 @@ a {
 
 @media (min-width: 768px) {
     .hero-title {
-        font-size: 4rem;
+        font-size: 4.5rem;
     }
 }
 
 @media (min-width: 1024px) {
     .hero-title {
-        font-size: 4.5rem;
+        font-size: 5rem;
     }
 }
 
 .title-hawaa {
     font-weight: 400;
+    color: white;
 }
 
 .title-edge {
     font-weight: 600;
-    letter-spacing: 0.1em;
-    margin-left: 12px;
+    letter-spacing: 0.15em;
+    margin-left: 10px;
+    color: white;
+}
+
+/* Hero Bottom - CTA Buttons */
+.hero-bottom {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+@media (min-width: 640px) {
+    .hero-bottom {
+        bottom: 80px;
+    }
 }
 
 /* CTA Container */
 .cta-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     width: 100%;
-    max-width: 400px;
+    max-width: 360px;
 }
 
 @media (min-width: 640px) {
     .cta-container {
         flex-direction: row;
+        gap: 16px;
+        max-width: 420px;
     }
 }
 
@@ -310,13 +335,14 @@ a {
 .cta-btn {
     position: relative;
     flex: 1;
-    padding: 16px 32px;
+    padding: 14px 28px;
     border-radius: 9999px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .cta-btn:hover {
@@ -327,84 +353,41 @@ a {
     position: relative;
     z-index: 10;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 0.025em;
+    white-space: nowrap;
 }
 
 @media (min-width: 640px) {
     .cta-btn span {
-        font-size: 1.125rem;
+        font-size: 1rem;
     }
 }
 
 /* Primary CTA - Lighter Glass */
 .cta-primary {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .cta-primary span {
     color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Secondary CTA - Darker Glass */
 .cta-secondary {
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .cta-secondary span {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* Scroll Indicator */
-.scroll-indicator {
-    position: absolute;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: bounce 2s infinite;
-}
-
-.scroll-mouse {
-    width: 24px;
-    height: 40px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 9999px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 8px;
-}
-
-.scroll-dot {
-    width: 4px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 9999px;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateX(-50%) translateY(-25%);
-    }
-    50% {
-        transform: translateX(-50%) translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* ========================================

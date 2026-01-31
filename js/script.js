@@ -34,22 +34,51 @@ mobileLinks.forEach(link => {
 });
 
 // ========================================
-// Hero Video - Show Resting Image on End
+// Hero Video - Autoplay and Fallback
 // ========================================
 const heroVideo = document.getElementById('hero-video');
 const heroResting = document.getElementById('hero-resting');
 
 if (heroVideo) {
+    // Try to play video automatically
+    const playVideo = () => {
+        heroVideo.play().then(() => {
+            // Video started playing successfully
+            heroVideo.classList.remove('hidden');
+        }).catch((error) => {
+            // Autoplay was prevented, show resting image
+            console.log('Video autoplay prevented:', error);
+            heroVideo.classList.add('hidden');
+            heroResting.classList.add('visible');
+        });
+    };
+
+    // Play when video is ready
+    if (heroVideo.readyState >= 3) {
+        playVideo();
+    } else {
+        heroVideo.addEventListener('canplay', playVideo, { once: true });
+    }
+
+    // When video ends (if not looping), show resting image
     heroVideo.addEventListener('ended', () => {
         heroVideo.classList.add('hidden');
         heroResting.classList.add('visible');
     });
 
-    // Fallback: If video fails to load, show resting image
+    // If video fails to load, show resting image
     heroVideo.addEventListener('error', () => {
         heroVideo.classList.add('hidden');
         heroResting.classList.add('visible');
     });
+
+    // If no video source loads after timeout, show resting image
+    setTimeout(() => {
+        if (heroVideo.readyState === 0) {
+            heroVideo.classList.add('hidden');
+            heroResting.classList.add('visible');
+        }
+    }, 3000);
 }
 
 // ========================================
