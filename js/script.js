@@ -424,3 +424,209 @@ cardSlider.addEventListener('scroll', function() {
         });
     }
 });
+
+// ========================================
+// FEATURE SLIDER FUNCTIONALITY
+// ========================================
+
+// Feature data for expanded view
+const featureData = {
+    1: {
+        tag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a6 6 0 006 6h4a3 3 0 003-3v-6.5a1.5 1.5 0 00-3 0m-6-3v1.5m0-1.5a1.5 1.5 0 013 0m0 0v1.5m0 0v5m0-5a1.5 1.5 0 013 0v3"/></svg><span>Touch Control</span>',
+        title: 'Control with <span class="italic">a wave</span>',
+        desc: 'Experience the future of air purification with our advanced gesture sensor technology. Simply wave your hand to adjust settings, change fan speeds, or turn the device on and off — no buttons, no apps, just intuitive control.',
+        image: 'public/images/feature-gesture-expanded.jpg',
+        testimonial: {
+            name: 'Priya S.',
+            quote: '"The gesture control is amazing! My kids love waving at it, and I love not having to touch anything with messy hands while cooking."'
+        }
+    },
+    2: {
+        tag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Air Delivery</span>',
+        title: 'Room refresh in <span class="italic">minutes</span>',
+        desc: 'With a Clean Air Delivery Rate of 250 m³/h, Hawaa Edge can purify a 300 sq ft room in under 12 minutes. Our powerful yet quiet motor ensures rapid air circulation without disturbing your peace.',
+        image: 'public/images/feature-cadr-expanded.jpg',
+        testimonial: {
+            name: 'Rahul M.',
+            quote: '"I can literally feel the difference within minutes of turning it on. The air feels fresher and my allergies have significantly reduced."'
+        }
+    },
+    3: {
+        tag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><span>H13 HEPA</span>',
+        title: 'Capture 99.97% of <span class="italic">everything</span>',
+        desc: 'Our medical-grade H13 HEPA filter captures 99.97% of particles as small as 0.3 microns — including dust, pollen, pet dander, mold spores, bacteria, and even some viruses. Breathe easy knowing your air is truly clean.',
+        image: 'public/images/feature-hepa-expanded.jpg',
+        testimonial: {
+            name: 'Dr. Ananya K.',
+            quote: '"As a pulmonologist, I recommend H13 HEPA to all my patients. Hawaa Edge delivers hospital-grade filtration at home."'
+        }
+    },
+    4: {
+        tag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg><span>Smart Home</span>',
+        title: 'Your home, <span class="italic">connected</span>',
+        desc: 'Seamlessly integrate Hawaa Edge into your smart home ecosystem. Works with Google Home and Amazon Alexa for voice control. Schedule purification, monitor air quality, and control settings from anywhere using our intuitive app.',
+        image: 'public/images/feature-wifi-expanded.jpg',
+        testimonial: {
+            name: 'Vikram T.',
+            quote: '"I just say \'Hey Google, turn on the purifier\' and it\'s done. The app also lets me schedule it before I get home from work."'
+        }
+    }
+};
+
+// DOM Elements for Feature Slider
+const featureSlider = document.getElementById('feature-slider');
+const featurePrev = document.getElementById('feature-prev');
+const featureNext = document.getElementById('feature-next');
+const featureProgressBar = document.getElementById('feature-progress-bar');
+const featureOverlay = document.getElementById('feature-overlay');
+const featureExpanded = document.getElementById('feature-expanded');
+const featureClose = document.getElementById('feature-close');
+const expandedImage = document.getElementById('expanded-image');
+const expandedTag = document.getElementById('expanded-tag');
+const expandedTitle = document.getElementById('expanded-title');
+const expandedDesc = document.getElementById('expanded-desc');
+const testimonialName = document.getElementById('testimonial-name');
+const testimonialQuote = document.getElementById('testimonial-quote');
+
+let currentFeatureSlide = 0;
+const totalFeatureSlides = 4;
+
+// Initialize feature slider
+function initFeatureSlider() {
+    if (!featureSlider) return;
+
+    updateFeatureProgress();
+
+    // Feature slider navigation
+    if (featurePrev) {
+        featurePrev.addEventListener('click', () => {
+            scrollFeatureSlider(-1);
+        });
+    }
+
+    if (featureNext) {
+        featureNext.addEventListener('click', () => {
+            scrollFeatureSlider(1);
+        });
+    }
+
+    // Update progress on scroll
+    featureSlider.addEventListener('scroll', updateFeatureProgress);
+
+    // Expand buttons
+    const expandBtns = document.querySelectorAll('.feature-expand-btn');
+    expandBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const cardId = btn.dataset.expand;
+            openFeatureExpanded(cardId);
+        });
+    });
+
+    // Close expanded view
+    if (featureClose) {
+        featureClose.addEventListener('click', closeFeatureExpanded);
+    }
+
+    if (featureOverlay) {
+        featureOverlay.addEventListener('click', (e) => {
+            if (e.target === featureOverlay) {
+                closeFeatureExpanded();
+            }
+        });
+    }
+
+    // Escape key to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && featureOverlay && featureOverlay.classList.contains('active')) {
+            closeFeatureExpanded();
+        }
+    });
+}
+
+// Scroll feature slider
+function scrollFeatureSlider(direction) {
+    const cards = featureSlider.querySelectorAll('.feature-card');
+    if (cards.length === 0) return;
+
+    const cardWidth = cards[0].offsetWidth + 16; // card width + gap
+    const maxScroll = featureSlider.scrollWidth - featureSlider.clientWidth;
+
+    let newScrollLeft = featureSlider.scrollLeft + (direction * cardWidth);
+    newScrollLeft = Math.max(0, Math.min(newScrollLeft, maxScroll));
+
+    featureSlider.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+    });
+}
+
+// Update progress bar
+function updateFeatureProgress() {
+    if (!featureSlider || !featureProgressBar) return;
+
+    const maxScroll = featureSlider.scrollWidth - featureSlider.clientWidth;
+    if (maxScroll <= 0) {
+        featureProgressBar.style.width = '100%';
+        return;
+    }
+
+    const scrollPercent = featureSlider.scrollLeft / maxScroll;
+    const progressWidth = 25 + (scrollPercent * 75); // Start at 25%, end at 100%
+    featureProgressBar.style.width = progressWidth + '%';
+}
+
+// Open expanded view
+function openFeatureExpanded(cardId) {
+    const data = featureData[cardId];
+    if (!data) return;
+
+    // Set content
+    expandedImage.style.backgroundImage = `url('${data.image}')`;
+    expandedTag.innerHTML = data.tag;
+    expandedTitle.innerHTML = data.title;
+    expandedDesc.textContent = data.desc;
+    testimonialName.textContent = data.testimonial.name;
+    testimonialQuote.textContent = data.testimonial.quote;
+
+    // Show overlay
+    featureOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close expanded view
+function closeFeatureExpanded() {
+    featureOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Touch swipe support for feature slider
+let featureTouchStartX = 0;
+let featureTouchEndX = 0;
+
+if (featureSlider) {
+    featureSlider.addEventListener('touchstart', (e) => {
+        featureTouchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    featureSlider.addEventListener('touchend', (e) => {
+        featureTouchEndX = e.changedTouches[0].screenX;
+        handleFeatureSwipe();
+    }, { passive: true });
+}
+
+function handleFeatureSwipe() {
+    const swipeThreshold = 50;
+    const diff = featureTouchStartX - featureTouchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            scrollFeatureSlider(1);
+        } else {
+            scrollFeatureSlider(-1);
+        }
+    }
+}
+
+// Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', initFeatureSlider);
