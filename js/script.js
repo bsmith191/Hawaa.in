@@ -1,17 +1,36 @@
 // ========================================
-// Header Scroll Effect
+// Header Scroll Effect & Sticky Buy Bar
 // ========================================
 const header = document.getElementById('header');
+const stickyBuyBar = document.getElementById('sticky-buy-bar');
+const heroSection = document.querySelector('.hero');
 
 function handleScroll() {
-    if (window.scrollY > 50) {
+    const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+    const scrollY = window.scrollY;
+
+    // Add scrolled class for header background effect
+    if (scrollY > 50) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
+
+    // Toggle between header and sticky buy bar based on hero section
+    if (scrollY > heroHeight - 100) {
+        // Past hero section - show buy bar, hide header
+        header.classList.add('hidden');
+        stickyBuyBar.classList.add('visible');
+    } else {
+        // In hero section - show header, hide buy bar
+        header.classList.remove('hidden');
+        stickyBuyBar.classList.remove('visible');
+    }
 }
 
 window.addEventListener('scroll', handleScroll);
+// Initial check on page load
+document.addEventListener('DOMContentLoaded', handleScroll);
 
 // ========================================
 // Mobile Menu Toggle

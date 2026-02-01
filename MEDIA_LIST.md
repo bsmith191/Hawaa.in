@@ -34,10 +34,14 @@ This document contains a comprehensive list of all images and videos needed for 
 
 | File Name | Location | Status | Ratio | Description/Prompt |
 |-----------|----------|--------|-------|-------------------|
-| `feature-gesture.webp` | `/public/images/` | NEEDED | 3:4 (portrait) | **Gesture Control Feature.** Close-up of a hand waving near the Hawaa air purifier's gesture sensor. Soft, diffused lighting. The sensor area subtly glowing. Modern, tech-forward aesthetic. Show the intuitive interaction without touching. Colors: Muted, sophisticated palette with focus on the product. |
-| `feature-cadr.webp` | `/public/images/` | NEEDED | 3:4 (portrait) | **250 m3/hr CADR Feature.** Visualization of powerful airflow in a living space. Could show subtle motion blur of air movement, or a split composition showing polluted vs clean air. The Hawaa Edge visible in frame. Emphasize the speed and coverage area. Light, airy feel with visible clean air circulation patterns. |
-| `feature-hepa.webp` | `/public/images/` | NEEDED | 3:4 (portrait) | **H13 HEPA 3-in-1 Filter Feature.** Close-up or cutaway view of the filtration system. Show the layered filter structure if possible, or a macro shot of the HEPA filter material. Clean, clinical aesthetic with subtle texture detail. Particles being captured visualization. Scientific yet accessible look. |
-| `feature-wifi.webp` | `/public/images/` | NEEDED | 3:4 (portrait) | **Smart Home / WiFi Feature.** Hawaa air purifier in a smart home context with smartphone showing the app, or voice assistant (Google Home style device) nearby. Digital connectivity visualization - subtle WiFi signal or app interface overlay. Modern tech lifestyle, seamless integration feel. |
+| `feature-gesture.webp` | `/public/images/` | NEEDED | 3:4 (portrait) | **Gesture Control Feature Card.** Close-up of a hand waving near the Hawaa air purifier's gesture sensor. Soft, diffused lighting. The sensor area subtly glowing. Modern, tech-forward aesthetic. Show the intuitive interaction without touching. Colors: Muted, sophisticated palette with focus on the product. |
+| `feature-cadr.webp` | `/public/images/` | NEEDED | 3:4 (portrait) | **250 m3/hr CADR Feature Card.** Visualization of powerful airflow in a living space. Could show subtle motion blur of air movement, or a split composition showing polluted vs clean air. The Hawaa Edge visible in frame. Emphasize the speed and coverage area. Light, airy feel with visible clean air circulation patterns. |
+| `feature-hepa.webp` | `/public/images/` | NEEDED | 3:4 (portrait) | **H13 HEPA 3-in-1 Filter Feature Card.** Close-up or cutaway view of the filtration system. Show the layered filter structure if possible, or a macro shot of the HEPA filter material. Clean, clinical aesthetic with subtle texture detail. Particles being captured visualization. Scientific yet accessible look. |
+| `feature-wifi.webp` | `/public/images/` | NEEDED | 3:4 (portrait) | **Smart Home / WiFi Feature Card.** Hawaa air purifier in a smart home context with smartphone showing the app, or voice assistant (Google Home style device) nearby. Digital connectivity visualization - subtle WiFi signal or app interface overlay. Modern tech lifestyle, seamless integration feel. |
+| `feature-gesture-expanded.webp` | `/public/images/` | NEEDED | 16:9 (landscape) | **Gesture Control Expanded View.** Wide shot of someone using gesture control with the Hawaa air purifier in a beautiful living room setting. Show the full interaction experience - person's hand mid-wave, device responding with LED indicator. Lifestyle context showing ease of use. Premium interior, natural lighting, aspirational home environment. |
+| `feature-cadr-expanded.webp` | `/public/images/` | NEEDED | 16:9 (landscape) | **CADR Expanded View.** Living room scene showing the Hawaa Edge purifying air with subtle visual representation of clean air flow. Could show before/after visualization, or animated-style airflow particles. Emphasize the 300 sq ft coverage. Fresh, clean aesthetic with bright, healthy atmosphere. |
+| `feature-hepa-expanded.webp` | `/public/images/` | NEEDED | 16:9 (landscape) | **HEPA Filter Expanded View.** Detailed visualization of the 3-in-1 filter system. Could be a stylized cutaway or infographic showing: pre-filter catching dust/hair, H13 HEPA capturing fine particles, activated carbon removing odors. Scientific but accessible, showing 99.97% efficiency for 0.3 micron particles. |
+| `feature-wifi-expanded.webp` | `/public/images/` | NEEDED | 16:9 (landscape) | **Smart Home Expanded View.** Modern smart home scene showing Hawaa Edge integrated with ecosystem - Google Home/Alexa visible, smartphone with app open showing controls, perhaps voice command visualization. Show scheduling, remote control, air quality monitoring features. Tech-forward lifestyle, seamless connectivity feel. |
 
 ---
 
@@ -80,19 +84,20 @@ This document contains a comprehensive list of all images and videos needed for 
 
 ## SUMMARY
 
-### Total Media Assets Required: 25 files
+### Total Media Assets Required: 29 files
 
 | Category | Existing | Needed |
 |----------|----------|--------|
 | Hero Section (Images) | 2 | 0 |
-| Hero Section (Videos) | 1 | 1 (webm) |
-| Feature Slider | 0 | 4 |
+| Hero Section (Videos) | 1 | 0 |
+| Feature Slider (Cards) | 0 | 4 |
+| Feature Slider (Expanded) | 0 | 4 |
 | Certification | 0 | 4 |
 | Testimonials (Videos) | 0 | 4 |
 | Testimonials (Posters) | 0 | 4 |
 | Blog Images | 0 | 4 |
 | Favicon | 0 | 1 |
-| **TOTAL** | **3** | **22** |
+| **TOTAL** | **3** | **25** |
 
 ---
 
