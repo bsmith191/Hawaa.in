@@ -678,6 +678,7 @@ const testimonialsPrev = document.getElementById('testimonials-prev');
 const testimonialsNext = document.getElementById('testimonials-next');
 const testimonialsDots = document.getElementById('testimonials-dots');
 let testimonialsAutoSlide;
+let testimonialsIsVisible = false;
 
 function initTestimonialsSlider() {
     if (!testimonialsSlider) return;
@@ -706,11 +707,14 @@ function initTestimonialsSlider() {
         });
     }
 
-    // Auto-slide
-    startTestimonialsAutoSlide();
+    // Update dots and arrows on scroll
+    testimonialsSlider.addEventListener('scroll', () => {
+        updateTestimonialsDots();
+        updateTestimonialsArrows();
+    });
 
-    // Update dots on scroll
-    testimonialsSlider.addEventListener('scroll', updateTestimonialsDots);
+    // Initial arrow state
+    updateTestimonialsArrows();
 
     // Sound buttons
     document.querySelectorAll('.testimonial-sound-btn').forEach(btn => {
@@ -725,6 +729,22 @@ function initTestimonialsSlider() {
             }
         });
     });
+
+    // Intersection Observer for auto-slide
+    const testimonialsSection = document.querySelector('.testimonials-section');
+    if (testimonialsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                testimonialsIsVisible = entry.isIntersecting;
+                if (entry.isIntersecting) {
+                    startTestimonialsAutoSlide();
+                } else {
+                    stopTestimonialsAutoSlide();
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(testimonialsSection);
+    }
 }
 
 function getSliderGap() {
@@ -758,8 +778,26 @@ function updateTestimonialsDots() {
     });
 }
 
+function updateTestimonialsArrows() {
+    if (!testimonialsSlider) return;
+    const maxScroll = testimonialsSlider.scrollWidth - testimonialsSlider.clientWidth;
+    const atStart = testimonialsSlider.scrollLeft <= 10;
+    const atEnd = testimonialsSlider.scrollLeft >= maxScroll - 10;
+
+    if (testimonialsPrev) {
+        testimonialsPrev.style.opacity = atStart ? '0.3' : '1';
+        testimonialsPrev.style.pointerEvents = atStart ? 'none' : 'auto';
+    }
+    if (testimonialsNext) {
+        testimonialsNext.style.opacity = atEnd ? '0.3' : '1';
+        testimonialsNext.style.pointerEvents = atEnd ? 'none' : 'auto';
+    }
+}
+
 function startTestimonialsAutoSlide() {
+    if (testimonialsAutoSlide) return; // Already running
     testimonialsAutoSlide = setInterval(() => {
+        if (!testimonialsIsVisible) return;
         const cards = testimonialsSlider.querySelectorAll('.testimonial-card');
         const cardWidth = cards[0].offsetWidth + getSliderGap();
         const maxScroll = testimonialsSlider.scrollWidth - testimonialsSlider.clientWidth;
@@ -771,9 +809,16 @@ function startTestimonialsAutoSlide() {
     }, 5000);
 }
 
-function resetTestimonialsAutoSlide() {
+function stopTestimonialsAutoSlide() {
     clearInterval(testimonialsAutoSlide);
-    startTestimonialsAutoSlide();
+    testimonialsAutoSlide = null;
+}
+
+function resetTestimonialsAutoSlide() {
+    stopTestimonialsAutoSlide();
+    if (testimonialsIsVisible) {
+        startTestimonialsAutoSlide();
+    }
 }
 
 // ========================================
@@ -783,6 +828,7 @@ function resetTestimonialsAutoSlide() {
 const reviewsSlider = document.getElementById('reviews-slider');
 const reviewsDots = document.getElementById('reviews-dots');
 let reviewsAutoSlide;
+let reviewsIsVisible = false;
 
 function initReviewsSlider() {
     if (!reviewsSlider) return;
@@ -797,11 +843,24 @@ function initReviewsSlider() {
         });
     }
 
-    // Auto-slide
-    startReviewsAutoSlide();
-
     // Update dots on scroll
     reviewsSlider.addEventListener('scroll', updateReviewsDots);
+
+    // Intersection Observer for auto-slide
+    const reviewsSection = document.querySelector('.reviews-section');
+    if (reviewsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                reviewsIsVisible = entry.isIntersecting;
+                if (entry.isIntersecting) {
+                    startReviewsAutoSlide();
+                } else {
+                    stopReviewsAutoSlide();
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(reviewsSection);
+    }
 }
 
 function scrollToReview(index) {
@@ -824,7 +883,9 @@ function updateReviewsDots() {
 }
 
 function startReviewsAutoSlide() {
+    if (reviewsAutoSlide) return; // Already running
     reviewsAutoSlide = setInterval(() => {
+        if (!reviewsIsVisible) return;
         const cards = reviewsSlider.querySelectorAll('.review-card');
         const cardWidth = cards[0].offsetWidth + getSliderGap();
         const maxScroll = reviewsSlider.scrollWidth - reviewsSlider.clientWidth;
@@ -836,9 +897,16 @@ function startReviewsAutoSlide() {
     }, 4000);
 }
 
-function resetReviewsAutoSlide() {
+function stopReviewsAutoSlide() {
     clearInterval(reviewsAutoSlide);
-    startReviewsAutoSlide();
+    reviewsAutoSlide = null;
+}
+
+function resetReviewsAutoSlide() {
+    stopReviewsAutoSlide();
+    if (reviewsIsVisible) {
+        startReviewsAutoSlide();
+    }
 }
 
 // ========================================
@@ -850,6 +918,7 @@ const blogsPrev = document.getElementById('blogs-prev');
 const blogsNext = document.getElementById('blogs-next');
 const blogsDots = document.getElementById('blogs-dots');
 let blogsAutoSlide;
+let blogsIsVisible = false;
 
 function initBlogsSlider() {
     if (!blogsSlider) return;
@@ -872,11 +941,30 @@ function initBlogsSlider() {
         });
     }
 
-    // Auto-slide
-    startBlogsAutoSlide();
+    // Update dots and arrows on scroll
+    blogsSlider.addEventListener('scroll', () => {
+        updateBlogsDots();
+        updateBlogsArrows();
+    });
 
-    // Update dots on scroll
-    blogsSlider.addEventListener('scroll', updateBlogsDots);
+    // Initial arrow state
+    updateBlogsArrows();
+
+    // Intersection Observer for auto-slide
+    const blogsSection = document.querySelector('.blogs-section');
+    if (blogsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                blogsIsVisible = entry.isIntersecting;
+                if (entry.isIntersecting) {
+                    startBlogsAutoSlide();
+                } else {
+                    stopBlogsAutoSlide();
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(blogsSection);
+    }
 }
 
 function scrollBlogs(direction) {
@@ -906,8 +994,26 @@ function updateBlogsDots() {
     });
 }
 
+function updateBlogsArrows() {
+    if (!blogsSlider) return;
+    const maxScroll = blogsSlider.scrollWidth - blogsSlider.clientWidth;
+    const atStart = blogsSlider.scrollLeft <= 10;
+    const atEnd = blogsSlider.scrollLeft >= maxScroll - 10;
+
+    if (blogsPrev) {
+        blogsPrev.style.opacity = atStart ? '0.3' : '1';
+        blogsPrev.style.pointerEvents = atStart ? 'none' : 'auto';
+    }
+    if (blogsNext) {
+        blogsNext.style.opacity = atEnd ? '0.3' : '1';
+        blogsNext.style.pointerEvents = atEnd ? 'none' : 'auto';
+    }
+}
+
 function startBlogsAutoSlide() {
+    if (blogsAutoSlide) return; // Already running
     blogsAutoSlide = setInterval(() => {
+        if (!blogsIsVisible) return;
         const cards = blogsSlider.querySelectorAll('.blog-card');
         const cardWidth = cards[0].offsetWidth + getSliderGap();
         const maxScroll = blogsSlider.scrollWidth - blogsSlider.clientWidth;
@@ -919,9 +1025,16 @@ function startBlogsAutoSlide() {
     }, 6000);
 }
 
-function resetBlogsAutoSlide() {
+function stopBlogsAutoSlide() {
     clearInterval(blogsAutoSlide);
-    startBlogsAutoSlide();
+    blogsAutoSlide = null;
+}
+
+function resetBlogsAutoSlide() {
+    stopBlogsAutoSlide();
+    if (blogsIsVisible) {
+        startBlogsAutoSlide();
+    }
 }
 
 // Initialize all new sliders

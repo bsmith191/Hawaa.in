@@ -2179,7 +2179,7 @@ a {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 10px 16px;
-    margin: 0 -16px;
+    margin: 0 16px;
 }
 
 @media (min-width: 640px) {
@@ -2425,7 +2425,7 @@ a {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 10px 16px;
-    margin: 0 -16px;
+    margin: 0 16px;
 }
 
 @media (min-width: 640px) {
@@ -2531,24 +2531,24 @@ a {
 }
 
 .reviews-dots .dot.active {
-    background: #06b6d4;
+    background: white;
     width: 20px;
     border-radius: 4px;
 }
 
 .reviews-cta {
     padding: 10px 20px;
-    background: rgba(6, 182, 212, 0.15);
-    border: 1px solid rgba(6, 182, 212, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 9999px;
-    color: #22d3ee;
+    color: white;
     font-size: 0.85rem;
     font-weight: 500;
     transition: all 0.3s ease;
 }
 
 .reviews-cta:hover {
-    background: rgba(6, 182, 212, 0.25);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* ========================================
@@ -2625,7 +2625,7 @@ a {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 10px 16px;
-    margin: 0 -16px;
+    margin: 0 16px;
 }
 
 @media (min-width: 640px) {
