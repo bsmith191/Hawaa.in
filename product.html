@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hawaa EDGE - Premium air purifier with H13 HEPA filtration, gesture control, and smart home integration. Pure air, designed to belong. Starting at ₹5,999.">
+    <meta name="keywords" content="Hawaa EDGE, air purifier, H13 HEPA, gesture control, smart home, clean air, India">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Hawaa EDGE - Pure Air, Designed to Belong">
+    <meta property="og:description" content="Premium air purifier with H13 HEPA filtration, gesture control, and smart home integration. Starting at ₹5,999.">
+    <meta property="og:type" content="product">
+
+    <title>Hawaa EDGE - Pure Air, Designed to Belong</title>
+
+    <!-- Google Fonts - Outfit + Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
+</head>
+<body class="product-page">
+    <!-- Header (same as landing page) -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-h">H</span><span class="logo-awaa">awaa</span>
+            </a>
+            <nav class="nav-desktop">
+                <a href="index.html">Home</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        <nav class="nav-mobile" id="nav-mobile">
+            <a href="index.html">Home</a>
+            <a href="index.html#features">Features</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Sticky Buy Bar -->
+    <div class="sticky-buy-bar" id="sticky-buy-bar">
+        <div class="sticky-buy-bar-content">
+            <div class="sticky-bar-left">
+                <span class="sticky-product-name">Hawaa <span class="sticky-edge">EDGE</span></span>
+                <span class="sticky-price-mini">₹5,999</span>
+            </div>
+            <a href="#order" class="sticky-buy-btn">Buy Now</a>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SECTION 1: PRODUCT HERO (B&O Style)
+    ======================================== -->
+    <section class="pdp-hero">
+        <div class="pdp-hero-bg">
+            <img src="public/images/pdp-hero-lifestyle.webp" alt="Hawaa EDGE in a modern home" class="pdp-hero-img">
+        </div>
+        <div class="pdp-hero-overlay"></div>
+
+        <div class="pdp-hero-content">
+            <p class="pdp-hero-label">HAWAA EDGE</p>
+            <h1 class="pdp-hero-title">Pure air, designed to <span class="italic">belong.</span></h1>
+        </div>
+
+        <div class="pdp-hero-bottom">
+            <div class="pdp-hero-bottom-inner">
+                <button class="pdp-scroll-hint" aria-label="Scroll down">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="pdp-hero-info">
+                    <a href="#order" class="pdp-buy-btn">Buy Now</a>
+                    <div class="pdp-hero-meta">
+                        <span class="pdp-hero-price">At ₹5,999</span>
+                        <span class="pdp-hero-warranty">Includes 1-Year Pan-India Warranty</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 2: DESIGNED TO DECOR
+    ======================================== -->
+    <section class="pdp-decor-section">
+        <div class="pdp-decor-header">
+            <p class="pdp-section-subtitle">LIVES IN YOUR SPACE</p>
+            <h2 class="pdp-section-title">Designed to d&eacute;cor, not <span class="italic">disrupt.</span></h2>
+            <p class="pdp-decor-desc">Hawaa EDGE is built to live in your home — not hide in a corner. Minimal. Calm. Considered from every angle.</p>
+        </div>
+
+        <div class="pdp-decor-slider-wrapper">
+            <div class="pdp-decor-slider" id="pdp-decor-slider">
+                <div class="pdp-decor-card" data-decor="1">
+                    <div class="pdp-decor-img-wrap">
+                        <img src="public/images/pdp-decor-01.webp" alt="Hawaa EDGE in a modern living room" class="pdp-decor-img" loading="lazy">
+                        <button class="pdp-decor-expand-btn" data-expand-decor="1" aria-label="Expand image">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="pdp-decor-caption">Neutral tones that blend into modern homes</p>
+                </div>
+
+                <div class="pdp-decor-card" data-decor="2">
+                    <div class="pdp-decor-img-wrap">
+                        <img src="public/images/pdp-decor-02.webp" alt="Hawaa EDGE minimal design detail" class="pdp-decor-img" loading="lazy">
+                        <button class="pdp-decor-expand-btn" data-expand-decor="2" aria-label="Expand image">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="pdp-decor-caption">No harsh plastics. No visual noise.</p>
+                </div>
+
+                <div class="pdp-decor-card" data-decor="3">
+                    <div class="pdp-decor-img-wrap">
+                        <img src="public/images/pdp-decor-03.webp" alt="Hawaa EDGE on a shelf" class="pdp-decor-img" loading="lazy">
+                        <button class="pdp-decor-expand-btn" data-expand-decor="3" aria-label="Expand image">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="pdp-decor-caption">Designed to look good even when it's off</p>
+                </div>
+
+                <div class="pdp-decor-card" data-decor="4">
+                    <div class="pdp-decor-img-wrap">
+                        <img src="public/images/pdp-decor-04.webp" alt="Hawaa EDGE in a bedroom" class="pdp-decor-img" loading="lazy">
+                        <button class="pdp-decor-expand-btn" data-expand-decor="4" aria-label="Expand image">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="pdp-decor-caption">Crafted for spaces that matter</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decor Slider Dots -->
+        <div class="pdp-decor-controls">
+            <div class="pdp-decor-dots" id="pdp-decor-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Decor Expanded Lightbox -->
+    <div class="pdp-decor-lightbox" id="pdp-decor-lightbox">
+        <button class="pdp-lightbox-close" id="pdp-lightbox-close" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="pdp-lightbox-slider" id="pdp-lightbox-slider">
+            <img src="public/images/pdp-decor-01.webp" alt="Hawaa EDGE lifestyle" class="pdp-lightbox-img" data-lightbox="1">
+            <img src="public/images/pdp-decor-02.webp" alt="Hawaa EDGE detail" class="pdp-lightbox-img" data-lightbox="2">
+            <img src="public/images/pdp-decor-03.webp" alt="Hawaa EDGE shelf" class="pdp-lightbox-img" data-lightbox="3">
+            <img src="public/images/pdp-decor-04.webp" alt="Hawaa EDGE bedroom" class="pdp-lightbox-img" data-lightbox="4">
+        </div>
+        <div class="pdp-lightbox-dots" id="pdp-lightbox-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SECTION 3: KEY SPECS
+    ======================================== -->
+    <section class="pdp-specs-section">
+        <div class="pdp-specs-container">
+            <p class="pdp-section-subtitle">WHAT MAKES IT DIFFERENT</p>
+            <h2 class="pdp-section-title">Performance that <span class="italic">speaks.</span></h2>
+
+            <div class="pdp-specs-grid">
+                <div class="pdp-spec-card">
+                    <div class="pdp-spec-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 14h4M6 10h6M4 18h8M14 14c2-2 4-2 6 0M14 10c2-2 5-2 7 0M14 18c1.5-1.5 3-1.5 4.5 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="pdp-spec-value">250 m&sup3;/hr</h3>
+                    <p class="pdp-spec-label">CADR Rating</p>
+                    <p class="pdp-spec-desc">Cleans a 300 sq ft room in under 12 minutes</p>
+                </div>
+
+                <div class="pdp-spec-card">
+                    <div class="pdp-spec-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="pdp-spec-value">H13 HEPA</h3>
+                    <p class="pdp-spec-label">3-in-1 Filtration</p>
+                    <p class="pdp-spec-desc">Captures 99.97% of particles down to 0.3 microns</p>
+                </div>
+
+                <div class="pdp-spec-card">
+                    <div class="pdp-spec-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 10c0 1-1 2-3 2s-3-1-3-2c0 0 0-4 3-4s3 4 3 4zM8 8c-2 0-3 2-3 4M19 8c2 0 3 2 3 4M5 16c-1 1-2 3 0 4M19 16c1 1 2 3 0 4"/>
+                        </svg>
+                    </div>
+                    <h3 class="pdp-spec-value">Gesture</h3>
+                    <p class="pdp-spec-label">Touch-free Control</p>
+                    <p class="pdp-spec-desc">Wave to power on, off, or cycle fan speeds</p>
+                </div>
+
+                <div class="pdp-spec-card">
+                    <div class="pdp-spec-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="pdp-spec-value">Smart Home</h3>
+                    <p class="pdp-spec-label">Google Home & Alexa</p>
+                    <p class="pdp-spec-desc">Voice control and app scheduling built in</p>
+                </div>
+
+                <div class="pdp-spec-card">
+                    <div class="pdp-spec-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3v1m0 16v1m-9-9h1m16 0h1m-2.636-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707M17.657 17.657l.707.707"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                    </div>
+                    <h3 class="pdp-spec-value">24 dB</h3>
+                    <p class="pdp-spec-label">Sleep Mode</p>
+                    <p class="pdp-spec-desc">Whisper-quiet operation for undisturbed rest</p>
+                </div>
+
+                <div class="pdp-spec-card">
+                    <div class="pdp-spec-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="pdp-spec-value">&#8377;899</h3>
+                    <p class="pdp-spec-label">Filter Replacement</p>
+                    <p class="pdp-spec-desc">India's most affordable H13 HEPA filter cost</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 4: PRODUCT GALLERY (360-style / multi-angle)
+    ======================================== -->
+    <section class="pdp-gallery-section">
+        <div class="pdp-gallery-container">
+            <p class="pdp-section-subtitle">EVERY ANGLE</p>
+            <h2 class="pdp-section-title">See it from <span class="italic">all sides.</span></h2>
+
+            <div class="pdp-gallery-viewer">
+                <div class="pdp-gallery-main">
+                    <img src="public/images/pdp-gallery-front.webp" alt="Hawaa EDGE front view" class="pdp-gallery-main-img" id="pdp-gallery-main-img">
+                </div>
+                <div class="pdp-gallery-thumbs" id="pdp-gallery-thumbs">
+                    <button class="pdp-gallery-thumb active" data-view="public/images/pdp-gallery-front.webp">
+                        <img src="public/images/pdp-gallery-front.webp" alt="Front" loading="lazy">
+                    </button>
+                    <button class="pdp-gallery-thumb" data-view="public/images/pdp-gallery-side.webp">
+                        <img src="public/images/pdp-gallery-side.webp" alt="Side" loading="lazy">
+                    </button>
+                    <button class="pdp-gallery-thumb" data-view="public/images/pdp-gallery-back.webp">
+                        <img src="public/images/pdp-gallery-back.webp" alt="Back" loading="lazy">
+                    </button>
+                    <button class="pdp-gallery-thumb" data-view="public/images/pdp-gallery-top.webp">
+                        <img src="public/images/pdp-gallery-top.webp" alt="Top" loading="lazy">
+                    </button>
+                    <button class="pdp-gallery-thumb" data-view="public/images/pdp-gallery-filter.webp">
+                        <img src="public/images/pdp-gallery-filter.webp" alt="Filter" loading="lazy">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 5: HOW IT WORKS
+    ======================================== -->
+    <section class="pdp-how-section">
+        <div class="pdp-how-container">
+            <p class="pdp-section-subtitle">SIMPLE BY DESIGN</p>
+            <h2 class="pdp-section-title">Three layers. One <span class="italic">breath.</span></h2>
+
+            <div class="pdp-how-steps">
+                <div class="pdp-how-step">
+                    <div class="pdp-how-step-num">01</div>
+                    <div class="pdp-how-step-content">
+                        <h3 class="pdp-how-step-title">Pre-Filter</h3>
+                        <p class="pdp-how-step-desc">Traps large particles like dust, hair, and pet dander before they reach the main filter.</p>
+                    </div>
+                </div>
+
+                <div class="pdp-how-step">
+                    <div class="pdp-how-step-num">02</div>
+                    <div class="pdp-how-step-content">
+                        <h3 class="pdp-how-step-title">H13 HEPA Filter</h3>
+                        <p class="pdp-how-step-desc">Medical-grade filtration captures 99.97% of particles as small as 0.3 microns — including PM2.5, pollen, and bacteria.</p>
+                    </div>
+                </div>
+
+                <div class="pdp-how-step">
+                    <div class="pdp-how-step-num">03</div>
+                    <div class="pdp-how-step-content">
+                        <h3 class="pdp-how-step-title">Activated Carbon</h3>
+                        <p class="pdp-how-step-desc">Eliminates odours, smoke, VOCs, and harmful gases — delivering air that doesn't just look clean, but smells clean.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 6: WHAT'S IN THE BOX
+    ======================================== -->
+    <section class="pdp-inbox-section">
+        <div class="pdp-inbox-container">
+            <p class="pdp-section-subtitle">UNBOXING</p>
+            <h2 class="pdp-section-title">What's in the <span class="italic">box.</span></h2>
+
+            <div class="pdp-inbox-grid">
+                <div class="pdp-inbox-item">
+                    <div class="pdp-inbox-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 14h4M6 10h6M4 18h8M14 14c2-2 4-2 6 0M14 10c2-2 5-2 7 0"/>
+                        </svg>
+                    </div>
+                    <p class="pdp-inbox-label">Hawaa EDGE Unit</p>
+                </div>
+                <div class="pdp-inbox-item">
+                    <div class="pdp-inbox-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <p class="pdp-inbox-label">Pre-installed H13 HEPA Filter</p>
+                </div>
+                <div class="pdp-inbox-item">
+                    <div class="pdp-inbox-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <p class="pdp-inbox-label">Power Adapter</p>
+                </div>
+                <div class="pdp-inbox-item">
+                    <div class="pdp-inbox-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <p class="pdp-inbox-label">Quick Start Guide</p>
+                </div>
+                <div class="pdp-inbox-item">
+                    <div class="pdp-inbox-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <p class="pdp-inbox-label">Warranty Card</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 7: ORDER CTA
+    ======================================== -->
+    <section class="pdp-order-section" id="order">
+        <div class="pdp-order-container">
+            <div class="pdp-order-content">
+                <p class="pdp-section-subtitle">BRING IT HOME</p>
+                <h2 class="pdp-order-title">Hawaa EDGE</h2>
+                <p class="pdp-order-tagline">Pure air, designed to belong.</p>
+
+                <div class="pdp-order-price-block">
+                    <span class="pdp-order-price">&#8377;5,999</span>
+                    <span class="pdp-order-price-note">Inclusive of all taxes</span>
+                </div>
+
+                <div class="pdp-order-perks">
+                    <div class="pdp-order-perk">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M5 13l4 4L19 7"/>
+                        </svg>
+                        <span>Free delivery across India</span>
+                    </div>
+                    <div class="pdp-order-perk">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M5 13l4 4L19 7"/>
+                        </svg>
+                        <span>1-Year PAN India Warranty</span>
+                    </div>
+                    <div class="pdp-order-perk">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M5 13l4 4L19 7"/>
+                        </svg>
+                        <span>H13 HEPA filter pre-installed</span>
+                    </div>
+                    <div class="pdp-order-perk">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M5 13l4 4L19 7"/>
+                        </svg>
+                        <span>Easy 7-day returns</span>
+                    </div>
+                </div>
+
+                <a href="#" class="pdp-order-btn">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER (same as landing)
+    ======================================== -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="footer-logo-text">HAWAA</span>
+                </div>
+                <p class="footer-tagline">Breathe better. Live better.</p>
+                <div class="footer-contact-info">
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Royal Complex, Bhutkhana Chowk, Rajkot, 360001, Gujarat, India</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>support@hawaa.in</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                        <span>+91 0000000000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">PRODUCTS</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <ul class="footer-links-list">
+                        <li><a href="product.html">Hawaa Edge</a></li>
+                        <li><a href="#">Replacement Filters</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">SUPPORT</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Installation Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Warranty & Support</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">COMPANY</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <ul class="footer-links-list">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">LEGAL</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-social-link" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-social-link" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/>
+                        </svg>
+                    </a>
+                </div>
+                <p class="footer-copyright">&copy; 2025 Hawaa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/product.js"></script>
+</body>
+</html>
