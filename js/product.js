@@ -38,8 +38,7 @@ hamburger.addEventListener('click', () => {
     navMobile.classList.toggle('active');
 });
 
-const mobileLinks = navMobile.querySelectorAll('a');
-mobileLinks.forEach(link => {
+navMobile.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMobile.classList.remove('active');
@@ -75,32 +74,43 @@ if (scrollHint) {
 }
 
 // ========================================
-// Decor Slider - Dots & Scroll Tracking
+// Generic Slider Dot Tracker
 // ========================================
-const decorSlider = document.getElementById('pdp-decor-slider');
-const decorDots = document.querySelectorAll('#pdp-decor-dots .dot');
+function initSliderDots(sliderId, dotsId, gap) {
+    const slider = document.getElementById(sliderId);
+    const dots = document.querySelectorAll('#' + dotsId + ' .dot');
+    if (!slider || dots.length === 0) return;
 
-function updateDecorDots() {
-    if (!decorSlider || decorDots.length === 0) return;
-    const scrollLeft = decorSlider.scrollLeft;
-    const cardWidth = decorSlider.querySelector('.pdp-decor-card').offsetWidth + 16;
-    const activeIndex = Math.round(scrollLeft / cardWidth);
-    decorDots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === activeIndex);
+    function update() {
+        const card = slider.querySelector(':scope > *');
+        if (!card) return;
+        const cardWidth = card.offsetWidth + (gap || 16);
+        const activeIndex = Math.round(slider.scrollLeft / cardWidth);
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === activeIndex);
+        });
+    }
+
+    slider.addEventListener('scroll', update);
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const slideIndex = parseInt(dot.dataset.slide);
+            const card = slider.querySelector(':scope > *');
+            if (!card) return;
+            const cardWidth = card.offsetWidth + (gap || 16);
+            slider.scrollTo({ left: slideIndex * cardWidth, behavior: 'smooth' });
+        });
     });
+
+    update();
 }
 
-if (decorSlider) {
-    decorSlider.addEventListener('scroll', updateDecorDots);
-}
-
-decorDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-        const slideIndex = parseInt(dot.dataset.slide);
-        const cardWidth = decorSlider.querySelector('.pdp-decor-card').offsetWidth + 16;
-        decorSlider.scrollTo({ left: slideIndex * cardWidth, behavior: 'smooth' });
-    });
-});
+// Init all slider dots
+initSliderDots('pdp-decor-slider', 'pdp-decor-dots', 16);
+initSliderDots('pdp-perf-slider', 'pdp-perf-dots', 0);
+initSliderDots('pdp-gesture-slider', 'pdp-gesture-dots', 16);
+initSliderDots('pdp-smart-slider', 'pdp-smart-dots', 16);
 
 // ========================================
 // Decor Lightbox (Expanded View)
@@ -110,104 +120,94 @@ const lightboxSlider = document.getElementById('pdp-lightbox-slider');
 const lightboxClose = document.getElementById('pdp-lightbox-close');
 const lightboxDots = document.querySelectorAll('#pdp-lightbox-dots .dot');
 
-// Open lightbox
 document.querySelectorAll('.pdp-decor-expand-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const index = parseInt(btn.dataset.expandDecor) - 1;
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
-        // Scroll to correct image
         const imgWidth = lightboxSlider.querySelector('.pdp-lightbox-img').offsetWidth;
         lightboxSlider.scrollTo({ left: index * imgWidth, behavior: 'instant' });
         updateLightboxDots();
     });
 });
 
-// Close lightbox
-if (lightboxClose) {
-    lightboxClose.addEventListener('click', () => {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    });
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
 }
 
-// Close on background click
-if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-}
+if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightbox(); });
 
-// Close on Escape
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
-
-// Lightbox scroll tracking
 function updateLightboxDots() {
     if (!lightboxSlider || lightboxDots.length === 0) return;
-    const scrollLeft = lightboxSlider.scrollLeft;
-    const imgWidth = lightboxSlider.offsetWidth;
-    const activeIndex = Math.round(scrollLeft / imgWidth);
-    lightboxDots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === activeIndex);
-    });
+    const activeIndex = Math.round(lightboxSlider.scrollLeft / lightboxSlider.offsetWidth);
+    lightboxDots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
 }
 
-if (lightboxSlider) {
-    lightboxSlider.addEventListener('scroll', updateLightboxDots);
-}
+if (lightboxSlider) lightboxSlider.addEventListener('scroll', updateLightboxDots);
 
 lightboxDots.forEach(dot => {
     dot.addEventListener('click', () => {
-        const slideIndex = parseInt(dot.dataset.slide);
-        const imgWidth = lightboxSlider.offsetWidth;
-        lightboxSlider.scrollTo({ left: slideIndex * imgWidth, behavior: 'smooth' });
+        lightboxSlider.scrollTo({ left: parseInt(dot.dataset.slide) * lightboxSlider.offsetWidth, behavior: 'smooth' });
     });
 });
 
 // ========================================
-// Product Gallery - Thumbnail Switcher
+// Filter System - Apple-style text swap
 // ========================================
-const galleryMainImg = document.getElementById('pdp-gallery-main-img');
-const galleryThumbs = document.querySelectorAll('.pdp-gallery-thumb');
+const filterDots = document.querySelectorAll('#pdp-filter-dots .dot');
+const filterCards = document.querySelectorAll('.pdp-filter-text-card');
 
-galleryThumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-        const newSrc = thumb.dataset.view;
-        if (galleryMainImg && newSrc) {
-            galleryMainImg.style.opacity = '0';
-            setTimeout(() => {
-                galleryMainImg.src = newSrc;
-                galleryMainImg.style.opacity = '1';
-            }, 200);
+function setActiveFilter(index) {
+    filterCards.forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+    });
+    filterDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+filterDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        setActiveFilter(parseInt(dot.dataset.slide));
+    });
+});
+
+// Auto-cycle filter text on swipe area
+const filterViewer = document.getElementById('pdp-filter-viewer');
+if (filterViewer) {
+    let filterTouchStartX = 0;
+    let filterCurrentIndex = 0;
+
+    filterViewer.addEventListener('touchstart', (e) => {
+        filterTouchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    filterViewer.addEventListener('touchend', (e) => {
+        const diff = filterTouchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0 && filterCurrentIndex < filterCards.length - 1) {
+                filterCurrentIndex++;
+            } else if (diff < 0 && filterCurrentIndex > 0) {
+                filterCurrentIndex--;
+            }
+            setActiveFilter(filterCurrentIndex);
         }
-        galleryThumbs.forEach(t => t.classList.remove('active'));
-        thumb.classList.add('active');
-    });
-});
+    }, { passive: true });
+}
 
 // ========================================
 // Footer Collapsible Sections (Mobile)
 // ========================================
-const footerSections = document.querySelectorAll('[data-footer-section]');
-
-footerSections.forEach(section => {
+document.querySelectorAll('[data-footer-section]').forEach(section => {
     const headerBtn = section.querySelector('.footer-links-header');
     if (headerBtn) {
         headerBtn.addEventListener('click', () => {
             const isOpen = section.classList.contains('open');
-            // Close all others
-            footerSections.forEach(s => s.classList.remove('open'));
-            if (!isOpen) {
-                section.classList.add('open');
-            }
+            document.querySelectorAll('[data-footer-section]').forEach(s => s.classList.remove('open'));
+            if (!isOpen) section.classList.add('open');
         });
     }
 });
