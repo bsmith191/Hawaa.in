@@ -184,250 +184,367 @@
     </div>
 
     <!-- ========================================
-         SECTION 3: KEY SPECS
+         SECTION 3: PERFORMANCE (Full-width card swipe)
     ======================================== -->
-    <section class="pdp-specs-section">
-        <div class="pdp-specs-container">
+    <section class="pdp-perf-section">
+        <div class="pdp-perf-header">
             <p class="pdp-section-subtitle">WHAT MAKES IT DIFFERENT</p>
             <h2 class="pdp-section-title">Performance that <span class="italic">speaks.</span></h2>
+        </div>
 
-            <div class="pdp-specs-grid">
-                <div class="pdp-spec-card">
-                    <div class="pdp-spec-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 14h4M6 10h6M4 18h8M14 14c2-2 4-2 6 0M14 10c2-2 5-2 7 0M14 18c1.5-1.5 3-1.5 4.5 0"/>
-                        </svg>
+        <div class="pdp-perf-slider-wrapper">
+            <div class="pdp-perf-slider" id="pdp-perf-slider">
+                <!-- Card 1: Airflow -->
+                <div class="pdp-perf-card" data-perf="0">
+                    <div class="pdp-perf-card-inner">
+                        <div class="pdp-perf-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/>
+                            </svg>
+                        </div>
+                        <p class="pdp-perf-eyebrow">AIRFLOW</p>
+                        <h3 class="pdp-perf-value">250 m&sup3;/hr</h3>
+                        <h4 class="pdp-perf-subtitle">Clean Air Delivery Rate</h4>
+                        <div class="pdp-perf-details">
+                            <p>Not just a number on paper. 250 CADR means the EDGE pushes 250 cubic metres of purified air every hour — continuously.</p>
+                            <div class="pdp-perf-stats">
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">300 sq ft</span>
+                                    <span class="pdp-perf-stat-label">Full air change in 12 min</span>
+                                </div>
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">200 sq ft</span>
+                                    <span class="pdp-perf-stat-label">Full air change in 8 min</span>
+                                </div>
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">150 sq ft</span>
+                                    <span class="pdp-perf-stat-label">Full air change in 6 min</span>
+                                </div>
+                            </div>
+                            <p class="pdp-perf-note">That's fast enough to purify your bedroom three times before you finish a chapter.</p>
+                        </div>
                     </div>
-                    <h3 class="pdp-spec-value">250 m&sup3;/hr</h3>
-                    <p class="pdp-spec-label">CADR Rating</p>
-                    <p class="pdp-spec-desc">Cleans a 300 sq ft room in under 12 minutes</p>
                 </div>
 
-                <div class="pdp-spec-card">
-                    <div class="pdp-spec-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
+                <!-- Card 2: Noise -->
+                <div class="pdp-perf-card" data-perf="1">
+                    <div class="pdp-perf-card-inner">
+                        <div class="pdp-perf-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/>
+                            </svg>
+                        </div>
+                        <p class="pdp-perf-eyebrow">NOISE LEVEL</p>
+                        <h3 class="pdp-perf-value">24 – 55 dB</h3>
+                        <h4 class="pdp-perf-subtitle">Whisper to Conversation</h4>
+                        <div class="pdp-perf-details">
+                            <p>Sleep mode runs at 24 dB — quieter than a library. Even at full speed, EDGE stays under normal conversation volume.</p>
+                            <div class="pdp-perf-stats">
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">24 dB</span>
+                                    <span class="pdp-perf-stat-label">Sleep mode — softer than a whisper</span>
+                                </div>
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">38 dB</span>
+                                    <span class="pdp-perf-stat-label">Low speed — like a quiet room</span>
+                                </div>
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">55 dB</span>
+                                    <span class="pdp-perf-stat-label">Max speed — still under a normal chat</span>
+                                </div>
+                            </div>
+                            <p class="pdp-perf-note">You'll forget it's on. Your lungs won't.</p>
+                        </div>
                     </div>
-                    <h3 class="pdp-spec-value">H13 HEPA</h3>
-                    <p class="pdp-spec-label">3-in-1 Filtration</p>
-                    <p class="pdp-spec-desc">Captures 99.97% of particles down to 0.3 microns</p>
                 </div>
 
-                <div class="pdp-spec-card">
-                    <div class="pdp-spec-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 10c0 1-1 2-3 2s-3-1-3-2c0 0 0-4 3-4s3 4 3 4zM8 8c-2 0-3 2-3 4M19 8c2 0 3 2 3 4M5 16c-1 1-2 3 0 4M19 16c1 1 2 3 0 4"/>
-                        </svg>
+                <!-- Card 3: H13 HEPA -->
+                <div class="pdp-perf-card" data-perf="2">
+                    <div class="pdp-perf-card-inner">
+                        <div class="pdp-perf-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <p class="pdp-perf-eyebrow">FILTRATION</p>
+                        <h3 class="pdp-perf-value">99.97%</h3>
+                        <h4 class="pdp-perf-subtitle">H13 True HEPA — Medical Grade</h4>
+                        <div class="pdp-perf-details">
+                            <p>Captures particles as small as 0.3 microns. That's 300 times thinner than a human hair. Almost nothing gets through.</p>
+                            <div class="pdp-perf-stats">
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">PM2.5</span>
+                                    <span class="pdp-perf-stat-label">Fine pollution from traffic & construction</span>
+                                </div>
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">Pollen & Dust</span>
+                                    <span class="pdp-perf-stat-label">Allergy triggers trapped on first pass</span>
+                                </div>
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">Bacteria</span>
+                                    <span class="pdp-perf-stat-label">Airborne pathogens removed at source</span>
+                                </div>
+                            </div>
+                            <p class="pdp-perf-note">0.03% escapes. The other 99.97% doesn't stand a chance.</p>
+                        </div>
                     </div>
-                    <h3 class="pdp-spec-value">Gesture</h3>
-                    <p class="pdp-spec-label">Touch-free Control</p>
-                    <p class="pdp-spec-desc">Wave to power on, off, or cycle fan speeds</p>
                 </div>
 
-                <div class="pdp-spec-card">
-                    <div class="pdp-spec-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
-                        </svg>
+                <!-- Card 4: Coverage -->
+                <div class="pdp-perf-card" data-perf="3">
+                    <div class="pdp-perf-card-inner">
+                        <div class="pdp-perf-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <path d="M3 9h18M9 21V9"/>
+                            </svg>
+                        </div>
+                        <p class="pdp-perf-eyebrow">COVERAGE</p>
+                        <h3 class="pdp-perf-value">Up to 300 sq ft</h3>
+                        <h4 class="pdp-perf-subtitle">One Room. Complete Air Change.</h4>
+                        <div class="pdp-perf-details">
+                            <p>Not a vague "up to" claim. Here's exactly how fast the EDGE purifies different room sizes — tested and measured.</p>
+                            <div class="pdp-perf-stats">
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">150 sq ft</span>
+                                    <span class="pdp-perf-stat-label">Full cycle in 6 min &middot; 10 cycles/hr</span>
+                                </div>
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">200 sq ft</span>
+                                    <span class="pdp-perf-stat-label">Full cycle in 8 min &middot; 7.5 cycles/hr</span>
+                                </div>
+                                <div class="pdp-perf-stat">
+                                    <span class="pdp-perf-stat-val">300 sq ft</span>
+                                    <span class="pdp-perf-stat-label">Full cycle in 12 min &middot; 5 cycles/hr</span>
+                                </div>
+                            </div>
+                            <p class="pdp-perf-note">Bedroom, study, nursery, office cabin — EDGE handles them all without breaking a sweat.</p>
+                        </div>
                     </div>
-                    <h3 class="pdp-spec-value">Smart Home</h3>
-                    <p class="pdp-spec-label">Google Home & Alexa</p>
-                    <p class="pdp-spec-desc">Voice control and app scheduling built in</p>
                 </div>
+            </div>
+        </div>
 
-                <div class="pdp-spec-card">
-                    <div class="pdp-spec-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 3v1m0 16v1m-9-9h1m16 0h1m-2.636-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707M17.657 17.657l.707.707"/>
-                            <circle cx="12" cy="12" r="4"/>
-                        </svg>
-                    </div>
-                    <h3 class="pdp-spec-value">24 dB</h3>
-                    <p class="pdp-spec-label">Sleep Mode</p>
-                    <p class="pdp-spec-desc">Whisper-quiet operation for undisturbed rest</p>
-                </div>
-
-                <div class="pdp-spec-card">
-                    <div class="pdp-spec-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="pdp-spec-value">&#8377;899</h3>
-                    <p class="pdp-spec-label">Filter Replacement</p>
-                    <p class="pdp-spec-desc">India's most affordable H13 HEPA filter cost</p>
-                </div>
+        <!-- Perf Slider Dots -->
+        <div class="pdp-perf-controls">
+            <div class="pdp-perf-dots" id="pdp-perf-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
             </div>
         </div>
     </section>
 
     <!-- ========================================
-         SECTION 4: PRODUCT GALLERY (360-style / multi-angle)
+         SECTION 4: GESTURE CONTROL
     ======================================== -->
-    <section class="pdp-gallery-section">
-        <div class="pdp-gallery-container">
-            <p class="pdp-section-subtitle">EVERY ANGLE</p>
-            <h2 class="pdp-section-title">See it from <span class="italic">all sides.</span></h2>
+    <section class="pdp-gesture-section">
+        <div class="pdp-gesture-header">
+            <p class="pdp-section-subtitle">TOUCH-FREE</p>
+            <h2 class="pdp-section-title">Control it without <span class="italic">touching it.</span></h2>
+            <p class="pdp-gesture-desc">Wave. Swipe. Done. No buttons, no apps, no effort.</p>
+        </div>
 
-            <div class="pdp-gallery-viewer">
-                <div class="pdp-gallery-main">
-                    <img src="public/images/pdp-gallery-front.webp" alt="Hawaa EDGE front view" class="pdp-gallery-main-img" id="pdp-gallery-main-img">
+        <div class="pdp-gesture-slider-wrapper">
+            <div class="pdp-gesture-slider" id="pdp-gesture-slider">
+                <div class="pdp-gesture-card">
+                    <div class="pdp-gesture-video-wrap">
+                        <video src="public/videos/gesture-down-start.webm" autoplay muted loop playsinline class="pdp-gesture-video"></video>
+                    </div>
+                    <div class="pdp-gesture-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M12 5v14M19 12l-7 7-7-7"/>
+                        </svg>
+                        <span>Swipe down to start</span>
+                    </div>
                 </div>
-                <div class="pdp-gallery-thumbs" id="pdp-gallery-thumbs">
-                    <button class="pdp-gallery-thumb active" data-view="public/images/pdp-gallery-front.webp">
-                        <img src="public/images/pdp-gallery-front.webp" alt="Front" loading="lazy">
-                    </button>
-                    <button class="pdp-gallery-thumb" data-view="public/images/pdp-gallery-side.webp">
-                        <img src="public/images/pdp-gallery-side.webp" alt="Side" loading="lazy">
-                    </button>
-                    <button class="pdp-gallery-thumb" data-view="public/images/pdp-gallery-back.webp">
-                        <img src="public/images/pdp-gallery-back.webp" alt="Back" loading="lazy">
-                    </button>
-                    <button class="pdp-gallery-thumb" data-view="public/images/pdp-gallery-top.webp">
-                        <img src="public/images/pdp-gallery-top.webp" alt="Top" loading="lazy">
-                    </button>
-                    <button class="pdp-gallery-thumb" data-view="public/images/pdp-gallery-filter.webp">
-                        <img src="public/images/pdp-gallery-filter.webp" alt="Filter" loading="lazy">
-                    </button>
+
+                <div class="pdp-gesture-card">
+                    <div class="pdp-gesture-video-wrap">
+                        <video src="public/videos/gesture-up-off.webm" autoplay muted loop playsinline class="pdp-gesture-video"></video>
+                    </div>
+                    <div class="pdp-gesture-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M12 19V5M5 12l7-7 7 7"/>
+                        </svg>
+                        <span>Swipe up to turn off</span>
+                    </div>
                 </div>
+
+                <div class="pdp-gesture-card">
+                    <div class="pdp-gesture-video-wrap">
+                        <video src="public/videos/gesture-right-speed-up.webm" autoplay muted loop playsinline class="pdp-gesture-video"></video>
+                    </div>
+                    <div class="pdp-gesture-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                        <span>Swipe right to speed up</span>
+                    </div>
+                </div>
+
+                <div class="pdp-gesture-card">
+                    <div class="pdp-gesture-video-wrap">
+                        <video src="public/videos/gesture-left-slow-down.webm" autoplay muted loop playsinline class="pdp-gesture-video"></video>
+                    </div>
+                    <div class="pdp-gesture-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Swipe left to slow down</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdp-gesture-controls">
+            <div class="pdp-gesture-dots" id="pdp-gesture-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
             </div>
         </div>
     </section>
 
     <!-- ========================================
-         SECTION 5: HOW IT WORKS
+         SECTION 5: SMART HOME
     ======================================== -->
-    <section class="pdp-how-section">
-        <div class="pdp-how-container">
-            <p class="pdp-section-subtitle">SIMPLE BY DESIGN</p>
+    <section class="pdp-smart-section">
+        <div class="pdp-smart-header">
+            <p class="pdp-section-subtitle">CONNECTED LIVING</p>
+            <h2 class="pdp-section-title">Your home, your <span class="italic">rules.</span></h2>
+        </div>
+
+        <div class="pdp-smart-slider-wrapper">
+            <div class="pdp-smart-slider" id="pdp-smart-slider">
+                <div class="pdp-smart-card">
+                    <div class="pdp-smart-img-wrap">
+                        <img src="public/images/pdp-smart-google.webp" alt="Google Home voice control" class="pdp-smart-img" loading="lazy">
+                    </div>
+                    <div class="pdp-smart-card-body">
+                        <h3 class="pdp-smart-card-title">Google Home</h3>
+                        <p class="pdp-smart-card-desc">Control EDGE with your voice through Google Home. No separate app needed — it works right inside the Google ecosystem you already use.</p>
+                    </div>
+                </div>
+
+                <div class="pdp-smart-card">
+                    <div class="pdp-smart-img-wrap">
+                        <img src="public/images/pdp-smart-alexa.webp" alt="Amazon Alexa voice control" class="pdp-smart-img" loading="lazy">
+                    </div>
+                    <div class="pdp-smart-card-body">
+                        <h3 class="pdp-smart-card-title">Amazon Alexa</h3>
+                        <p class="pdp-smart-card-desc">"Alexa, turn on the purifier." Simple voice commands for on, off, speed changes, and sleep mode — hands-free from across the room.</p>
+                    </div>
+                </div>
+
+                <div class="pdp-smart-card">
+                    <div class="pdp-smart-img-wrap">
+                        <img src="public/images/pdp-smart-remote.webp" alt="Control from anywhere" class="pdp-smart-img" loading="lazy">
+                    </div>
+                    <div class="pdp-smart-card-body">
+                        <h3 class="pdp-smart-card-title">Control from Anywhere</h3>
+                        <p class="pdp-smart-card-desc">Heading home from work? Turn on the EDGE remotely so the air is clean the moment you walk through the door.</p>
+                    </div>
+                </div>
+
+                <div class="pdp-smart-card">
+                    <div class="pdp-smart-img-wrap">
+                        <img src="public/images/pdp-smart-schedule.webp" alt="Smart scheduling" class="pdp-smart-img" loading="lazy">
+                    </div>
+                    <div class="pdp-smart-card-body">
+                        <h3 class="pdp-smart-card-title">Smart Scheduling</h3>
+                        <p class="pdp-smart-card-desc">Set it once, forget it forever. Schedule on/off timings based on your daily routine — morning runs, bedtime, work hours.</p>
+                    </div>
+                </div>
+
+                <div class="pdp-smart-card">
+                    <div class="pdp-smart-img-wrap">
+                        <img src="public/images/pdp-smart-panel.webp" alt="Touch UI control panel" class="pdp-smart-img" loading="lazy">
+                    </div>
+                    <div class="pdp-smart-card-body">
+                        <h3 class="pdp-smart-card-title">Touch UI Panel</h3>
+                        <p class="pdp-smart-card-desc">3 speed modes, sleep mode, on/off, filter change indicator, and Wi-Fi button — all on a clean, backlit touch panel on the device itself.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdp-smart-controls">
+            <div class="pdp-smart-dots" id="pdp-smart-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 6: FILTER SYSTEM (Apple-style swipe)
+    ======================================== -->
+    <section class="pdp-filter-section">
+        <div class="pdp-filter-header">
+            <p class="pdp-section-subtitle">3-IN-1 FILTRATION</p>
             <h2 class="pdp-section-title">Three layers. One <span class="italic">breath.</span></h2>
+        </div>
 
-            <div class="pdp-how-steps">
-                <div class="pdp-how-step">
-                    <div class="pdp-how-step-num">01</div>
-                    <div class="pdp-how-step-content">
-                        <h3 class="pdp-how-step-title">Pre-Filter</h3>
-                        <p class="pdp-how-step-desc">Traps large particles like dust, hair, and pet dander before they reach the main filter.</p>
+        <div class="pdp-filter-viewer" id="pdp-filter-viewer">
+            <div class="pdp-filter-image-frame">
+                <img src="public/images/pdp-filter-exploded.webp" alt="Hawaa EDGE 3-in-1 filter system" class="pdp-filter-img">
+            </div>
+
+            <div class="pdp-filter-text-slider" id="pdp-filter-text-slider">
+                <div class="pdp-filter-text-card active" data-filter="0">
+                    <span class="pdp-filter-step">01</span>
+                    <h3 class="pdp-filter-name">Pre-Filter</h3>
+                    <p class="pdp-filter-desc">The first line of defence. Catches large airborne particles — dust, hair, lint, and pet dander — before they ever reach the main filters. Washable and reusable, so you never have to replace it.</p>
+                    <div class="pdp-filter-tags">
+                        <span class="pdp-filter-tag">Washable</span>
+                        <span class="pdp-filter-tag">Reusable</span>
+                        <span class="pdp-filter-tag">Large particles</span>
                     </div>
                 </div>
 
-                <div class="pdp-how-step">
-                    <div class="pdp-how-step-num">02</div>
-                    <div class="pdp-how-step-content">
-                        <h3 class="pdp-how-step-title">H13 HEPA Filter</h3>
-                        <p class="pdp-how-step-desc">Medical-grade filtration captures 99.97% of particles as small as 0.3 microns — including PM2.5, pollen, and bacteria.</p>
+                <div class="pdp-filter-text-card" data-filter="1">
+                    <span class="pdp-filter-step">02</span>
+                    <h3 class="pdp-filter-name">H13 HEPA Filter</h3>
+                    <p class="pdp-filter-desc">Medical-grade H13 True HEPA. Traps 99.97% of particles at 0.3 microns — including PM2.5, pollen, mould spores, and airborne bacteria. The same grade used in hospitals and cleanrooms.</p>
+                    <div class="pdp-filter-tags">
+                        <span class="pdp-filter-tag">99.97% efficiency</span>
+                        <span class="pdp-filter-tag">0.3 microns</span>
+                        <span class="pdp-filter-tag">Medical grade</span>
                     </div>
                 </div>
 
-                <div class="pdp-how-step">
-                    <div class="pdp-how-step-num">03</div>
-                    <div class="pdp-how-step-content">
-                        <h3 class="pdp-how-step-title">Activated Carbon</h3>
-                        <p class="pdp-how-step-desc">Eliminates odours, smoke, VOCs, and harmful gases — delivering air that doesn't just look clean, but smells clean.</p>
+                <div class="pdp-filter-text-card" data-filter="2">
+                    <span class="pdp-filter-step">03</span>
+                    <h3 class="pdp-filter-name">Activated Carbon</h3>
+                    <p class="pdp-filter-desc">Absorbs odours, cooking smells, smoke, VOCs (volatile organic compounds), and formaldehyde. Air that doesn't just test clean — but smells clean. Your nose will know the difference.</p>
+                    <div class="pdp-filter-tags">
+                        <span class="pdp-filter-tag">Odour removal</span>
+                        <span class="pdp-filter-tag">VOCs & Smoke</span>
+                        <span class="pdp-filter-tag">Formaldehyde</span>
                     </div>
                 </div>
+            </div>
+
+            <div class="pdp-filter-dots" id="pdp-filter-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
             </div>
         </div>
-    </section>
 
-    <!-- ========================================
-         SECTION 6: WHAT'S IN THE BOX
-    ======================================== -->
-    <section class="pdp-inbox-section">
-        <div class="pdp-inbox-container">
-            <p class="pdp-section-subtitle">UNBOXING</p>
-            <h2 class="pdp-section-title">What's in the <span class="italic">box.</span></h2>
-
-            <div class="pdp-inbox-grid">
-                <div class="pdp-inbox-item">
-                    <div class="pdp-inbox-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 14h4M6 10h6M4 18h8M14 14c2-2 4-2 6 0M14 10c2-2 5-2 7 0"/>
-                        </svg>
-                    </div>
-                    <p class="pdp-inbox-label">Hawaa EDGE Unit</p>
-                </div>
-                <div class="pdp-inbox-item">
-                    <div class="pdp-inbox-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                    </div>
-                    <p class="pdp-inbox-label">Pre-installed H13 HEPA Filter</p>
-                </div>
-                <div class="pdp-inbox-item">
-                    <div class="pdp-inbox-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                        </svg>
-                    </div>
-                    <p class="pdp-inbox-label">Power Adapter</p>
-                </div>
-                <div class="pdp-inbox-item">
-                    <div class="pdp-inbox-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
-                    </div>
-                    <p class="pdp-inbox-label">Quick Start Guide</p>
-                </div>
-                <div class="pdp-inbox-item">
-                    <div class="pdp-inbox-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-                        </svg>
-                    </div>
-                    <p class="pdp-inbox-label">Warranty Card</p>
-                </div>
+        <div class="pdp-filter-cta">
+            <p class="pdp-filter-cta-text">Replacement filter</p>
+            <div class="pdp-filter-cta-row">
+                <span class="pdp-filter-cta-price">&#8377;899</span>
+                <a href="#" class="pdp-filter-cta-btn">Order Filter</a>
             </div>
-        </div>
-    </section>
-
-    <!-- ========================================
-         SECTION 7: ORDER CTA
-    ======================================== -->
-    <section class="pdp-order-section" id="order">
-        <div class="pdp-order-container">
-            <div class="pdp-order-content">
-                <p class="pdp-section-subtitle">BRING IT HOME</p>
-                <h2 class="pdp-order-title">Hawaa EDGE</h2>
-                <p class="pdp-order-tagline">Pure air, designed to belong.</p>
-
-                <div class="pdp-order-price-block">
-                    <span class="pdp-order-price">&#8377;5,999</span>
-                    <span class="pdp-order-price-note">Inclusive of all taxes</span>
-                </div>
-
-                <div class="pdp-order-perks">
-                    <div class="pdp-order-perk">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                            <path d="M5 13l4 4L19 7"/>
-                        </svg>
-                        <span>Free delivery across India</span>
-                    </div>
-                    <div class="pdp-order-perk">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                            <path d="M5 13l4 4L19 7"/>
-                        </svg>
-                        <span>1-Year PAN India Warranty</span>
-                    </div>
-                    <div class="pdp-order-perk">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                            <path d="M5 13l4 4L19 7"/>
-                        </svg>
-                        <span>H13 HEPA filter pre-installed</span>
-                    </div>
-                    <div class="pdp-order-perk">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                            <path d="M5 13l4 4L19 7"/>
-                        </svg>
-                        <span>Easy 7-day returns</span>
-                    </div>
-                </div>
-
-                <a href="#" class="pdp-order-btn">Order Now</a>
-            </div>
+            <p class="pdp-filter-cta-note">India's most affordable H13 HEPA replacement</p>
         </div>
     </section>
 
