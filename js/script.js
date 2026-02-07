@@ -1221,3 +1221,150 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+/* =============================================
+   Edge Décor Slider
+   ============================================= */
+(function() {
+    const slider = document.getElementById('edge-decor-slider');
+    const prevBtn = document.getElementById('edge-decor-prev');
+    const nextBtn = document.getElementById('edge-decor-next');
+    const progressBar = document.getElementById('edge-decor-progress-bar');
+    const overlay = document.getElementById('edge-decor-overlay');
+    const overlayImg = document.getElementById('edge-decor-overlay-img');
+    const overlayClose = document.getElementById('edge-decor-overlay-close');
+    const overlayPrev = document.getElementById('edge-decor-overlay-prev');
+    const overlayNext = document.getElementById('edge-decor-overlay-next');
+
+    if (!slider) return;
+
+    let currentOverlayIndex = 0;
+
+    // Collect all image sources and cards
+    function getCards() {
+        return slider.querySelectorAll('.edge-decor-card');
+    }
+
+    function getImageSrcs() {
+        const imgs = slider.querySelectorAll('.edge-decor-card-image img');
+        return Array.from(imgs).map(img => img.src);
+    }
+
+    // Scroll slider by one card
+    function scrollSlider(direction) {
+        const cards = getCards();
+        if (cards.length === 0) return;
+        const gap = window.innerWidth >= 640 ? 20 : 16;
+        const cardWidth = cards[0].offsetWidth + gap;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        let newScroll = slider.scrollLeft + (direction * cardWidth);
+        newScroll = Math.max(0, Math.min(newScroll, maxScroll));
+        slider.scrollTo({ left: newScroll, behavior: 'smooth' });
+    }
+
+    // Update progress bar width
+    function updateProgress() {
+        if (!progressBar) return;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        if (maxScroll <= 0) {
+            progressBar.style.width = '100%';
+            return;
+        }
+        const pct = slider.scrollLeft / maxScroll;
+        const width = 25 + (pct * 75);
+        progressBar.style.width = width + '%';
+    }
+
+    // Update arrow disabled states
+    function updateArrows() {
+        if (!prevBtn || !nextBtn) return;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        const atStart = slider.scrollLeft <= 5;
+        const atEnd = slider.scrollLeft >= maxScroll - 5;
+        prevBtn.style.opacity = atStart ? '0.3' : '1';
+        prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
+        nextBtn.style.opacity = atEnd ? '0.3' : '1';
+        nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
+    }
+
+    // Arrow click handlers
+    if (prevBtn) prevBtn.addEventListener('click', function() { scrollSlider(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { scrollSlider(1); });
+
+    // Update on scroll
+    slider.addEventListener('scroll', function() {
+        updateProgress();
+        updateArrows();
+    });
+
+    // Init
+    updateProgress();
+    updateArrows();
+
+    // -- Expand overlay --
+    function openOverlay(index) {
+        const srcs = getImageSrcs();
+        if (index < 0 || index >= srcs.length) return;
+        currentOverlayIndex = index;
+        overlayImg.src = srcs[index];
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeOverlay() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function overlayNavigate(dir) {
+        const srcs = getImageSrcs();
+        currentOverlayIndex += dir;
+        if (currentOverlayIndex < 0) currentOverlayIndex = srcs.length - 1;
+        if (currentOverlayIndex >= srcs.length) currentOverlayIndex = 0;
+        overlayImg.src = srcs[currentOverlayIndex];
+    }
+
+    // Expand button clicks
+    slider.querySelectorAll('.edge-decor-expand-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var idx = parseInt(this.dataset.expand);
+            openOverlay(idx);
+        });
+    });
+
+    if (overlayClose) overlayClose.addEventListener('click', closeOverlay);
+    if (overlayPrev) overlayPrev.addEventListener('click', function() { overlayNavigate(-1); });
+    if (overlayNext) overlayNext.addEventListener('click', function() { overlayNavigate(1); });
+
+    // Close on background click
+    if (overlay) {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay || e.target === overlay.querySelector('.edge-decor-overlay-content')) {
+                closeOverlay();
+            }
+        });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (!overlay || !overlay.classList.contains('active')) return;
+        if (e.key === 'Escape') closeOverlay();
+        if (e.key === 'ArrowLeft') overlayNavigate(-1);
+        if (e.key === 'ArrowRight') overlayNavigate(1);
+    });
+
+    // Swipe support in overlay
+    var touchStartX = 0;
+    if (overlayImg) {
+        overlayImg.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        overlayImg.addEventListener('touchend', function(e) {
+            var diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) {
+                overlayNavigate(diff > 0 ? 1 : -1);
+            }
+        }, { passive: true });
+    }
+})();
