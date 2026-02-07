@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hawaa EDGE - Premium air purifier designed for modern living. Experience pure air with advanced H13 HEPA filtration, gesture control, and elegant design.">
+    <meta name="keywords" content="Hawaa EDGE, air purifier, H13 HEPA, clean air, premium design, India">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Hawaa EDGE - Pure Air, Designed to Belong">
+    <meta property="og:description" content="Experience the future of clean air with Hawaa EDGE. Advanced filtration meets elegant design.">
+    <meta property="og:type" content="product">
+
+    <title>Hawaa EDGE - Pure Air, Designed to Belong</title>
+
+    <!-- Google Fonts - Outfit + Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
+</head>
+<body class="edge-page">
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <span class="logo-h">H</span><span class="logo-awaa">awaa</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop">
+                <a href="index.html">Home</a>
+                <a href="index.html#products">Products</a>
+                <a href="buy.html">Buy Now</a>
+            </nav>
+
+            <!-- Cart Icon -->
+            <a href="buy.html" class="header-cart" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                </svg>
+            </a>
+
+            <!-- Hamburger Menu -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="nav-mobile" id="nav-mobile">
+            <a href="index.html">Home</a>
+            <a href="index.html#products">Products</a>
+            <a href="buy.html">Buy Now</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section - B&O Inspired -->
+    <section class="edge-hero">
+        <!-- Background Image -->
+        <div class="edge-hero-image">
+            <img src="public/images/hero-poster.webp" alt="Hawaa EDGE Air Purifier">
+        </div>
+
+        <!-- Overlay for better text contrast -->
+        <div class="edge-hero-overlay"></div>
+
+        <!-- Hero Content -->
+        <div class="edge-hero-content">
+            <!-- Product Name & Tagline - Bottom Left -->
+            <div class="edge-hero-text">
+                <h1 class="edge-product-name">EDGE</h1>
+                <p class="edge-tagline">Pure air meant to be lived.</p>
+            </div>
+
+            <!-- CTA Button - Center Bottom -->
+            <div class="edge-hero-cta">
+                <a href="buy.html" class="edge-buy-btn">
+                    <span>Buy Now</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Price - Bottom Right -->
+            <div class="edge-hero-price">
+                <span class="edge-price-label">FROM</span>
+                <span class="edge-price-value">₹5,999</span>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="edge-scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Overview Section -->
+    <section class="edge-features-overview">
+        <div class="edge-features-container">
+            <div class="edge-feature-subtitle">DESIGNED FOR YOUR SPACE</div>
+            <h2 class="edge-feature-title">
+                Where performance meets <span class="italic">elegance</span>
+            </h2>
+
+            <div class="edge-features-grid">
+                <!-- Feature 1 -->
+                <div class="edge-feature-card">
+                    <div class="edge-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="edge-feature-card-title">H13 HEPA Filtration</h3>
+                    <p class="edge-feature-card-desc">Captures 99.95% of particles as small as 0.1 microns, including dust, pollen, and allergens.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="edge-feature-card">
+                    <div class="edge-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="edge-feature-card-title">Real-Time Monitoring</h3>
+                    <p class="edge-feature-card-desc">Track air quality with precision sensors and get instant feedback on your indoor environment.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="edge-feature-card">
+                    <div class="edge-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5z"/>
+                            <line x1="16" y1="8" x2="2" y2="22"/>
+                            <line x1="17.5" y1="15" x2="9" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3 class="edge-feature-card-title">Whisper Quiet</h3>
+                    <p class="edge-feature-card-desc">Sleep mode operates at just 24dB - quieter than a whisper, perfect for bedrooms.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="edge-feature-card">
+                    <div class="edge-feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0110 0v4"/>
+                        </svg>
+                    </div>
+                    <h3 class="edge-feature-card-title">Smart Control</h3>
+                    <p class="edge-feature-card-desc">Gesture controls and app connectivity for effortless operation from anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Philosophy Section -->
+    <section class="edge-design-section">
+        <div class="edge-design-container">
+            <div class="edge-design-content">
+                <div class="edge-design-subtitle">FORM MEETS FUNCTION</div>
+                <h2 class="edge-design-title">
+                    Designed to complement <span class="italic">your space</span>
+                </h2>
+                <p class="edge-design-desc">
+                    EDGE isn't just an air purifier - it's a statement piece. Crafted with premium materials and minimalist aesthetics, it seamlessly blends into modern interiors while delivering powerful performance.
+                </p>
+                <div class="edge-design-specs">
+                    <div class="edge-spec">
+                        <span class="edge-spec-value">360°</span>
+                        <span class="edge-spec-label">Air Intake</span>
+                    </div>
+                    <div class="edge-spec">
+                        <span class="edge-spec-value">400</span>
+                        <span class="edge-spec-label">CADR (m³/h)</span>
+                    </div>
+                    <div class="edge-spec">
+                        <span class="edge-spec-value">550</span>
+                        <span class="edge-spec-label">Coverage (sq ft)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="edge-design-image">
+                <img src="public/images/hero-resting.webp" alt="Hawaa EDGE Design">
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="edge-tech-section">
+        <div class="edge-tech-container">
+            <div class="edge-tech-subtitle">ADVANCED FILTRATION</div>
+            <h2 class="edge-tech-title">
+                Technology you can <span class="italic">trust</span>
+            </h2>
+
+            <div class="edge-tech-grid">
+                <!-- Layer 1 -->
+                <div class="edge-tech-layer">
+                    <div class="edge-layer-number">01</div>
+                    <div class="edge-layer-content">
+                        <h3 class="edge-layer-title">Pre-Filter</h3>
+                        <p class="edge-layer-desc">Captures large particles like hair, dust, and pet dander. Washable and reusable.</p>
+                    </div>
+                </div>
+
+                <!-- Layer 2 -->
+                <div class="edge-tech-layer">
+                    <div class="edge-layer-number">02</div>
+                    <div class="edge-layer-content">
+                        <h3 class="edge-layer-title">H13 HEPA Filter</h3>
+                        <p class="edge-layer-desc">Medical-grade filtration removes 99.95% of airborne particles down to 0.1 microns.</p>
+                    </div>
+                </div>
+
+                <!-- Layer 3 -->
+                <div class="edge-tech-layer">
+                    <div class="edge-layer-number">03</div>
+                    <div class="edge-layer-content">
+                        <h3 class="edge-layer-title">Activated Carbon</h3>
+                        <p class="edge-layer-desc">Eliminates odors, smoke, and harmful VOCs for fresher indoor air.</p>
+                    </div>
+                </div>
+
+                <!-- Layer 4 -->
+                <div class="edge-tech-layer">
+                    <div class="edge-layer-number">04</div>
+                    <div class="edge-layer-content">
+                        <h3 class="edge-layer-title">UV-C Sterilization</h3>
+                        <p class="edge-layer-desc">Destroys bacteria, viruses, and mold spores with powerful UV light.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Made in India Section -->
+    <section class="edge-india-section">
+        <div class="edge-india-container">
+            <div class="edge-india-badge">
+                <div class="india-flag">
+                    <div class="flag-stripe saffron"></div>
+                    <div class="flag-stripe white">
+                        <div class="ashoka-chakra"></div>
+                    </div>
+                    <div class="flag-stripe green"></div>
+                </div>
+                <span class="india-text">Made in India</span>
+            </div>
+            <h2 class="edge-india-title">
+                Proudly crafted for <span class="italic">Indian homes</span>
+            </h2>
+            <p class="edge-india-desc">
+                Designed and manufactured in India with a deep understanding of local air quality challenges. EDGE is built to handle the unique pollution levels and climatic conditions of Indian cities.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="edge-cta-section">
+        <div class="edge-cta-container">
+            <h2 class="edge-cta-title">Ready to breathe <span class="italic">better?</span></h2>
+            <p class="edge-cta-desc">Experience the difference with Hawaa EDGE. Premium air purification designed for your home.</p>
+            <div class="edge-cta-buttons">
+                <a href="buy.html" class="edge-cta-primary">
+                    <span>Order Now - ₹5,999</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="index.html#contact" class="edge-cta-secondary">
+                    <span>Contact Sales</span>
+                </a>
+            </div>
+            <p class="edge-cta-warranty">1 Year PAN India Warranty • Free Shipping • 30-Day Returns</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Footer Top -->
+            <div class="footer-top">
+                <a href="index.html" class="footer-logo">
+                    <span class="logo-h">H</span><span class="logo-awaa">awaa</span>
+                </a>
+                <p class="footer-tagline">Pure air, designed to belong.</p>
+            </div>
+
+            <!-- Footer Links - Collapsible on mobile -->
+            <div class="footer-links">
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">PRODUCTS</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <ul class="footer-links-list">
+                        <li><a href="edge.html">Hawaa Edge</a></li>
+                        <li><a href="#">Replacement Filters</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">SUPPORT</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Installation Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Warranty & Support</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">COMPANY</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <ul class="footer-links-list">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-column" data-footer-section>
+                    <button class="footer-links-header">
+                        <h4 class="footer-links-title">LEGAL</h4>
+                        <svg class="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-social-link" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer-social-link" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/>
+                        </svg>
+                    </a>
+                </div>
+                <p class="footer-copyright">&copy; 2025 Hawaa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
