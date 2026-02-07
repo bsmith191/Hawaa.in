@@ -4378,7 +4378,7 @@ a {
    ============================================= */
 .edge-decor-section {
     background: white;
-    padding: 48px 16px 40px;
+    padding: 48px 0 40px;
 }
 
 .edge-decor-container {
@@ -4388,7 +4388,8 @@ a {
 
 /* Header */
 .edge-decor-header {
-    margin-bottom: 28px;
+    padding: 0 20px;
+    margin-bottom: 24px;
 }
 
 .edge-decor-title {
@@ -4422,96 +4423,73 @@ a {
 
 .edge-decor-slider {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 4px 0;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 20px;
+    overscroll-behavior-x: contain;
 }
 
 .edge-decor-slider::-webkit-scrollbar {
     display: none;
 }
 
-/* Cards */
+/* Cards — one card per view on mobile */
 .edge-decor-card {
-    flex: 0 0 280px;
+    flex: 0 0 calc(100vw - 56px);
+    max-width: 480px;
     scroll-snap-align: start;
-}
-
-.edge-decor-card-image {
     position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    border-radius: 14px;
+    border-radius: 18px;
     overflow: hidden;
-    background: #f3f4f6;
+    background: #e5e7eb;
+    aspect-ratio: 3 / 4;
 }
 
-.edge-decor-card-image img {
+.edge-decor-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
 }
 
-.edge-decor-card:hover .edge-decor-card-image img {
-    transform: scale(1.03);
-}
-
-/* Expand button */
-.edge-decor-expand-btn {
+/* Text overlay at bottom of card */
+.edge-decor-card-text {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-    opacity: 0;
-    transition: all 0.2s ease;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 48px 24px 24px;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
 }
 
-.edge-decor-expand-btn svg {
-    width: 16px;
-    height: 16px;
-}
-
-.edge-decor-card:hover .edge-decor-expand-btn {
-    opacity: 1;
-}
-
-.edge-decor-expand-btn:hover {
-    background: rgba(255, 255, 255, 0.35);
-}
-
-/* Caption */
-.edge-decor-caption {
+.edge-decor-card-text p {
     font-family: 'Outfit', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #9ca3af;
-    margin-top: 10px;
-    line-height: 1.4;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: white;
+    line-height: 1.35;
 }
 
-/* Controls: progress line + arrows */
+.edge-decor-card-text .italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Controls: progress bar + arrows */
 .edge-decor-controls {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-top: 24px;
+    margin-top: 28px;
+    padding: 0 20px;
 }
 
 .edge-decor-progress {
@@ -4520,6 +4498,7 @@ a {
     background: #e5e7eb;
     border-radius: 1px;
     overflow: hidden;
+    max-width: 65%;
 }
 
 .edge-decor-progress-bar {
@@ -4527,23 +4506,24 @@ a {
     width: 25%;
     background: #111827;
     border-radius: 1px;
-    transition: width 0.3s ease;
+    transition: width 0.28s ease-out;
 }
 
 .edge-decor-arrows {
     display: flex;
     gap: 6px;
+    margin-left: auto;
 }
 
 .edge-decor-arrow {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: white;
     border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
     color: #111827;
@@ -4560,108 +4540,14 @@ a {
     color: white;
 }
 
-/* Expanded Overlay */
-.edge-decor-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.9);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.edge-decor-overlay.active {
-    display: flex;
-    opacity: 1;
-}
-
-.edge-decor-overlay-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.edge-decor-overlay-img {
-    max-width: 90vw;
-    max-height: 85vh;
-    object-fit: contain;
-    border-radius: 12px;
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-.edge-decor-overlay-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 10;
-}
-
-.edge-decor-overlay-close svg {
-    width: 20px;
-    height: 20px;
-}
-
-.edge-decor-overlay-close:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.edge-decor-overlay-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 10;
-}
-
-.edge-decor-overlay-arrow svg {
-    width: 20px;
-    height: 20px;
-}
-
-.edge-decor-overlay-arrow:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-.edge-decor-overlay-prev {
-    left: 16px;
-}
-
-.edge-decor-overlay-next {
-    right: 16px;
-}
-
 /* ---- Tablet (768px+) ---- */
 @media (min-width: 768px) {
     .edge-decor-section {
-        padding: 56px 24px 48px;
+        padding: 56px 0 48px;
+    }
+
+    .edge-decor-header {
+        padding: 0 40px;
     }
 
     .edge-decor-title {
@@ -4673,41 +4559,54 @@ a {
     }
 
     .edge-decor-slider {
-        gap: 20px;
+        gap: 18px;
+        padding: 0 40px;
     }
 
     .edge-decor-card {
-        flex: 0 0 320px;
+        flex: 0 0 340px;
+        aspect-ratio: 4 / 5;
     }
 
-    .edge-decor-expand-btn {
-        opacity: 0.7;
+    .edge-decor-card-text p {
+        font-size: 1.35rem;
     }
 
-    .edge-decor-overlay-prev {
-        left: 32px;
+    .edge-decor-controls {
+        padding: 0 40px;
     }
 
-    .edge-decor-overlay-next {
-        right: 32px;
+    .edge-decor-arrow {
+        width: 44px;
+        height: 44px;
     }
 }
 
 /* ---- Desktop (1024px+) ---- */
 @media (min-width: 1024px) {
     .edge-decor-section {
-        padding: 64px 24px 52px;
+        padding: 64px 0 52px;
+    }
+
+    .edge-decor-header {
+        padding: 0 60px;
     }
 
     .edge-decor-title {
         font-size: 2.25rem;
     }
 
-    .edge-decor-card {
-        flex: 0 0 340px;
+    .edge-decor-slider {
+        gap: 20px;
+        padding: 0 60px;
     }
 
-    .edge-decor-card-image {
-        border-radius: 16px;
+    .edge-decor-card {
+        flex: 0 0 380px;
+        border-radius: 20px;
+    }
+
+    .edge-decor-controls {
+        padding: 0 60px;
     }
 }
