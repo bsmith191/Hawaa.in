@@ -5289,7 +5289,7 @@ body.privacy-page .header-profile-btn {
    FAQ PAGE (faq.html)
 ======================================== */
 
-/* Page-level header overrides (same pattern as privacy-page) */
+/* Page-level header overrides */
 body.faq-page .header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px) saturate(180%);
@@ -5312,20 +5312,27 @@ body.faq-page .header-profile-btn {
 
 /* Main content area */
 .faqpage-main {
-    padding: 100px 16px 60px;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    padding-left: 16px;
+    padding-right: 16px;
     background: #ffffff;
     min-height: 100vh;
 }
 
 @media (min-width: 640px) {
     .faqpage-main {
-        padding: 120px 24px 80px;
+        padding-top: 120px;
+        padding-bottom: 80px;
+        padding-left: 24px;
+        padding-right: 24px;
     }
 }
 
 .faqpage-container {
     max-width: 720px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Page title */
@@ -5336,13 +5343,18 @@ body.faq-page .header-profile-btn {
     color: #111827;
     text-align: center;
     line-height: 1.2;
+    margin-top: 0;
     margin-bottom: 48px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 @media (min-width: 640px) {
     .faqpage-title {
         font-size: 3rem;
         margin-bottom: 60px;
+        padding-top: 32px;
+        padding-bottom: 32px;
     }
 }
 
@@ -5367,38 +5379,42 @@ body.faq-page .header-profile-btn {
     font-weight: 600;
     color: #111827;
     line-height: 1.3;
-    margin-bottom: 16px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    padding-bottom: 16px;
 }
 
 @media (min-width: 640px) {
     .faqpage-category-title {
         font-size: 1.5rem;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
+        padding-bottom: 20px;
     }
 }
 
 /* FAQ list within category */
 .faqpage-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: block;
 }
 
 /* Individual FAQ item */
 .faqpage-item {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-.faqpage-item:first-child {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+.faqpage-item:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Question button */
 .faqpage-question {
     width: 100%;
-    padding: 18px 0;
-    background: none;
+    padding: 18px 16px;
+    margin: 0;
+    background: transparent;
     border: none;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -5409,13 +5425,14 @@ body.faq-page .header-profile-btn {
     font-size: 0.95rem;
     font-weight: 500;
     color: #111827;
-    transition: color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 @media (min-width: 640px) {
     .faqpage-question {
-        padding: 20px 0;
-        font-size: 1rem;
+        padding: 20px 20px;
+        font-size: 1.05rem;
     }
 }
 
@@ -5423,14 +5440,25 @@ body.faq-page .header-profile-btn {
     color: #374151;
 }
 
-/* Plus icon */
+/* Active question gets light background like the reference */
+.faqpage-item.active .faqpage-question {
+    background-color: #f3f4f6;
+    border-radius: 10px;
+}
+
+/* Plus/close icon */
 .faqpage-icon {
     font-size: 1.35rem;
     font-weight: 300;
     color: #9ca3af;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
     flex-shrink: 0;
     line-height: 1;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .faqpage-item.active .faqpage-icon {
@@ -5438,25 +5466,19 @@ body.faq-page .header-profile-btn {
     color: #111827;
 }
 
-/* Answer section */
+/* Answer section - CSS grid technique for reliable 0-to-auto height */
 .faqpage-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
 }
 
 .faqpage-item.active .faqpage-answer {
-    max-height: 400px;
+    grid-template-rows: 1fr;
 }
 
 .faqpage-answer-content {
-    padding: 0 0 20px;
-}
-
-@media (min-width: 640px) {
-    .faqpage-answer-content {
-        padding: 0 0 24px;
-    }
+    overflow: hidden;
 }
 
 .faqpage-answer-content p {
@@ -5464,15 +5486,29 @@ body.faq-page .header-profile-btn {
     font-size: 0.9rem;
     color: #6b7280;
     line-height: 1.7;
+    margin-top: 0;
     margin-bottom: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.faqpage-answer-content p:first-child {
+    padding-top: 4px;
 }
 
 .faqpage-answer-content p:last-child {
     margin-bottom: 0;
+    padding-bottom: 18px;
 }
 
 @media (min-width: 640px) {
     .faqpage-answer-content p {
         font-size: 0.95rem;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .faqpage-answer-content p:last-child {
+        padding-bottom: 22px;
     }
 }

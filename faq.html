@@ -538,33 +538,52 @@
 
     <script src="js/nav.js"></script>
     <script>
-    // FAQ Page Accordion - allows one open item per category
-    document.querySelectorAll('.faqpage-category').forEach(function(category) {
-        var items = category.querySelectorAll('.faqpage-item');
-        items.forEach(function(item) {
-            item.querySelector('.faqpage-question').addEventListener('click', function() {
-                var isActive = item.classList.contains('active');
-                // Close all items in this category
-                items.forEach(function(other) {
-                    other.classList.remove('active');
-                });
-                // Toggle current
-                if (!isActive) item.classList.add('active');
-            });
-        });
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+        // FAQ Page Accordion - one open item per category
+        var categories = document.querySelectorAll('.faqpage-category');
+        for (var c = 0; c < categories.length; c++) {
+            (function(category) {
+                var items = category.querySelectorAll('.faqpage-item');
+                for (var i = 0; i < items.length; i++) {
+                    (function(item) {
+                        var btn = item.querySelector('.faqpage-question');
+                        if (btn) {
+                            btn.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                var isActive = item.classList.contains('active');
+                                // Close all items in this category
+                                for (var j = 0; j < items.length; j++) {
+                                    items[j].classList.remove('active');
+                                }
+                                // Toggle current
+                                if (!isActive) {
+                                    item.classList.add('active');
+                                }
+                            });
+                        }
+                    })(items[i]);
+                }
+            })(categories[c]);
+        }
 
-    // Footer mobile collapsible sections
-    document.querySelectorAll('[data-footer-section]').forEach(function(section) {
-        section.querySelector('.footer-links-header').addEventListener('click', function() {
-            if (window.innerWidth < 768) {
-                var isActive = section.classList.contains('active');
-                document.querySelectorAll('[data-footer-section]').forEach(function(s) {
-                    s.classList.remove('active');
-                });
-                if (!isActive) section.classList.add('active');
-            }
-        });
+        // Footer mobile collapsible sections
+        var sections = document.querySelectorAll('[data-footer-section]');
+        for (var s = 0; s < sections.length; s++) {
+            (function(section) {
+                var header = section.querySelector('.footer-links-header');
+                if (header) {
+                    header.addEventListener('click', function() {
+                        if (window.innerWidth < 768) {
+                            var isActive = section.classList.contains('active');
+                            for (var k = 0; k < sections.length; k++) {
+                                sections[k].classList.remove('active');
+                            }
+                            if (!isActive) section.classList.add('active');
+                        }
+                    });
+                }
+            })(sections[s]);
+        }
     });
     </script>
 </body>
