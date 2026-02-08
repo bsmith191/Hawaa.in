@@ -46,16 +46,12 @@ a {
     color: #111827;
 }
 
-.header.scrolled .nav-desktop a {
-    color: rgba(17, 24, 39, 0.7);
-}
-
-.header.scrolled .nav-desktop a:hover {
-    color: #111827;
-}
-
 .header.scrolled .hamburger-line {
     background: #111827;
+}
+
+.header.scrolled .header-profile-btn {
+    color: #111827;
 }
 
 .header-container {
@@ -98,60 +94,86 @@ a {
     font-weight: 400;
 }
 
-/* Desktop Navigation */
-.nav-desktop {
-    display: none;
-    gap: 32px;
+/* Header Actions (profile + hamburger) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-@media (min-width: 768px) {
-    .nav-desktop {
-        display: flex;
+@media (min-width: 640px) {
+    .header-actions {
+        gap: 12px;
     }
 }
 
-.nav-desktop a {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-.nav-desktop a:hover {
+/* Profile Button */
+.header-profile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
     color: white;
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
 
-/* Hamburger Menu */
+.header-profile-btn svg {
+    width: 22px;
+    height: 22px;
+}
+
+.header-profile-btn:hover {
+    opacity: 0.7;
+}
+
+@media (min-width: 640px) {
+    .header-profile-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .header-profile-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Hamburger Menu - visible on all screen sizes */
 .hamburger {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 32px;
-    height: 32px;
-    gap: 6px;
+    width: 36px;
+    height: 36px;
+    gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-}
-
-@media (min-width: 768px) {
-    .hamburger {
-        display: none;
-    }
+    z-index: 102;
 }
 
 .hamburger-line {
     display: block;
-    width: 24px;
+    width: 22px;
     height: 2px;
     background: white;
     transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.hamburger.active .hamburger-line {
+    background: #111827;
 }
 
 .hamburger.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
 .hamburger.active .hamburger-line:nth-child(2) {
@@ -159,42 +181,452 @@ a {
 }
 
 .hamburger.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Mobile Navigation */
-.nav-mobile {
-    display: none;
-    flex-direction: column;
-    gap: 16px;
-    padding: 16px;
-    margin: 8px 16px 16px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+/* ========================================
+   EXPANDABLE MENU PANEL
+======================================== */
+
+/* Background overlay */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 98;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
-.nav-mobile.active {
-    display: flex;
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
-@media (min-width: 768px) {
-    .nav-mobile {
-        display: none !important;
+/* Slide-down menu panel */
+.menu-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: #f9fafb;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.menu-panel.active {
+    transform: translateY(0);
+}
+
+.menu-panel-inner {
+    padding: 80px 24px 32px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+    .menu-panel-inner {
+        padding: 100px 32px 40px;
     }
 }
 
-.nav-mobile a {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.875rem;
+/* Menu nav items */
+.menu-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
     font-weight: 500;
+    color: #111827;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.menu-nav-item:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.menu-nav-item:hover {
+    color: #0891b2;
+}
+
+@media (min-width: 640px) {
+    .menu-nav-item {
+        font-size: 1.05rem;
+        padding: 22px 0;
+    }
+}
+
+/* ========================================
+   SIGN IN MODAL
+======================================== */
+
+/* Overlay */
+.signin-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 200;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+@media (min-width: 640px) {
+    .signin-overlay {
+        align-items: center;
+    }
+}
+
+.signin-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal card */
+.signin-modal {
+    background: #ffffff;
+    border-radius: 24px 24px 0 0;
+    width: 100%;
+    max-width: 420px;
+    padding: 32px 24px 40px;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@media (min-width: 640px) {
+    .signin-modal {
+        border-radius: 24px;
+        padding: 40px 32px;
+        transform: translateY(20px);
+        max-height: 85vh;
+    }
+}
+
+.signin-overlay.active .signin-modal {
+    transform: translateY(0);
+}
+
+/* Close button */
+.signin-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #6b7280;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.signin-close:hover {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.signin-close svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Drag handle (mobile) */
+.signin-drag-handle {
+    width: 40px;
+    height: 4px;
+    background: #d1d5db;
+    border-radius: 2px;
+    margin: 0 auto 24px;
+}
+
+@media (min-width: 640px) {
+    .signin-drag-handle {
+        display: none;
+    }
+}
+
+/* Step containers */
+.signin-step {
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-step.hidden {
+    display: none;
+}
+
+/* Typography */
+.signin-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.signin-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 28px;
+}
+
+/* Phone input group */
+.phone-input-group {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: #ffffff;
+    margin-bottom: 8px;
+}
+
+.phone-input-group:focus-within {
+    border-color: #0891b2;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+}
+
+.phone-input-group.error {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.phone-prefix {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #111827;
+    padding: 0 0 0 16px;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.phone-prefix-divider {
+    width: 1px;
+    height: 24px;
+    background: #e5e7eb;
+    margin: 0 12px;
+    flex-shrink: 0;
+}
+
+.phone-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #111827;
+    padding: 14px 16px 14px 0;
+    background: transparent;
+    letter-spacing: 0.05em;
+}
+
+.phone-input::placeholder {
+    color: #9ca3af;
+    letter-spacing: 0;
+}
+
+/* Error message */
+.signin-error {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    color: #ef4444;
+    min-height: 20px;
+    margin-bottom: 16px;
+    transition: opacity 0.2s ease;
+}
+
+/* Primary button */
+.signin-btn {
+    width: 100%;
+    padding: 14px 24px;
+    background: #111827;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.signin-btn:hover {
+    background: #1f2937;
+}
+
+.signin-btn:active {
+    transform: scale(0.98);
+}
+
+.signin-btn:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+}
+
+/* OTP Inputs */
+.otp-input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    justify-content: center;
+}
+
+@media (min-width: 400px) {
+    .otp-input-group {
+        gap: 10px;
+    }
+}
+
+.otp-input {
+    width: 44px;
+    height: 52px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    -moz-appearance: textfield;
+}
+
+.otp-input::-webkit-outer-spin-button,
+.otp-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.otp-input:focus {
+    border-color: #0891b2;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+}
+
+.otp-input.error {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.otp-input.filled {
+    border-color: #111827;
+}
+
+@media (min-width: 400px) {
+    .otp-input {
+        width: 48px;
+        height: 56px;
+    }
+}
+
+/* Resend + back links */
+.signin-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.signin-back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6b7280;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
     transition: color 0.2s ease;
 }
 
-.nav-mobile a:hover {
-    color: white;
+.signin-back:hover {
+    color: #111827;
+}
+
+.signin-back svg {
+    width: 16px;
+    height: 16px;
+}
+
+.signin-resend {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #0891b2;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.signin-resend:hover {
+    color: #0e7490;
+}
+
+.signin-resend:disabled {
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* OTP sent number display */
+.signin-phone-display {
+    font-weight: 600;
+    color: #111827;
+}
+
+/* Loading spinner for button */
+.signin-btn .spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
 /* ========================================
@@ -3476,16 +3908,12 @@ a {
     color: #111827;
 }
 
-.buy-page .nav-desktop a {
-    color: rgba(17, 24, 39, 0.7);
-}
-
-.buy-page .nav-desktop a:hover {
-    color: #111827;
-}
-
 .buy-page .hamburger-line {
     background: #111827;
+}
+
+.buy-page .header-profile-btn {
+    color: #111827;
 }
 
 /* Main Layout */
@@ -4628,16 +5056,12 @@ body.privacy-page .logo-awaa {
     color: #111827;
 }
 
-body.privacy-page .nav-desktop a {
-    color: #374151;
-}
-
-body.privacy-page .nav-desktop a:hover {
-    color: #111827;
-}
-
 body.privacy-page .hamburger-line {
     background: #111827;
+}
+
+body.privacy-page .header-profile-btn {
+    color: #111827;
 }
 
 /* Main content area */
