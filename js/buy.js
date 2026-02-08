@@ -154,37 +154,5 @@ if (stickyBtn) {
     });
 }
 
-// ========================================
-// Mobile Menu Toggle
-// ========================================
-const hamburger = document.getElementById('hamburger');
-const navMobile = document.getElementById('nav-mobile');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMobile.classList.toggle('active');
-});
-
-navMobile.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMobile.classList.remove('active');
-    });
-});
-
-// ========================================
-// Footer Collapsible Sections (Mobile)
-// ========================================
-document.querySelectorAll('[data-footer-section]').forEach(section => {
-    const headerBtn = section.querySelector('.footer-links-header');
-    if (headerBtn) {
-        headerBtn.addEventListener('click', () => {
-            const isOpen = section.classList.contains('open');
-            document.querySelectorAll('[data-footer-section]').forEach(s => s.classList.remove('open'));
-            if (!isOpen) section.classList.add('open');
-        });
-    }
-});
-
 // Initialize
 updateUI();

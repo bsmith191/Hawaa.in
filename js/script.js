@@ -33,26 +33,6 @@ window.addEventListener('scroll', handleScroll);
 document.addEventListener('DOMContentLoaded', handleScroll);
 
 // ========================================
-// Mobile Menu Toggle
-// ========================================
-const hamburger = document.getElementById('hamburger');
-const navMobile = document.getElementById('nav-mobile');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMobile.classList.toggle('active');
-});
-
-// Close mobile menu when clicking a link
-const mobileLinks = navMobile.querySelectorAll('a');
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMobile.classList.remove('active');
-    });
-});
-
-// ========================================
 // Hero Video - Autoplay and Fallback
 // ========================================
 const heroVideo = document.getElementById('hero-video');
@@ -1157,30 +1137,6 @@ if (newsletterForm) {
         this.reset();
     });
 }
-
-// ========================================
-// FOOTER COLLAPSIBLE (Mobile)
-// ========================================
-
-function initFooterCollapse() {
-    const footerSections = document.querySelectorAll('[data-footer-section]');
-
-    footerSections.forEach(section => {
-        const header = section.querySelector('.footer-links-header');
-
-        if (header) {
-            header.addEventListener('click', () => {
-                // Only toggle on mobile
-                if (window.innerWidth < 640) {
-                    section.classList.toggle('active');
-                }
-            });
-        }
-    });
-}
-
-// Initialize footer collapse
-document.addEventListener('DOMContentLoaded', initFooterCollapse);
 
 // ========================================
 // FEATURE EXPANDED NAVIGATION

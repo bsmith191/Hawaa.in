@@ -25,33 +25,84 @@
     <!-- Header -->
     <header class="header" id="header">
         <div class="header-container">
-            <!-- Logo -->
             <a href="index.html" class="logo">
                 <span class="logo-h">H</span><span class="logo-awaa">awaa</span>
             </a>
-
-            <!-- Desktop Navigation -->
-            <nav class="nav-desktop">
-                <a href="index.html">Home</a>
-                <a href="index.html#products">Products</a>
-                <a href="buy.html">Buy Now</a>
-            </nav>
-
-            <!-- Hamburger Menu -->
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
+            <div class="header-actions">
+                <button class="header-profile-btn" id="profile-btn" aria-label="Account">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
         </div>
-
-        <!-- Mobile Menu -->
-        <nav class="nav-mobile" id="nav-mobile">
-            <a href="index.html">Home</a>
-            <a href="index.html#products">Products</a>
-            <a href="buy.html">Buy Now</a>
-        </nav>
     </header>
+
+    <!-- Expandable Menu -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+    <div class="menu-panel" id="menu-panel">
+        <div class="menu-panel-inner">
+            <nav class="menu-nav">
+                <a href="edge.html" class="menu-nav-item">Hawaa Edge</a>
+                <a href="index.html#blogs" class="menu-nav-item">Blog</a>
+                <a href="#" class="menu-nav-item">About Us</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="signin-overlay" id="signin-overlay">
+        <div class="signin-modal" id="signin-modal">
+            <div class="signin-drag-handle"></div>
+            <button class="signin-close" id="signin-close" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="signin-step" id="signin-phone-step">
+                <h2 class="signin-title">Sign in</h2>
+                <p class="signin-subtitle">Enter your mobile number to continue</p>
+                <div class="phone-input-group" id="signin-phone-group">
+                    <span class="phone-prefix">+91</span>
+                    <span class="phone-prefix-divider"></span>
+                    <input type="tel" class="phone-input" id="signin-phone" maxlength="10" placeholder="Mobile number" inputmode="numeric" autocomplete="tel-national">
+                </div>
+                <p class="signin-error" id="signin-phone-error"></p>
+                <button class="signin-btn" id="signin-send-otp">Send OTP</button>
+            </div>
+            <div class="signin-step hidden" id="signin-otp-step">
+                <h2 class="signin-title">Verify OTP</h2>
+                <p class="signin-subtitle">Enter the 6-digit code sent to <span class="signin-phone-display" id="signin-phone-display"></span></p>
+                <div class="otp-input-group">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" autocomplete="one-time-code">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                </div>
+                <p class="signin-error" id="signin-otp-error"></p>
+                <button class="signin-btn" id="signin-verify">Verify</button>
+                <div class="signin-actions">
+                    <button class="signin-back" id="signin-back">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5"/>
+                            <path d="M12 19l-7-7 7-7"/>
+                        </svg>
+                        Change number
+                    </button>
+                    <button class="signin-resend" id="signin-resend">Resend OTP</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section - B&O Inspired Full-Screen -->
     <section class="edge-hero">
@@ -277,6 +328,7 @@
         </div>
     </footer>
 
+    <script src="js/nav.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
