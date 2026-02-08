@@ -5284,3 +5284,195 @@ body.privacy-page .header-profile-btn {
     color: #374151;
     font-weight: 600;
 }
+
+/* ========================================
+   FAQ PAGE (faq.html)
+======================================== */
+
+/* Page-level header overrides (same pattern as privacy-page) */
+body.faq-page .header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+body.faq-page .logo-h,
+body.faq-page .logo-awaa {
+    color: #111827;
+}
+
+body.faq-page .hamburger-line {
+    background: #111827;
+}
+
+body.faq-page .header-profile-btn {
+    color: #111827;
+}
+
+/* Main content area */
+.faqpage-main {
+    padding: 100px 16px 60px;
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+@media (min-width: 640px) {
+    .faqpage-main {
+        padding: 120px 24px 80px;
+    }
+}
+
+.faqpage-container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* Page title */
+.faqpage-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #111827;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 48px;
+}
+
+@media (min-width: 640px) {
+    .faqpage-title {
+        font-size: 3rem;
+        margin-bottom: 60px;
+    }
+}
+
+/* Category sections */
+.faqpage-category {
+    margin-bottom: 48px;
+}
+
+@media (min-width: 640px) {
+    .faqpage-category {
+        margin-bottom: 56px;
+    }
+}
+
+.faqpage-category:last-child {
+    margin-bottom: 0;
+}
+
+.faqpage-category-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.3;
+    margin-bottom: 16px;
+}
+
+@media (min-width: 640px) {
+    .faqpage-category-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+}
+
+/* FAQ list within category */
+.faqpage-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Individual FAQ item */
+.faqpage-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.faqpage-item:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Question button */
+.faqpage-question {
+    width: 100%;
+    padding: 18px 0;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #111827;
+    transition: color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+    .faqpage-question {
+        padding: 20px 0;
+        font-size: 1rem;
+    }
+}
+
+.faqpage-question:hover {
+    color: #374151;
+}
+
+/* Plus icon */
+.faqpage-icon {
+    font-size: 1.35rem;
+    font-weight: 300;
+    color: #9ca3af;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.faqpage-item.active .faqpage-icon {
+    transform: rotate(45deg);
+    color: #111827;
+}
+
+/* Answer section */
+.faqpage-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.faqpage-item.active .faqpage-answer {
+    max-height: 400px;
+}
+
+.faqpage-answer-content {
+    padding: 0 0 20px;
+}
+
+@media (min-width: 640px) {
+    .faqpage-answer-content {
+        padding: 0 0 24px;
+    }
+}
+
+.faqpage-answer-content p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.faqpage-answer-content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+    .faqpage-answer-content p {
+        font-size: 0.95rem;
+    }
+}
