@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How Indoor Air Quality Affects Your Sleep - Learn about the connection between air quality and sleep, and practical steps to improve your bedroom air.">
-    <meta name="keywords" content="indoor air quality, sleep, air purifier, HEPA filter, bedroom air, Hawaa">
+    <meta name="description" content="About Hawaa - Learn about our mission to make clean air accessible to every Indian home. Meet the team behind India's premium air purifier.">
+    <meta name="keywords" content="about Hawaa, clean air, air purifier company, India, team">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="How Indoor Air Quality Affects Your Sleep - Hawaa Blog">
-    <meta property="og:description" content="Discover how the air you breathe at night impacts your sleep quality, and what you can do about it.">
-    <meta property="og:type" content="article">
+    <meta property="og:title" content="About Hawaa - The Clean Air Company">
+    <meta property="og:description" content="We're building technology that gives you back your health. Meet the team behind India's most accessible air purifier.">
+    <meta property="og:type" content="website">
 
-    <title>How Indoor Air Quality Affects Your Sleep - Hawaa Blog</title>
+    <title>About Us - Hawaa | The Clean Air Company</title>
 
     <!-- Google Fonts - Outfit + Playfair Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,14 +19,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/about.css">
     <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
 </head>
-<body class="blog-post-page">
+<body>
     <!-- Header -->
-    <header class="header scrolled" id="header">
+    <header class="header header-always-scrolled" id="header">
         <div class="header-container">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
                 <span class="logo-h">H</span><span class="logo-awaa">awaa</span>
             </a>
             <div class="header-actions">
@@ -67,6 +67,8 @@
                     <line x1="6" y1="6" x2="18" y2="18"/>
                 </svg>
             </button>
+
+            <!-- Phone Number Step -->
             <div class="signin-step" id="signin-phone-step">
                 <h2 class="signin-title">Sign in</h2>
                 <p class="signin-subtitle">Enter your mobile number to continue</p>
@@ -78,6 +80,8 @@
                 <p class="signin-error" id="signin-phone-error"></p>
                 <button class="signin-btn" id="signin-send-otp">Send OTP</button>
             </div>
+
+            <!-- OTP Verification Step -->
             <div class="signin-step hidden" id="signin-otp-step">
                 <h2 class="signin-title">Verify OTP</h2>
                 <p class="signin-subtitle">Enter the 6-digit code sent to <span class="signin-phone-display" id="signin-phone-display"></span></p>
@@ -106,153 +110,231 @@
     </div>
 
     <!-- ========================================
-         ARTICLE HEADER
+         SECTION: HERO
     ======================================== -->
-    <section class="ba-header">
-        <div class="ba-header-wrap">
-            <a href="blogs.html" class="ba-back">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                    <path d="M19 12H5"/>
-                    <path d="M12 19l-7-7 7-7"/>
-                </svg>
-                All articles
-            </a>
-            <span class="ba-tag">Health &amp; Wellness</span>
-            <h1 class="ba-title">How Indoor Air Quality Affects Your Sleep</h1>
-            <div class="ba-meta">
-                <span>January 15, 2026</span>
-                <span class="ba-meta-dot"></span>
-                <span>5 min read</span>
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1 class="about-hero-title">
+                <span class="about-title-h">H</span><span class="about-title-awaa">awaa</span>
+            </h1>
+            <p class="about-hero-tagline">The clean air<br>company</p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: HERO VIDEO / IMAGE
+    ======================================== -->
+    <section class="about-hero-media">
+        <div class="about-hero-media-inner">
+            <video
+                class="about-hero-video"
+                autoplay
+                muted
+                playsinline
+                loop
+                poster="public/images/about-hero-poster.webp"
+            >
+                <source src="public/videos/about-hero.webm" type="video/webm">
+            </video>
+            <div class="about-hero-image" style="background-image: url('public/images/about-hero-poster.webp')"></div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: MISSION STATEMENT
+    ======================================== -->
+    <section class="about-mission">
+        <div class="about-mission-container">
+            <p class="about-mission-text">While most air purifier companies focus on premium pricing and complex features, we're building the opposite &mdash; technology that's accessible to every home. We believe every family deserves clean air, not as a luxury, but as a basic right that shouldn't break the bank.</p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: AUTO-SCROLLING IMAGE STRIP
+    ======================================== -->
+    <section class="about-image-strip">
+        <div class="about-strip-track" id="about-strip-track">
+            <!-- Images will be duplicated by JS for infinite scroll -->
+            <div class="about-strip-item about-strip-tall">
+                <div class="about-strip-img" style="background-image: url('public/images/about-strip-01.webp')"></div>
+            </div>
+            <div class="about-strip-item about-strip-wide">
+                <div class="about-strip-img" style="background-image: url('public/images/about-strip-02.webp')"></div>
+            </div>
+            <div class="about-strip-item about-strip-square">
+                <div class="about-strip-img" style="background-image: url('public/images/about-strip-03.webp')"></div>
+            </div>
+            <div class="about-strip-item about-strip-tall">
+                <div class="about-strip-img" style="background-image: url('public/images/about-strip-04.webp')"></div>
+            </div>
+            <div class="about-strip-item about-strip-wide">
+                <div class="about-strip-img" style="background-image: url('public/images/about-strip-05.webp')"></div>
+            </div>
+            <div class="about-strip-item about-strip-square">
+                <div class="about-strip-img" style="background-image: url('public/images/about-strip-06.webp')"></div>
             </div>
         </div>
     </section>
 
     <!-- ========================================
-         ARTICLE CONTENT
+         SECTION: DEVELOPMENT / ENGINEERING
     ======================================== -->
-    <article class="ba-body">
-        <div class="ba-body-wrap">
-            <!-- Featured Image -->
-            <div class="ba-featured-img" style="background-image: url('public/images/blog_05.webp')"></div>
-
-            <!-- Article Text -->
-            <div class="ba-content">
-                <p>You close the windows, draw the curtains, switch off the lights, and settle into bed. Everything seems perfect for a good night's rest. But there is an invisible factor that might be undermining your sleep quality every single night: the air you breathe.</p>
-
-                <p>Research increasingly shows that indoor air quality plays a significant role in how well we sleep, how quickly we fall asleep, and how refreshed we feel in the morning. For millions of people living in Indian cities where outdoor AQI regularly crosses hazardous levels, this connection is more relevant than ever.</p>
-
-                <h2>The Invisible Problem in Your Bedroom</h2>
-
-                <p>Indoor air contains a mix of pollutants that most people never think about. Fine particulate matter (PM2.5) seeps in from outside through gaps in windows and doors. Volatile organic compounds (VOCs) off-gas from furniture, paint, and cleaning products. Carbon dioxide levels rise steadily in closed bedrooms overnight as you breathe. Dust mites, pet dander, and mould spores circulate through the air.</p>
-
-                <p>A 2023 study published in the journal <em>Environmental Health Perspectives</em> found that bedrooms with PM2.5 levels above 35 &micro;g/m&sup3; were associated with a 20% increase in nighttime awakenings compared to rooms with cleaner air. In many Indian cities, indoor PM2.5 levels regularly exceed 60 &micro;g/m&sup3; during winter months, even with windows closed.</p>
-
-                <h2>How Poor Air Quality Disrupts Sleep</h2>
-
-                <p>When you breathe polluted air during sleep, your body does not simply ignore it. Your respiratory system works harder to filter out particles, leading to subtle inflammation in your airways. This triggers micro-arousals, brief awakenings that you may not even remember, but that prevent you from reaching deep, restorative sleep stages.</p>
-
-                <!-- Inline Image -->
-                <div class="ba-inline-img" style="background-image: url('public/images/blog_05_inline.webp')"></div>
-                <p class="ba-img-caption">Poor air quality can lead to restless nights and morning fatigue, even when you think you slept well.</p>
-
-                <p>Elevated CO2 levels, which commonly occur in sealed bedrooms, compound the problem. Research from Denmark's Technical University showed that reducing CO2 from 2,400 ppm to 800 ppm in sleeping environments significantly improved next-day cognitive performance and self-reported sleep quality. In a typical closed bedroom with one or two occupants, CO2 can easily exceed 2,000 ppm by morning.</p>
-
-                <p>The effects compound over time. Chronic exposure to indoor air pollution during sleep has been linked to increased rates of sleep apnea, snoring, and overall sleep fragmentation. Morning symptoms like a dry throat, nasal congestion, headaches, and persistent fatigue are often attributed to poor sleep habits when the real culprit is the air itself.</p>
-
-                <h2>Signs Your Bedroom Air Needs Attention</h2>
-
-                <p>Pay attention to these signals that your bedroom air quality might be affecting your rest:</p>
-
-                <ul>
-                    <li>Waking up with a dry or scratchy throat despite staying hydrated</li>
-                    <li>Morning nasal congestion that clears up after leaving the bedroom</li>
-                    <li>Feeling unrested despite sleeping 7-8 hours</li>
-                    <li>Increased snoring or breathing difficulties at night</li>
-                    <li>Worsening allergy symptoms that peak in the morning</li>
-                    <li>A stale or stuffy feeling in the room when you wake up</li>
-                </ul>
-
-                <h2>Practical Steps for Cleaner Bedroom Air</h2>
-
-                <p>The good news is that improving your bedroom air quality is entirely within your control, and the impact on sleep can be felt within days.</p>
-
-                <p><strong>Use a HEPA air purifier.</strong> A true H13 HEPA filter captures 99.97% of particles down to 0.3 microns, including PM2.5, allergens, and many bacteria. Place the purifier near your bed and run it continuously through the night. The gentle white noise from quality purifiers can actually aid sleep as well.</p>
-
-                <p><strong>Monitor your indoor air.</strong> You cannot improve what you do not measure. Smart air purifiers with built-in air quality sensors give you real-time readings of PM2.5 and other pollutants, so you can see exactly what you are breathing while you sleep.</p>
-
-                <p><strong>Manage ventilation wisely.</strong> Open windows during low-AQI hours (typically early morning) to flush out accumulated CO2, but keep them closed when outdoor pollution spikes. An air purifier with adequate CADR ensures you get clean air circulation without relying on outdoor air quality.</p>
-
-                <p><strong>Replace filters on schedule.</strong> A clogged HEPA filter does not just stop working, it can actually recirculate trapped particles back into your air. Follow your manufacturer's recommended replacement schedule, typically every 6-12 months depending on your local air quality.</p>
-
-                <p>Sleep is one of the most important investments you make in your health every single day. By taking control of the air in your bedroom, you are not just breathing cleaner air but setting the foundation for deeper, more restorative rest that powers everything you do while awake.</p>
+    <section class="about-development">
+        <div class="about-development-container">
+            <div class="about-development-header">
+                <h2 class="about-development-title">Engineering-driven design</h2>
+                <p class="about-development-label">Development</p>
             </div>
-        </div>
-    </article>
-
-    <!-- ========================================
-         RELATED POSTS
-    ======================================== -->
-    <section class="ba-related">
-        <div class="ba-related-wrap">
-            <div class="ba-related-header">
-                <h2 class="ba-related-title">Related posts</h2>
-                <p class="ba-related-desc">Expert insights on air quality, wellness, and modern living.</p>
-                <a href="blogs.html" class="ba-related-viewall">&#8594; View all</a>
-            </div>
-
-            <div class="ba-related-slider" id="ba-related-slider">
-                <!-- Related Card 1 -->
-                <a href="blog-post.html" class="ba-rel-card">
-                    <div class="ba-rel-card-img" style="background-image: url('public/images/blog_06.webp')"></div>
-                    <h3 class="ba-rel-card-title">Air Purifiers and Allergies: What You Need to Know</h3>
-                    <span class="ba-rel-card-cta">&#8594; Read article</span>
-                </a>
-
-                <!-- Related Card 2 -->
-                <a href="blog-post.html" class="ba-rel-card">
-                    <div class="ba-rel-card-img" style="background-image: url('public/images/blog_01.webp')"></div>
-                    <h3 class="ba-rel-card-title">Is Your Air Purifier Actually Working? Signs to Look For</h3>
-                    <span class="ba-rel-card-cta">&#8594; Read article</span>
-                </a>
-
-                <!-- Related Card 3 -->
-                <a href="blog-post.html" class="ba-rel-card">
-                    <div class="ba-rel-card-img" style="background-image: url('public/images/blog_07.webp')"></div>
-                    <h3 class="ba-rel-card-title">5 Simple Ways to Improve Air Quality at Home</h3>
-                    <span class="ba-rel-card-cta">&#8594; Read article</span>
-                </a>
-
-                <!-- Related Card 4 -->
-                <a href="blog-post.html" class="ba-rel-card">
-                    <div class="ba-rel-card-img" style="background-image: url('public/images/blog_03.webp')"></div>
-                    <h3 class="ba-rel-card-title">When to Replace Your HEPA Filter: A Complete Guide</h3>
-                    <span class="ba-rel-card-cta">&#8594; Read article</span>
-                </a>
-            </div>
-
-            <!-- Slider Arrows -->
-            <div class="ba-related-arrows">
-                <button class="ba-rel-arrow ba-rel-prev" id="ba-rel-prev" aria-label="Previous">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M19 12H5"/>
-                        <path d="M12 19l-7-7 7-7"/>
-                    </svg>
-                </button>
-                <button class="ba-rel-arrow ba-rel-next" id="ba-rel-next" aria-label="Next">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14"/>
-                        <path d="M12 5l7 7-7 7"/>
-                    </svg>
-                </button>
+            <div class="about-development-body">
+                <p class="about-development-text">Our team spent over a year researching filtration systems, airflow dynamics, and sensor technology before building the first prototype. Every decision &mdash; from the H13 HEPA filter grade to the gesture sensor placement &mdash; was validated through rigorous testing and real-world usage data.</p>
+                <p class="about-development-text">At Hawaa, we're taking these engineering principles and applying them where they matter most: inside your home. We build air purifiers that don't just perform in lab conditions &mdash; they perform in yours.</p>
             </div>
         </div>
     </section>
 
     <!-- ========================================
-         FOOTER
+         SECTION: DIVIDER
     ======================================== -->
-    <footer class="footer">
+    <div class="about-divider">
+        <div class="about-divider-line"></div>
+    </div>
+
+    <!-- ========================================
+         SECTION: TEAM - FOUNDERS
+    ======================================== -->
+    <section class="about-team">
+        <div class="about-team-container">
+            <div class="about-team-header">
+                <h2 class="about-team-title">Built by passionate makers</h2>
+                <p class="about-team-label">Team</p>
+            </div>
+
+            <!-- Founders Photo -->
+            <div class="about-founders-photo">
+                <div class="about-founders-img" style="background-image: url('public/images/about-founders.webp')"></div>
+            </div>
+
+            <!-- Founder Bios -->
+            <div class="about-founders-bios">
+                <!-- Founder 1 -->
+                <div class="about-founder">
+                    <h3 class="about-founder-name">Smith Bhalodiya</h3>
+                    <p class="about-founder-role">CEO, Co-Founder</p>
+                    <p class="about-founder-bio">Smith leads Hawaa's vision and business strategy. With a deep understanding of India's air quality challenges and consumer needs, he drives the company's mission to make clean air accessible. His focus on affordability without compromising quality has shaped Hawaa into a brand that puts real outcomes over marketing promises.</p>
+                </div>
+
+                <!-- Founder 2 -->
+                <div class="about-founder">
+                    <h3 class="about-founder-name">Kelvin Satodiya</h3>
+                    <p class="about-founder-role">CTO, Co-Founder</p>
+                    <p class="about-founder-bio">Kelvin oversees all product engineering and technology at Hawaa. From sensor calibration to smart home integration, he ensures every technical decision translates into a better user experience. His obsession with precision engineering is why Hawaa Edge delivers lab-grade filtration at a fraction of the industry cost.</p>
+                </div>
+
+                <!-- Founder 3 -->
+                <div class="about-founder">
+                    <h3 class="about-founder-name">Darshan Pandya</h3>
+                    <p class="about-founder-role">COO, Co-Founder</p>
+                    <p class="about-founder-bio">Darshan manages operations, supply chain, and manufacturing. He built Hawaa's entirely India-based production pipeline, ensuring quality control at every stage. His operational expertise is the reason Hawaa can offer premium air purification with replacement filters at just &#8377;899 &mdash; a price point unmatched in the industry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: TEAM LIST
+    ======================================== -->
+    <section class="about-team-list">
+        <div class="about-team-list-container">
+            <p class="about-team-list-label">Team</p>
+            <div class="about-team-pills">
+                <span class="about-team-pill">Smith Bhalodiya</span>
+                <span class="about-team-pill">Kelvin Satodiya</span>
+                <span class="about-team-pill">Darshan Pandya</span>
+                <span class="about-team-pill">Hawaa Team</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: CTA
+    ======================================== -->
+    <section class="about-cta">
+        <div class="about-cta-container">
+            <h2 class="about-cta-title">Breathe the <span class="italic">difference</span></h2>
+            <p class="about-cta-desc">Experience what clean air feels like with Hawaa Edge.</p>
+            <div class="about-cta-buttons">
+                <a href="buy.html" class="about-cta-btn-primary">Order Now</a>
+                <a href="edge.html" class="about-cta-btn-secondary">Explore Edge</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: COMPANY VALUES
+    ======================================== -->
+    <section class="about-values">
+        <div class="about-values-container">
+            <div class="about-values-header">
+                <h2 class="about-values-title">What we care about</h2>
+                <p class="about-values-label">Company values</p>
+            </div>
+
+            <div class="about-values-list">
+                <div class="about-values-divider"></div>
+
+                <div class="about-value-item">
+                    <h3 class="about-value-name">Honesty over hype</h3>
+                    <p class="about-value-desc">We publish lab reports, not marketing claims. Every number on our website is backed by independent testing. If we can't prove it, we don't say it.</p>
+                </div>
+
+                <div class="about-values-divider"></div>
+
+                <div class="about-value-item">
+                    <h3 class="about-value-name">Accessible by default</h3>
+                    <p class="about-value-desc">Clean air shouldn't be a premium lifestyle product. We design for the family buying their first purifier, not the one upgrading their third.</p>
+                </div>
+
+                <div class="about-values-divider"></div>
+
+                <div class="about-value-item">
+                    <h3 class="about-value-name">Sweat the details</h3>
+                    <p class="about-value-desc">From the click of a gesture sensor to the seal on a filter cartridge, we obsess over the small things. The experience is in the details no one notices until they're missing.</p>
+                </div>
+
+                <div class="about-values-divider"></div>
+
+                <div class="about-value-item">
+                    <h3 class="about-value-name">Build it here</h3>
+                    <p class="about-value-desc">Designed, engineered, and manufactured in India. Not because it's a marketing badge, but because we believe in building where we breathe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: NEWSLETTER
+    ======================================== -->
+    <section class="about-newsletter">
+        <div class="about-newsletter-container">
+            <div class="about-newsletter-card">
+                <h3 class="about-newsletter-title">Get the latest in your inbox</h3>
+                <p class="about-newsletter-desc">Sign up to our newsletter</p>
+                <a href="#" class="about-newsletter-btn" id="about-newsletter-btn">
+                    Subscribe
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: FOOTER
+    ======================================== -->
+    <footer class="footer" id="contact">
         <div class="footer-container">
+            <!-- Brand Info -->
             <div class="footer-brand">
                 <div class="footer-logo">
                     <span class="footer-logo-text">HAWAA</span>
@@ -281,6 +363,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Footer Links -->
             <div class="footer-links">
                 <div class="footer-links-column" data-footer-section>
                     <button class="footer-links-header">
@@ -290,11 +374,12 @@
                         </svg>
                     </button>
                     <ul class="footer-links-list">
-                        <li><a href="edge.html">Hawaa Edge</a></li>
+                        <li><a href="#">Hawaa Edge</a></li>
                         <li><a href="#">Replacement Filters</a></li>
                         <li><a href="#">Accessories</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links-column" data-footer-section>
                     <button class="footer-links-header">
                         <h4 class="footer-links-title">SUPPORT</h4>
@@ -309,6 +394,7 @@
                         <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links-column" data-footer-section>
                     <button class="footer-links-header">
                         <h4 class="footer-links-title">COMPANY</h4>
@@ -323,6 +409,7 @@
                         <li><a href="#">Press & Media</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links-column" data-footer-section>
                     <button class="footer-links-header">
                         <h4 class="footer-links-title">LEGAL</h4>
@@ -337,6 +424,8 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <div class="footer-social">
                     <a href="#" class="footer-social-link" aria-label="Facebook">
@@ -369,6 +458,6 @@
     </footer>
 
     <script src="js/nav.js"></script>
-    <script src="js/blog.js"></script>
+    <script src="js/about.js"></script>
 </body>
 </html>
