@@ -28,7 +28,7 @@
    HERO SECTION
 ======================================== */
 .about-hero {
-    padding: 140px 16px 60px;
+    padding: 160px 16px 80px;
     text-align: center;
     background: white;
 }
@@ -43,7 +43,7 @@
     font-size: 2.5rem;
     line-height: 1.1;
     color: #111827;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     letter-spacing: -0.01em;
 }
 
@@ -60,16 +60,17 @@
     font-size: 1.5rem;
     font-weight: 300;
     color: #6b7280;
-    line-height: 1.3;
+    line-height: 1.35;
 }
 
 @media (min-width: 768px) {
     .about-hero {
-        padding: 180px 24px 80px;
+        padding: 200px 24px 100px;
     }
 
     .about-hero-title {
         font-size: 4rem;
+        margin-bottom: 24px;
     }
 
     .about-hero-tagline {
@@ -79,7 +80,7 @@
 
 @media (min-width: 1024px) {
     .about-hero {
-        padding: 200px 24px 100px;
+        padding: 240px 24px 120px;
     }
 
     .about-hero-title {
@@ -100,12 +101,12 @@
 }
 
 .about-hero-media-inner {
-    max-width: 1280px;
+    max-width: 720px;
     margin: 0 auto;
     border-radius: 20px;
     overflow: hidden;
     position: relative;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 3 / 4;
     background: #f3f4f6;
 }
 
@@ -114,6 +115,8 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    position: relative;
+    z-index: 1;
 }
 
 .about-hero-image {
@@ -122,11 +125,6 @@
     background-size: cover;
     background-position: center;
     z-index: 0;
-}
-
-.about-hero-video {
-    position: relative;
-    z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -188,6 +186,7 @@
 
 .about-strip-track {
     display: flex;
+    align-items: center;
     gap: 12px;
     width: max-content;
     animation: about-strip-scroll 30s linear infinite;
@@ -220,20 +219,16 @@
     background-color: #f3f4f6;
 }
 
-/* Varying sizes for visual interest */
-.about-strip-tall {
-    width: 140px;
-    height: 200px;
+/* Pattern: portrait, small-rect, portrait */
+.about-strip-portrait {
+    width: 150px;
+    height: 220px;
 }
 
-.about-strip-wide {
-    width: 220px;
-    height: 200px;
-}
-
-.about-strip-square {
-    width: 180px;
-    height: 200px;
+.about-strip-rect {
+    width: 200px;
+    height: 150px;
+    align-self: center;
 }
 
 @media (min-width: 768px) {
@@ -245,36 +240,26 @@
         gap: 16px;
     }
 
-    .about-strip-tall {
-        width: 180px;
-        height: 260px;
+    .about-strip-portrait {
+        width: 200px;
+        height: 290px;
     }
 
-    .about-strip-wide {
-        width: 300px;
-        height: 260px;
-    }
-
-    .about-strip-square {
-        width: 240px;
-        height: 260px;
+    .about-strip-rect {
+        width: 270px;
+        height: 200px;
     }
 }
 
 @media (min-width: 1024px) {
-    .about-strip-tall {
-        width: 220px;
-        height: 300px;
+    .about-strip-portrait {
+        width: 240px;
+        height: 340px;
     }
 
-    .about-strip-wide {
-        width: 360px;
-        height: 300px;
-    }
-
-    .about-strip-square {
-        width: 280px;
-        height: 300px;
+    .about-strip-rect {
+        width: 320px;
+        height: 230px;
     }
 }
 
@@ -534,122 +519,6 @@
     .about-team-pill {
         padding: 12px 22px;
         font-size: 0.9rem;
-    }
-}
-
-/* ========================================
-   CTA SECTION
-======================================== */
-.about-cta {
-    padding: 60px 16px;
-    background: #f9fafb;
-    text-align: center;
-}
-
-.about-cta-container {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.about-cta-title {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #111827;
-    line-height: 1.3;
-    margin-bottom: 12px;
-}
-
-.about-cta-title .italic {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-weight: 500;
-}
-
-.about-cta-desc {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: #6b7280;
-    margin-bottom: 32px;
-}
-
-.about-cta-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-}
-
-.about-cta-btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 32px;
-    background: #111827;
-    color: white;
-    border: none;
-    border-radius: 9999px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 280px;
-}
-
-.about-cta-btn-primary:hover {
-    background: #1f2937;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.about-cta-btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 32px;
-    background: white;
-    color: #111827;
-    border: 1px solid #e5e7eb;
-    border-radius: 9999px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 280px;
-}
-
-.about-cta-btn-secondary:hover {
-    border-color: #d1d5db;
-    background: #f9fafb;
-    transform: translateY(-1px);
-}
-
-@media (min-width: 768px) {
-    .about-cta {
-        padding: 80px 24px;
-    }
-
-    .about-cta-title {
-        font-size: 2.25rem;
-    }
-
-    .about-cta-desc {
-        font-size: 1.05rem;
-    }
-
-    .about-cta-buttons {
-        flex-direction: row;
-        justify-content: center;
-    }
-
-    .about-cta-btn-primary,
-    .about-cta-btn-secondary {
-        width: auto;
     }
 }
 
