@@ -140,14 +140,11 @@
                 <span class="buy-step-num">1.</span> Purifier
             </button>
             <button class="buy-step" data-step="2" id="step-2">
-                <span class="buy-step-num">2.</span> Subscription
-            </button>
-            <button class="buy-step" data-step="3" id="step-3">
-                <span class="buy-step-num">3.</span> Delivery
+                <span class="buy-step-num">2.</span> Accessories
             </button>
         </nav>
 
-        <!-- Step 1: Product Selection -->
+        <!-- Step 1: Purifier -->
         <section class="buy-step-content active" id="step-content-1">
             <div class="buy-content-inner">
                 <!-- Product Title -->
@@ -170,6 +167,42 @@
                         <span class="buy-variant-price">&#8377;5,499</span>
                     </button>
                 </div>
+
+                <!-- Subscription Filter Plan (shown when Subscribe selected) -->
+                <div class="buy-filter-plans" id="buy-filter-plans">
+                    <p class="buy-filter-plans-title">Filter Delivery Plan</p>
+                    <p class="buy-filter-plans-desc">Replacement filters delivered to your door automatically</p>
+                    <div class="buy-filter-plan-cards">
+                        <button class="buy-filter-plan-card active" data-interval="5" id="filter-5">
+                            <span class="buy-filter-plan-name">Every 5 months</span>
+                            <span class="buy-filter-plan-detail">Recommended for high-pollution areas</span>
+                            <span class="buy-filter-plan-tag">Recommended</span>
+                        </button>
+                        <button class="buy-filter-plan-card" data-interval="6" id="filter-6">
+                            <span class="buy-filter-plan-name">Every 6 months</span>
+                            <span class="buy-filter-plan-detail">Standard usage cycle</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Colour Selector -->
+                <div class="buy-colour-section">
+                    <div class="buy-colour-header">
+                        <span class="buy-colour-label">Colour</span>
+                        <span class="buy-colour-name" id="buy-colour-name">Matte Black</span>
+                    </div>
+                    <div class="buy-colour-swatches">
+                        <button class="buy-colour-swatch active" data-colour="Matte Black" data-hex="#1a1a1a" aria-label="Matte Black">
+                            <span class="buy-swatch-fill" style="background: #1a1a1a;"></span>
+                        </button>
+                        <button class="buy-colour-swatch" data-colour="Almond Beige" data-hex="#d4c5a9" aria-label="Almond Beige">
+                            <span class="buy-swatch-fill" style="background: #d4c5a9;"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="buy-divider"></div>
 
                 <!-- Trust Indicators -->
                 <div class="buy-trust-row">
@@ -196,68 +229,22 @@
             </div>
         </section>
 
-        <!-- Step 2: Subscription / Filter Plan -->
+        <!-- Step 2: Accessories -->
         <section class="buy-step-content" id="step-content-2">
             <div class="buy-content-inner">
-                <h2 class="buy-section-heading">Subscription</h2>
+                <h2 class="buy-section-heading">Accessories</h2>
                 <p class="buy-section-subtext">Hawaa Edge</p>
 
-                <!-- Subscription Toggle -->
-                <div class="buy-sub-toggle">
-                    <button class="buy-sub-toggle-btn active" data-sub="none" id="sub-none">No subscription</button>
-                    <button class="buy-sub-toggle-btn" data-sub="plan" id="sub-plan">Filter plan</button>
-                </div>
-
-                <!-- Filter Plan Options (hidden by default) -->
-                <div class="buy-filter-plans" id="buy-filter-plans">
-                    <p class="buy-filter-plans-title">Filter Delivery Plan</p>
-                    <p class="buy-filter-plans-desc">Replacement filters delivered to your door automatically</p>
-                    <div class="buy-filter-plan-cards">
-                        <button class="buy-filter-plan-card active" data-interval="5" id="filter-5">
-                            <span class="buy-filter-plan-name">Every 5 months</span>
-                            <span class="buy-filter-plan-detail">Recommended for high-pollution areas</span>
-                            <span class="buy-filter-plan-tag">Recommended</span>
-                        </button>
-                        <button class="buy-filter-plan-card" data-interval="6" id="filter-6">
-                            <span class="buy-filter-plan-name">Every 6 months</span>
-                            <span class="buy-filter-plan-detail">Standard usage cycle</span>
-                        </button>
+                <!-- Replacement Filters -->
+                <div class="buy-accessory-card">
+                    <div class="buy-accessory-info">
+                        <span class="buy-accessory-name">Replacement Filter</span>
+                        <span class="buy-accessory-detail">3-in-1 H13 HEPA + Activated Carbon</span>
                     </div>
-                </div>
-
-                <!-- Subscription Savings Info -->
-                <div class="buy-sub-info" id="buy-sub-info">
-                    <div class="buy-sub-info-row">
-                        <span>Purifier price</span>
-                        <span id="buy-sub-info-price">&#8377;5,999</span>
+                    <div class="buy-accessory-action">
+                        <span class="buy-accessory-price">&#8377;1,499</span>
+                        <button class="buy-accessory-add" id="acc-filter-btn">Add</button>
                     </div>
-                    <div class="buy-sub-info-row" id="buy-sub-savings-row" style="display: none;">
-                        <span>Subscription discount</span>
-                        <span class="buy-sub-savings-val">-&#8377;500</span>
-                    </div>
-                    <div class="buy-sub-info-row buy-sub-info-total">
-                        <span>Total</span>
-                        <span id="buy-sub-info-total">&#8377;5,999</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Step 3: Delivery -->
-        <section class="buy-step-content" id="step-content-3">
-            <div class="buy-content-inner">
-                <h2 class="buy-section-heading">Delivery</h2>
-                <p class="buy-section-subtext">Hawaa Edge</p>
-
-                <!-- Delivery Check -->
-                <div class="buy-delivery-check">
-                    <p class="buy-delivery-title">Check delivery availability</p>
-                    <p class="buy-delivery-desc">Enter your pincode to see estimated delivery date</p>
-                    <div class="buy-pincode-row">
-                        <input type="text" class="buy-pincode-input" id="buy-pincode" placeholder="Enter pincode" maxlength="6" inputmode="numeric" pattern="[0-9]*">
-                        <button class="buy-pincode-btn" id="buy-pincode-btn">Check</button>
-                    </div>
-                    <p class="buy-delivery-result" id="buy-delivery-result"></p>
                 </div>
 
                 <!-- What's in the Box -->
@@ -349,14 +336,11 @@
     <!-- Sticky Bottom Bar (Always visible) -->
     <div class="buy-sticky-bottom" id="buy-sticky-bottom">
         <div class="buy-sticky-inner">
-            <div class="buy-sticky-left">
+            <div class="buy-sticky-row">
                 <span class="buy-sticky-price" id="buy-sticky-price">&#8377;5,999</span>
-                <span class="buy-sticky-delivery">Delivery: 3-6 business days</span>
+                <span class="buy-sticky-delivery">Delivery: 5-15 business days</span>
             </div>
-            <div class="buy-sticky-actions">
-                <button class="buy-sticky-back" id="buy-sticky-back" style="display: none;">Back</button>
-                <button class="buy-sticky-btn" id="buy-sticky-btn">Next step</button>
-            </div>
+            <button class="buy-sticky-btn" id="buy-sticky-btn">Add to Cart</button>
         </div>
     </div>
 

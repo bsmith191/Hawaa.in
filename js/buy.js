@@ -9,9 +9,10 @@
     // STATE
     // ========================================
     var currentStep = 1;
+    var totalSteps = 2;
     var purchaseType = 'onetime'; // 'onetime' or 'subscribe'
-    var hasSubscription = false;
     var filterInterval = 5; // 5 or 6 months
+    var selectedColour = 'Matte Black';
 
     var PRICES = {
         onetime: 5999,
@@ -23,38 +24,35 @@
     // ========================================
 
     // Carousel
+    var carousel = document.getElementById('buy-carousel');
     var carouselTrack = document.getElementById('buy-carousel-track');
     var carouselIndex = document.getElementById('buy-carousel-index');
-    var carouselSlides = carouselTrack ? carouselTrack.children : [];
+    var totalSlides = carouselTrack ? carouselTrack.children.length : 0;
     var currentSlide = 0;
-    var totalSlides = carouselSlides.length;
 
     // Steps
     var stepBtns = document.querySelectorAll('.buy-step');
     var stepContents = document.querySelectorAll('.buy-step-content');
 
-    // Variant cards (Step 1)
+    // Variant cards
     var btnOnetime = document.getElementById('btn-onetime');
     var btnSubscribe = document.getElementById('btn-subscribe');
+
+    // Filter plans (now inside purifier step)
+    var filterPlans = document.getElementById('buy-filter-plans');
+    var filter5 = document.getElementById('filter-5');
+    var filter6 = document.getElementById('filter-6');
+
+    // Colour
+    var colourSwatches = document.querySelectorAll('.buy-colour-swatch');
+    var colourName = document.getElementById('buy-colour-name');
 
     // Price displays
     var priceDisplay = document.getElementById('buy-price');
     var stickyPrice = document.getElementById('buy-sticky-price');
 
-    // Subscription toggle (Step 2)
-    var subNoneBtn = document.getElementById('sub-none');
-    var subPlanBtn = document.getElementById('sub-plan');
-    var filterPlans = document.getElementById('buy-filter-plans');
-    var filter5 = document.getElementById('filter-5');
-    var filter6 = document.getElementById('filter-6');
-    var subInfoPrice = document.getElementById('buy-sub-info-price');
-    var subSavingsRow = document.getElementById('buy-sub-savings-row');
-    var subInfoTotal = document.getElementById('buy-sub-info-total');
-
     // Sticky bar
-    var stickyBottom = document.getElementById('buy-sticky-bottom');
     var stickyBtn = document.getElementById('buy-sticky-btn');
-    var stickyBackBtn = document.getElementById('buy-sticky-back');
 
     // Details modal
     var detailsBtn = document.getElementById('buy-details-btn');
@@ -67,10 +65,8 @@
     var currentDetailSlide = 0;
     var totalDetailSlides = detailsDots.length;
 
-    // Pincode
-    var pincodeInput = document.getElementById('buy-pincode');
-    var pincodeBtn = document.getElementById('buy-pincode-btn');
-    var deliveryResult = document.getElementById('buy-delivery-result');
+    // Accessory
+    var accFilterBtn = document.getElementById('acc-filter-btn');
 
     // ========================================
     // UTILITY
@@ -80,7 +76,7 @@
     }
 
     // ========================================
-    // IMAGE CAROUSEL
+    // IMAGE CAROUSEL (Fixed)
     // ========================================
     function goToSlide(index) {
         if (index < 0) index = totalSlides - 1;
@@ -95,45 +91,67 @@
     }
 
     // Touch/swipe support for carousel
-    if (carouselTrack) {
-        var startX = 0;
-        var startY = 0;
-        var isDragging = false;
-        var isHorizontalSwipe = null;
+    if (carousel) {
+        var touchStartX = 0;
+        var touchStartY = 0;
+        var touchDiffX = 0;
+        var isSwiping = false;
+        var swipeDirection = null; // null = undetermined, 'h' = horizontal, 'v' = vertical
 
-        carouselTrack.addEventListener('touchstart', function(e) {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            isDragging = true;
-            isHorizontalSwipe = null;
+        carousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            touchDiffX = 0;
+            isSwiping = true;
+            swipeDirection = null;
+            // Remove transition during drag for immediate feedback
+            if (carouselTrack) {
+                carouselTrack.style.transition = 'none';
+            }
         }, { passive: true });
 
-        carouselTrack.addEventListener('touchmove', function(e) {
-            if (!isDragging) return;
-            var diffX = e.touches[0].clientX - startX;
-            var diffY = e.touches[0].clientY - startY;
+        carousel.addEventListener('touchmove', function(e) {
+            if (!isSwiping) return;
 
-            // Determine swipe direction on first significant move
-            if (isHorizontalSwipe === null && (Math.abs(diffX) > 5 || Math.abs(diffY) > 5)) {
-                isHorizontalSwipe = Math.abs(diffX) > Math.abs(diffY);
+            var currentX = e.touches[0].clientX;
+            var currentY = e.touches[0].clientY;
+            var diffX = currentX - touchStartX;
+            var diffY = currentY - touchStartY;
+
+            // Determine direction on first significant movement
+            if (swipeDirection === null && (Math.abs(diffX) > 8 || Math.abs(diffY) > 8)) {
+                swipeDirection = Math.abs(diffX) > Math.abs(diffY) ? 'h' : 'v';
             }
 
-            if (isHorizontalSwipe) {
+            if (swipeDirection === 'h') {
                 e.preventDefault();
+                touchDiffX = diffX;
+                // Move track with finger
+                var baseOffset = -(currentSlide * 100);
+                var dragPercent = (touchDiffX / carousel.offsetWidth) * 100;
+                if (carouselTrack) {
+                    carouselTrack.style.transform = 'translateX(' + (baseOffset + dragPercent) + '%)';
+                }
             }
         }, { passive: false });
 
-        carouselTrack.addEventListener('touchend', function(e) {
-            if (!isDragging) return;
-            isDragging = false;
-            var endX = e.changedTouches[0].clientX;
-            var diff = startX - endX;
+        carousel.addEventListener('touchend', function() {
+            if (!isSwiping) return;
+            isSwiping = false;
 
-            if (isHorizontalSwipe && Math.abs(diff) > 40) {
-                if (diff > 0) {
+            // Restore transition
+            if (carouselTrack) {
+                carouselTrack.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            }
+
+            if (swipeDirection === 'h') {
+                var threshold = carousel.offsetWidth * 0.15;
+                if (touchDiffX < -threshold) {
                     goToSlide(currentSlide + 1);
-                } else {
+                } else if (touchDiffX > threshold) {
                     goToSlide(currentSlide - 1);
+                } else {
+                    goToSlide(currentSlide); // snap back
                 }
             }
         }, { passive: true });
@@ -143,7 +161,7 @@
     // STEP NAVIGATION
     // ========================================
     function goToStep(step) {
-        if (step < 1 || step > 3) return;
+        if (step < 1 || step > totalSteps) return;
         currentStep = step;
 
         // Update step buttons
@@ -166,11 +184,11 @@
             activeContent.classList.add('active');
         }
 
-        // Update sticky bar buttons
-        updateStickyBar();
-
-        // Scroll to top of content
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Scroll to steps bar
+        var stepsBar = document.getElementById('buy-steps');
+        if (stepsBar) {
+            stepsBar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
     }
 
     // Step button clicks
@@ -181,49 +199,8 @@
         });
     });
 
-    function updateStickyBar() {
-        // Show/hide back button
-        if (stickyBackBtn) {
-            stickyBackBtn.style.display = currentStep > 1 ? '' : 'none';
-        }
-
-        // Update CTA text
-        if (stickyBtn) {
-            if (currentStep === 3) {
-                stickyBtn.textContent = purchaseType === 'subscribe' ? 'Subscribe' : 'Add to Cart';
-            } else {
-                stickyBtn.textContent = 'Next step';
-            }
-        }
-    }
-
-    // Sticky bar button handlers
-    if (stickyBtn) {
-        stickyBtn.addEventListener('click', function() {
-            if (currentStep < 3) {
-                goToStep(currentStep + 1);
-            } else {
-                // Final action - Add to Cart / Subscribe
-                stickyBtn.textContent = 'Added!';
-                stickyBtn.style.background = '#059669';
-                setTimeout(function() {
-                    stickyBtn.textContent = purchaseType === 'subscribe' ? 'Subscribe' : 'Add to Cart';
-                    stickyBtn.style.background = '';
-                }, 1500);
-            }
-        });
-    }
-
-    if (stickyBackBtn) {
-        stickyBackBtn.addEventListener('click', function() {
-            if (currentStep > 1) {
-                goToStep(currentStep - 1);
-            }
-        });
-    }
-
     // ========================================
-    // VARIANT SELECTION (Step 1)
+    // VARIANT SELECTION
     // ========================================
     function selectVariant(type) {
         purchaseType = type;
@@ -231,15 +208,13 @@
         if (btnOnetime) btnOnetime.classList.toggle('active', type === 'onetime');
         if (btnSubscribe) btnSubscribe.classList.toggle('active', type === 'subscribe');
 
-        // If subscribe is selected, auto-set subscription plan
-        if (type === 'subscribe') {
-            hasSubscription = true;
-            if (subPlanBtn) subPlanBtn.classList.add('active');
-            if (subNoneBtn) subNoneBtn.classList.remove('active');
-        } else {
-            hasSubscription = false;
-            if (subNoneBtn) subNoneBtn.classList.add('active');
-            if (subPlanBtn) subPlanBtn.classList.remove('active');
+        // Show/hide filter plans
+        if (filterPlans) {
+            if (type === 'subscribe') {
+                filterPlans.classList.add('visible');
+            } else {
+                filterPlans.classList.remove('visible');
+            }
         }
 
         updatePrices();
@@ -253,44 +228,12 @@
     }
 
     // ========================================
-    // SUBSCRIPTION (Step 2)
+    // FILTER INTERVAL
     // ========================================
-    function selectSubOption(hasSub) {
-        hasSubscription = hasSub;
-
-        if (subNoneBtn) subNoneBtn.classList.toggle('active', !hasSub);
-        if (subPlanBtn) subPlanBtn.classList.toggle('active', hasSub);
-
-        // Show/hide filter plans
-        if (filterPlans) {
-            if (hasSub) {
-                filterPlans.classList.add('visible');
-            } else {
-                filterPlans.classList.remove('visible');
-            }
-        }
-
-        // Update purchase type to match
-        purchaseType = hasSub ? 'subscribe' : 'onetime';
-        if (btnOnetime) btnOnetime.classList.toggle('active', !hasSub);
-        if (btnSubscribe) btnSubscribe.classList.toggle('active', hasSub);
-
-        updatePrices();
-    }
-
-    if (subNoneBtn) {
-        subNoneBtn.addEventListener('click', function() { selectSubOption(false); });
-    }
-    if (subPlanBtn) {
-        subPlanBtn.addEventListener('click', function() { selectSubOption(true); });
-    }
-
-    // Filter interval selection
     function selectFilterInterval(interval) {
         filterInterval = interval;
         if (filter5) filter5.classList.toggle('active', interval === 5);
         if (filter6) filter6.classList.toggle('active', interval === 6);
-        updatePrices();
     }
 
     if (filter5) {
@@ -301,31 +244,61 @@
     }
 
     // ========================================
+    // COLOUR SELECTOR
+    // ========================================
+    colourSwatches.forEach(function(swatch) {
+        swatch.addEventListener('click', function() {
+            colourSwatches.forEach(function(s) { s.classList.remove('active'); });
+            this.classList.add('active');
+            selectedColour = this.getAttribute('data-colour');
+            if (colourName) colourName.textContent = selectedColour;
+        });
+    });
+
+    // ========================================
     // PRICE UPDATES
     // ========================================
     function updatePrices() {
         var price = PRICES[purchaseType];
         var priceStr = formatPrice(price);
 
-        // Main price display
         if (priceDisplay) priceDisplay.textContent = priceStr;
-
-        // Sticky price
         if (stickyPrice) stickyPrice.textContent = priceStr;
-
-        // Subscription info (Step 2)
-        if (subInfoPrice) subInfoPrice.textContent = formatPrice(PRICES.onetime);
-        if (subSavingsRow) {
-            subSavingsRow.style.display = purchaseType === 'subscribe' ? '' : 'none';
-        }
-        if (subInfoTotal) subInfoTotal.textContent = priceStr;
-
-        // Sticky bar CTA text
-        updateStickyBar();
     }
 
     // ========================================
-    // DETAILS MODAL
+    // STICKY BAR - Always "Add to Cart"
+    // ========================================
+    if (stickyBtn) {
+        stickyBtn.addEventListener('click', function() {
+            stickyBtn.textContent = 'Added!';
+            stickyBtn.style.background = '#059669';
+            setTimeout(function() {
+                stickyBtn.textContent = 'Add to Cart';
+                stickyBtn.style.background = '';
+            }, 1500);
+        });
+    }
+
+    // ========================================
+    // ACCESSORY ADD BUTTON
+    // ========================================
+    if (accFilterBtn) {
+        var accAdded = false;
+        accFilterBtn.addEventListener('click', function() {
+            accAdded = !accAdded;
+            if (accAdded) {
+                accFilterBtn.textContent = 'Added';
+                accFilterBtn.classList.add('added');
+            } else {
+                accFilterBtn.textContent = 'Add';
+                accFilterBtn.classList.remove('added');
+            }
+        });
+    }
+
+    // ========================================
+    // DETAILS MODAL (Full Screen)
     // ========================================
     function openDetails() {
         if (detailsOverlay) {
@@ -350,7 +323,6 @@
             detailsSlides.style.transform = 'translateX(-' + (currentDetailSlide * 100) + '%)';
         }
 
-        // Update dots
         detailsDots.forEach(function(dot, i) {
             dot.classList.toggle('active', i === currentDetailSlide);
         });
@@ -362,12 +334,6 @@
 
     if (detailsClose) {
         detailsClose.addEventListener('click', closeDetails);
-    }
-
-    if (detailsOverlay) {
-        detailsOverlay.addEventListener('click', function(e) {
-            if (e.target === detailsOverlay) closeDetails();
-        });
     }
 
     if (detailsPrev) {
@@ -388,55 +354,8 @@
     });
 
     // ========================================
-    // PINCODE DELIVERY CHECK
-    // ========================================
-    function checkPincode() {
-        if (!pincodeInput) return;
-        var pincode = pincodeInput.value.trim();
-
-        if (!pincode || pincode.length !== 6 || !/^\d{6}$/.test(pincode)) {
-            if (deliveryResult) {
-                deliveryResult.textContent = 'Please enter a valid 6-digit pincode';
-                deliveryResult.className = 'buy-delivery-result error';
-            }
-            return;
-        }
-
-        if (deliveryResult) {
-            deliveryResult.textContent = 'Checking...';
-            deliveryResult.className = 'buy-delivery-result';
-        }
-
-        setTimeout(function() {
-            var days = Math.floor(Math.random() * 4) + 3; // 3-6 days
-            var date = new Date();
-            date.setDate(date.getDate() + days);
-            var options = { weekday: 'short', month: 'short', day: 'numeric' };
-            var dateStr = date.toLocaleDateString('en-IN', options);
-
-            if (deliveryResult) {
-                deliveryResult.textContent = 'Estimated delivery by ' + dateStr + ' \u00B7 Free shipping';
-                deliveryResult.className = 'buy-delivery-result success';
-            }
-        }, 600);
-    }
-
-    if (pincodeBtn) {
-        pincodeBtn.addEventListener('click', checkPincode);
-    }
-    if (pincodeInput) {
-        pincodeInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') checkPincode();
-        });
-        pincodeInput.addEventListener('input', function() {
-            this.value = this.value.replace(/\D/g, '');
-        });
-    }
-
-    // ========================================
     // INITIALIZE
     // ========================================
     updatePrices();
-    updateStickyBar();
 
 })();
