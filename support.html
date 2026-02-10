@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hawaa Blog - Expert insights on air quality, clean living, and wellness. Read guides on air purification, filter care, and healthy home tips.">
-    <meta name="keywords" content="Hawaa, blog, air quality, HEPA filter, clean air, indoor air, air purifier guide">
+    <meta name="description" content="Hawaa product support — submit a warranty claim or request a return/replacement. Simple, fast, no login required.">
+    <meta name="keywords" content="Hawaa, support, warranty, returns, replacement, air purifier, Hawaa Edge">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Blog - Hawaa">
-    <meta property="og:description" content="Expert insights on air quality, clean living, and wellness.">
+    <meta property="og:title" content="Product Support - Hawaa">
+    <meta property="og:description" content="Submit a warranty claim or request a return/replacement for your Hawaa air purifier. Fast, simple support — no login required.">
     <meta property="og:type" content="website">
 
-    <title>Blog - Hawaa | Clean Living Guide</title>
+    <title>Product Support - Hawaa</title>
 
     <!-- Google Fonts - Outfit + Playfair Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,12 +19,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/support.css">
     <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
 </head>
-<body class="blog-page">
+<body class="support-page">
     <!-- Header -->
-    <header class="header" id="header">
+    <header class="header scrolled" id="header">
         <div class="header-container">
             <a href="index.html" class="logo">
                 <span class="logo-h">H</span><span class="logo-awaa">awaa</span>
@@ -51,7 +51,7 @@
         <div class="menu-panel-inner">
             <nav class="menu-nav">
                 <a href="edge.html" class="menu-nav-item">Hawaa Edge</a>
-                <a href="blogs.html" class="menu-nav-item">Blog</a>
+                <a href="index.html#blogs" class="menu-nav-item">Blog</a>
                 <a href="about.html" class="menu-nav-item">About Us</a>
             </nav>
         </div>
@@ -105,110 +105,118 @@
         </div>
     </div>
 
-    <!-- ========================================
-         BLOG HERO
-    ======================================== -->
-    <section class="bl-hero">
-        <div class="bl-hero-bg" style="background-image: url('public/images/blog-hero.webp')"></div>
-        <div class="bl-hero-overlay"></div>
-        <div class="bl-hero-content">
-            <h1 class="bl-hero-title">Clean Living Guide</h1>
-            <p class="bl-hero-desc">Insights on air quality, wellness, and modern living. Explore expert-backed articles, product tips, and real stories designed to help you breathe and feel your best.</p>
-        </div>
-    </section>
+    <!-- Support Page Content -->
+    <main class="support-main">
 
-    <!-- ========================================
-         CATEGORY TABS
-    ======================================== -->
-    <div class="bl-cats" id="bl-cats">
-        <div class="bl-cats-scroll">
-            <button class="bl-cat active" data-category="all">All</button>
-            <button class="bl-cat" data-category="air-quality">Air Quality</button>
-            <button class="bl-cat" data-category="filter-care">Filter Care</button>
-            <button class="bl-cat" data-category="health">Health & Wellness</button>
-            <button class="bl-cat" data-category="home">Home & Living</button>
-        </div>
-    </div>
+        <!-- Hero Section -->
+        <section class="support-hero">
+            <h1 class="support-hero-title">We're here to help</h1>
+            <p class="support-hero-subtitle">Whether it's a warranty claim or a return request, we'll take care of it. No login, no long forms.</p>
+        </section>
 
-    <!-- ========================================
-         BLOG LISTING
-    ======================================== -->
-    <section class="bl-listing">
-        <div class="bl-listing-wrap">
-            <!-- Category Heading -->
-            <div class="bl-listing-header">
-                <span class="bl-listing-accent" id="bl-cat-label">All</span>
-                <h2 class="bl-listing-title">Articles</h2>
+        <!-- Form Section -->
+        <section class="support-form-section">
+            <div class="support-card" id="support-card">
+
+                <!-- Segmented Control -->
+                <div class="support-segment">
+                    <button class="support-segment-btn active" data-type="warranty" id="seg-warranty">Warranty Claim</button>
+                    <button class="support-segment-btn" data-type="return" id="seg-return">Return / Replacement</button>
+                    <div class="support-segment-indicator" id="segment-indicator"></div>
+                </div>
+
+                <!-- Form -->
+                <form class="support-form" id="support-form" autocomplete="off" novalidate>
+                    <div class="support-field">
+                        <label class="support-label" for="order-number">Order Number</label>
+                        <input type="text" class="support-input" id="order-number" placeholder="e.g. HAW-100234" autocomplete="off">
+                    </div>
+                    <div class="support-field">
+                        <label class="support-label" for="contact-info">Email or Registered Mobile Number</label>
+                        <input type="text" class="support-input" id="contact-info" placeholder="you@email.com or 9876543210" autocomplete="off">
+                    </div>
+                    <button type="submit" class="support-submit" id="support-submit">Request warranty support</button>
+                </form>
+
+                <!-- Success State -->
+                <div class="support-success hidden" id="support-success">
+                    <div class="support-success-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="support-success-title">We've received your request</h3>
+                    <p class="support-success-text">Our support team will contact you within 24 hours via your registered email or phone number.</p>
+                    <button type="button" class="support-success-another" id="support-another">Submit another request</button>
+                </div>
+
             </div>
+        </section>
 
-            <hr class="bl-divider">
-
-            <!-- Blog Cards -->
-            <div class="bl-grid" id="bl-grid">
-                <!-- Card 1 -->
-                <a href="blog-post.html" class="bl-card" data-category="air-quality">
-                    <div class="bl-card-img" style="background-image: url('public/images/blog_01.webp')"></div>
-                    <h3 class="bl-card-title">Is Your Air Purifier Actually Working? Signs to Look For</h3>
-                    <span class="bl-card-cta">&#8594; Read article</span>
-                </a>
-
-                <!-- Card 2 -->
-                <a href="blog-post.html" class="bl-card" data-category="air-quality">
-                    <div class="bl-card-img" style="background-image: url('public/images/blog_02.webp')"></div>
-                    <h3 class="bl-card-title">Understanding AQI: What the Numbers Really Mean for Your Family</h3>
-                    <span class="bl-card-cta">&#8594; Read article</span>
-                </a>
-
-                <!-- Card 3 -->
-                <a href="blog-post.html" class="bl-card" data-category="filter-care">
-                    <div class="bl-card-img" style="background-image: url('public/images/blog_03.webp')"></div>
-                    <h3 class="bl-card-title">When to Replace Your HEPA Filter: A Complete Guide</h3>
-                    <span class="bl-card-cta">&#8594; Read article</span>
-                </a>
-
-                <!-- Card 4 -->
-                <a href="blog-post.html" class="bl-card" data-category="filter-care">
-                    <div class="bl-card-img" style="background-image: url('public/images/blog_04.webp')"></div>
-                    <h3 class="bl-card-title">How to Clean and Maintain Your Air Purifier</h3>
-                    <span class="bl-card-cta">&#8594; Read article</span>
-                </a>
-
-                <!-- Card 5 -->
-                <a href="blog-post.html" class="bl-card" data-category="health">
-                    <div class="bl-card-img" style="background-image: url('public/images/blog_05.webp')"></div>
-                    <h3 class="bl-card-title">How Indoor Air Quality Affects Your Sleep</h3>
-                    <span class="bl-card-cta">&#8594; Read article</span>
-                </a>
-
-                <!-- Card 6 -->
-                <a href="blog-post.html" class="bl-card" data-category="health">
-                    <div class="bl-card-img" style="background-image: url('public/images/blog_06.webp')"></div>
-                    <h3 class="bl-card-title">Air Purifiers and Allergies: What You Need to Know</h3>
-                    <span class="bl-card-cta">&#8594; Read article</span>
-                </a>
-
-                <!-- Card 7 -->
-                <a href="blog-post.html" class="bl-card" data-category="home">
-                    <div class="bl-card-img" style="background-image: url('public/images/blog_07.webp')"></div>
-                    <h3 class="bl-card-title">5 Simple Ways to Improve Air Quality at Home</h3>
-                    <span class="bl-card-cta">&#8594; Read article</span>
-                </a>
-
-                <!-- Card 8 -->
-                <a href="blog-post.html" class="bl-card" data-category="home">
-                    <div class="bl-card-img" style="background-image: url('public/images/blog_08.webp')"></div>
-                    <h3 class="bl-card-title">Choosing the Right Air Purifier for Every Room</h3>
-                    <span class="bl-card-cta">&#8594; Read article</span>
-                </a>
+        <!-- What Happens Next -->
+        <section class="support-steps-section">
+            <h2 class="support-steps-title">What happens next</h2>
+            <div class="support-steps" id="support-steps">
+                <!-- Warranty steps (default) -->
+                <div class="support-step">
+                    <span class="support-step-number">1</span>
+                    <p class="support-step-text" data-warranty="We verify your order and warranty status." data-return="We verify your order and return eligibility.">We verify your order and warranty status.</p>
+                </div>
+                <div class="support-step">
+                    <span class="support-step-number">2</span>
+                    <p class="support-step-text" data-warranty="Our team contacts you to diagnose the issue." data-return="Our team arranges a pickup from your address.">Our team contacts you to diagnose the issue.</p>
+                </div>
+                <div class="support-step">
+                    <span class="support-step-number">3</span>
+                    <p class="support-step-text" data-warranty="We repair or replace your unit — hassle-free." data-return="You receive your replacement or refund within 7 days.">We repair or replace your unit — hassle-free.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ========================================
-         FOOTER
-    ======================================== -->
-    <footer class="footer">
+        <!-- Contact Support -->
+        <section class="support-contact-section">
+            <div class="support-contact-card">
+                <h2 class="support-contact-title">Need to talk to someone?</h2>
+                <div class="support-contact-items">
+                    <div class="support-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                        <div>
+                            <span class="support-contact-label">Phone</span>
+                            <span class="support-contact-value">+91 0000000000</span>
+                        </div>
+                    </div>
+                    <div class="support-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <div>
+                            <span class="support-contact-label">Email</span>
+                            <span class="support-contact-value">support@hawaa.in</span>
+                        </div>
+                    </div>
+                    <div class="support-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <div>
+                            <span class="support-contact-label">Support hours</span>
+                            <span class="support-contact-value">Mon – Sat, 10 AM – 6 PM IST</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
         <div class="footer-container">
+            <!-- Brand Info -->
             <div class="footer-brand">
                 <div class="footer-logo">
                     <span class="footer-logo-text">HAWAA</span>
@@ -237,6 +245,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Footer Links -->
             <div class="footer-links">
                 <div class="footer-links-column" data-footer-section>
                     <button class="footer-links-header">
@@ -246,11 +256,12 @@
                         </svg>
                     </button>
                     <ul class="footer-links-list">
-                        <li><a href="edge.html">Hawaa Edge</a></li>
+                        <li><a href="#">Hawaa Edge</a></li>
                         <li><a href="#">Replacement Filters</a></li>
                         <li><a href="#">Accessories</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links-column" data-footer-section>
                     <button class="footer-links-header">
                         <h4 class="footer-links-title">SUPPORT</h4>
@@ -265,6 +276,7 @@
                         <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links-column" data-footer-section>
                     <button class="footer-links-header">
                         <h4 class="footer-links-title">COMPANY</h4>
@@ -275,10 +287,11 @@
                     <ul class="footer-links-list">
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="#">Sustainability</a></li>
-                        <li><a href="blogs.html">Blog</a></li>
+                        <li><a href="#">Blog</a></li>
                         <li><a href="#">Press & Media</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links-column" data-footer-section>
                     <button class="footer-links-header">
                         <h4 class="footer-links-title">LEGAL</h4>
@@ -293,6 +306,8 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <div class="footer-social">
                     <a href="#" class="footer-social-link" aria-label="Facebook">
@@ -325,6 +340,6 @@
     </footer>
 
     <script src="js/nav.js"></script>
-    <script src="js/blog.js"></script>
+    <script src="js/support.js"></script>
 </body>
 </html>
