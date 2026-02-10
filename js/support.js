@@ -1,114 +1,119 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Elements
-    var segWarranty = document.getElementById('seg-warranty');
-    var segReturn = document.getElementById('seg-return');
-    var indicator = document.getElementById('segment-indicator');
-    var form = document.getElementById('support-form');
-    var submitBtn = document.getElementById('support-submit');
-    var successEl = document.getElementById('support-success');
-    var anotherBtn = document.getElementById('support-another');
-    var orderInput = document.getElementById('order-number');
-    var contactInput = document.getElementById('contact-info');
-    var stepTexts = document.querySelectorAll('.support-step-text');
+    // ========================================
+    // POLICY TABS
+    // ========================================
+    var tabs = document.querySelectorAll('.sp-tab');
+    var tabContents = {
+        'warranty': document.getElementById('tab-warranty'),
+        'returns': document.getElementById('tab-returns'),
+        'shipping': document.getElementById('tab-shipping')
+    };
 
-    var currentType = 'warranty';
+    for (var t = 0; t < tabs.length; t++) {
+        (function(tab) {
+            tab.addEventListener('click', function() {
+                var target = tab.getAttribute('data-tab');
 
-    // Segmented control
-    function setSegment(type) {
-        currentType = type;
+                // Update tab active state
+                for (var i = 0; i < tabs.length; i++) {
+                    tabs[i].classList.remove('active');
+                }
+                tab.classList.add('active');
 
-        if (type === 'warranty') {
-            segWarranty.classList.add('active');
-            segReturn.classList.remove('active');
-            indicator.classList.remove('right');
-            submitBtn.textContent = 'Request warranty support';
-        } else {
-            segReturn.classList.add('active');
-            segWarranty.classList.remove('active');
-            indicator.classList.add('right');
-            submitBtn.textContent = 'Request return / replacement';
-        }
-
-        // Update step texts
-        for (var i = 0; i < stepTexts.length; i++) {
-            var el = stepTexts[i];
-            if (type === 'warranty') {
-                el.textContent = el.getAttribute('data-warranty');
-            } else {
-                el.textContent = el.getAttribute('data-return');
-            }
-        }
+                // Show target content
+                for (var key in tabContents) {
+                    if (tabContents[key]) {
+                        tabContents[key].classList.remove('active');
+                    }
+                }
+                if (tabContents[target]) {
+                    tabContents[target].classList.add('active');
+                }
+            });
+        })(tabs[t]);
     }
 
-    segWarranty.addEventListener('click', function() {
-        setSegment('warranty');
-    });
+    // ========================================
+    // CONTACT FORM
+    // ========================================
+    var form = document.getElementById('sp-contact-form');
+    var submitBtn = document.getElementById('sp-submit');
+    var successEl = document.getElementById('sp-form-success');
+    var anotherBtn = document.getElementById('sp-send-another');
+    var nameInput = document.getElementById('sp-name');
+    var emailInput = document.getElementById('sp-email');
+    var messageInput = document.getElementById('sp-message');
 
-    segReturn.addEventListener('click', function() {
-        setSegment('return');
-    });
-
-    // Form validation and submit
     function clearErrors() {
-        orderInput.classList.remove('error');
-        contactInput.classList.remove('error');
+        nameInput.classList.remove('error');
+        emailInput.classList.remove('error');
+        messageInput.classList.remove('error');
     }
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        clearErrors();
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearErrors();
 
-        var orderVal = orderInput.value.trim();
-        var contactVal = contactInput.value.trim();
-        var hasError = false;
+            var nameVal = nameInput.value.trim();
+            var emailVal = emailInput.value.trim();
+            var messageVal = messageInput.value.trim();
+            var hasError = false;
 
-        if (!orderVal) {
-            orderInput.classList.add('error');
-            hasError = true;
-        }
+            if (!nameVal) {
+                nameInput.classList.add('error');
+                hasError = true;
+            }
+            if (!emailVal) {
+                emailInput.classList.add('error');
+                hasError = true;
+            }
+            if (!messageVal) {
+                messageInput.classList.add('error');
+                hasError = true;
+            }
 
-        if (!contactVal) {
-            contactInput.classList.add('error');
-            hasError = true;
-        }
+            if (hasError) return;
 
-        if (hasError) return;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
 
-        // Disable button during "submission"
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
+            setTimeout(function() {
+                form.style.display = 'none';
+                successEl.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }, 800);
+        });
+    }
 
-        // Simulate submission delay
-        setTimeout(function() {
-            form.style.display = 'none';
-            document.querySelector('.support-segment').style.display = 'none';
-            successEl.classList.remove('hidden');
-            submitBtn.disabled = false;
-        }, 800);
-    });
+    if (anotherBtn) {
+        anotherBtn.addEventListener('click', function() {
+            successEl.classList.add('hidden');
+            form.style.display = '';
+            nameInput.value = '';
+            emailInput.value = '';
+            messageInput.value = '';
+            clearErrors();
+        });
+    }
 
-    // "Submit another request" button
-    anotherBtn.addEventListener('click', function() {
-        successEl.classList.add('hidden');
-        form.style.display = '';
-        document.querySelector('.support-segment').style.display = '';
-        orderInput.value = '';
-        contactInput.value = '';
-        clearErrors();
-        setSegment('warranty');
-    });
+    // Remove error on focus
+    var inputs = [nameInput, emailInput, messageInput];
+    for (var j = 0; j < inputs.length; j++) {
+        (function(input) {
+            if (input) {
+                input.addEventListener('focus', function() {
+                    input.classList.remove('error');
+                });
+            }
+        })(inputs[j]);
+    }
 
-    // Remove error on input focus
-    orderInput.addEventListener('focus', function() {
-        orderInput.classList.remove('error');
-    });
-
-    contactInput.addEventListener('focus', function() {
-        contactInput.classList.remove('error');
-    });
-
-    // Footer mobile collapsible sections
+    // ========================================
+    // FOOTER MOBILE COLLAPSIBLE
+    // ========================================
     var sections = document.querySelectorAll('[data-footer-section]');
     for (var s = 0; s < sections.length; s++) {
         (function(section) {
