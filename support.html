@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hawaa product support — submit a warranty claim or request a return/replacement. Simple, fast, no login required.">
-    <meta name="keywords" content="Hawaa, support, warranty, returns, replacement, air purifier, Hawaa Edge">
+    <meta name="description" content="Hawaa product support — warranty policy, return &amp; refund policy, shipping information, and contact support for your Hawaa air purifier.">
+    <meta name="keywords" content="Hawaa, support, warranty, returns, refund, shipping, air purifier, Hawaa Edge">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Product Support - Hawaa">
-    <meta property="og:description" content="Submit a warranty claim or request a return/replacement for your Hawaa air purifier. Fast, simple support — no login required.">
+    <meta property="og:description" content="Warranty policy, return &amp; refund policy, shipping details, and support contact for your Hawaa air purifier.">
     <meta property="og:type" content="website">
 
     <title>Product Support - Hawaa</title>
@@ -51,7 +51,7 @@
         <div class="menu-panel-inner">
             <nav class="menu-nav">
                 <a href="edge.html" class="menu-nav-item">Hawaa Edge</a>
-                <a href="index.html#blogs" class="menu-nav-item">Blog</a>
+                <a href="blogs.html" class="menu-nav-item">Blog</a>
                 <a href="about.html" class="menu-nav-item">About Us</a>
             </nav>
         </div>
@@ -106,112 +106,248 @@
     </div>
 
     <!-- Support Page Content -->
-    <main class="support-main">
+    <main class="sp-main">
+        <div class="sp-container">
 
-        <!-- Hero Section -->
-        <section class="support-hero">
-            <h1 class="support-hero-title">We're here to help</h1>
-            <p class="support-hero-subtitle">Whether it's a warranty claim or a return request, we'll take care of it. No login, no long forms.</p>
-        </section>
-
-        <!-- Form Section -->
-        <section class="support-form-section">
-            <div class="support-card" id="support-card">
-
-                <!-- Segmented Control -->
-                <div class="support-segment">
-                    <button class="support-segment-btn active" data-type="warranty" id="seg-warranty">Warranty Claim</button>
-                    <button class="support-segment-btn" data-type="return" id="seg-return">Return / Replacement</button>
-                    <div class="support-segment-indicator" id="segment-indicator"></div>
-                </div>
-
-                <!-- Form -->
-                <form class="support-form" id="support-form" autocomplete="off" novalidate>
-                    <div class="support-field">
-                        <label class="support-label" for="order-number">Order Number</label>
-                        <input type="text" class="support-input" id="order-number" placeholder="e.g. HAW-100234" autocomplete="off">
-                    </div>
-                    <div class="support-field">
-                        <label class="support-label" for="contact-info">Email or Registered Mobile Number</label>
-                        <input type="text" class="support-input" id="contact-info" placeholder="you@email.com or 9876543210" autocomplete="off">
-                    </div>
-                    <button type="submit" class="support-submit" id="support-submit">Request warranty support</button>
-                </form>
-
-                <!-- Success State -->
-                <div class="support-success hidden" id="support-success">
-                    <div class="support-success-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 6L9 17l-5-5"/>
-                        </svg>
-                    </div>
-                    <h3 class="support-success-title">We've received your request</h3>
-                    <p class="support-success-text">Our support team will contact you within 24 hours via your registered email or phone number.</p>
-                    <button type="button" class="support-success-another" id="support-another">Submit another request</button>
-                </div>
-
+            <!-- Hero -->
+            <div class="sp-hero">
+                <h1 class="sp-title">Product support.</h1>
+                <p class="sp-subtitle">Warranty details, return policies, and ways to reach us &mdash; everything in one place.</p>
             </div>
-        </section>
 
-        <!-- What Happens Next -->
-        <section class="support-steps-section">
-            <h2 class="support-steps-title">What happens next</h2>
-            <div class="support-steps" id="support-steps">
-                <!-- Warranty steps (default) -->
-                <div class="support-step">
-                    <span class="support-step-number">1</span>
-                    <p class="support-step-text" data-warranty="We verify your order and warranty status." data-return="We verify your order and return eligibility.">We verify your order and warranty status.</p>
+            <!-- Policy Tabs -->
+            <div class="sp-tabs">
+                <button class="sp-tab active" data-tab="warranty">Warranty Policy</button>
+                <button class="sp-tab" data-tab="returns">Return &amp; Refund</button>
+                <button class="sp-tab" data-tab="shipping">Shipping &amp; Delivery</button>
+            </div>
+
+            <!-- Tab Content: Warranty Policy -->
+            <div class="sp-tab-content active" id="tab-warranty">
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Warranty coverage</h2>
+                    <p class="sp-policy-text">Every Hawaa Edge air purifier comes with a <strong>1-year PAN India warranty</strong> from the date of purchase. This warranty covers manufacturing defects in the motor, electronics, sensors, and body of the unit.</p>
                 </div>
-                <div class="support-step">
-                    <span class="support-step-number">2</span>
-                    <p class="support-step-text" data-warranty="Our team contacts you to diagnose the issue." data-return="Our team arranges a pickup from your address.">Our team contacts you to diagnose the issue.</p>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">What&rsquo;s covered</h2>
+                    <ul class="sp-policy-list">
+                        <li>Defects in the BLDC motor or fan assembly</li>
+                        <li>Malfunctioning air quality sensors or gesture sensor</li>
+                        <li>Electrical or circuit board failures</li>
+                        <li>Wi-Fi or smart connectivity issues caused by hardware</li>
+                        <li>Structural defects in the body or housing</li>
+                    </ul>
                 </div>
-                <div class="support-step">
-                    <span class="support-step-number">3</span>
-                    <p class="support-step-text" data-warranty="We repair or replace your unit — hassle-free." data-return="You receive your replacement or refund within 7 days.">We repair or replace your unit — hassle-free.</p>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">What&rsquo;s not covered</h2>
+                    <ul class="sp-policy-list">
+                        <li>Consumables such as HEPA filters and pre-filters</li>
+                        <li>Physical damage from drops, spills, or misuse</li>
+                        <li>Damage caused by voltage fluctuations or power surges</li>
+                        <li>Normal wear and tear or cosmetic damage</li>
+                        <li>Units purchased from unauthorised resellers</li>
+                    </ul>
+                </div>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">How to claim warranty</h2>
+                    <ol class="sp-policy-steps">
+                        <li>Contact our support team at <strong>support@hawaa.in</strong> or call <strong>+91 0000000000</strong> with your order number.</li>
+                        <li>Our team will diagnose the issue remotely via the Hawaa app or over a call.</li>
+                        <li>If a repair or replacement is needed, we&rsquo;ll arrange doorstep service in major metros or courier-based repair for other locations.</li>
+                        <li>Most warranty claims are resolved within <strong>5&ndash;7 business days</strong>.</li>
+                    </ol>
                 </div>
             </div>
-        </section>
 
-        <!-- Contact Support -->
-        <section class="support-contact-section">
-            <div class="support-contact-card">
-                <h2 class="support-contact-title">Need to talk to someone?</h2>
-                <div class="support-contact-items">
-                    <div class="support-contact-item">
+            <!-- Tab Content: Return & Refund Policy -->
+            <div class="sp-tab-content" id="tab-returns">
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Return window</h2>
+                    <p class="sp-policy-text">We offer a <strong>7-day return window</strong> from the date of delivery. The product must be unused, unopened, and in its original packaging with all accessories and documentation intact.</p>
+                </div>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Eligible for return</h2>
+                    <ul class="sp-policy-list">
+                        <li>Unused and unopened products in original packaging</li>
+                        <li>Products received with manufacturing defects</li>
+                        <li>Wrong product or model delivered</li>
+                        <li>Products damaged during shipping</li>
+                    </ul>
+                </div>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Not eligible for return</h2>
+                    <ul class="sp-policy-list">
+                        <li>Products used or opened beyond inspection</li>
+                        <li>Consumables such as replacement HEPA filters (unless defective)</li>
+                        <li>Products with removed or tampered serial numbers</li>
+                        <li>Return requests raised after the 7-day window</li>
+                    </ul>
+                </div>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Refund process</h2>
+                    <ol class="sp-policy-steps">
+                        <li>Email <strong>support@hawaa.in</strong> with your order number and reason for return.</li>
+                        <li>Our team will confirm eligibility and arrange a pickup from your address.</li>
+                        <li>Once we receive and inspect the product, we&rsquo;ll initiate the refund.</li>
+                        <li>Refunds are processed within <strong>7&ndash;10 business days</strong> to your original payment method.</li>
+                    </ol>
+                </div>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Replacement</h2>
+                    <p class="sp-policy-text">If you receive a defective unit, we&rsquo;ll arrange a <strong>free replacement</strong> at no additional cost. Replacement units are typically dispatched within 2&ndash;3 business days after pickup of the original unit.</p>
+                </div>
+            </div>
+
+            <!-- Tab Content: Shipping & Delivery -->
+            <div class="sp-tab-content" id="tab-shipping">
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Shipping coverage</h2>
+                    <p class="sp-policy-text">We currently ship across <strong>India only</strong>. All orders are shipped from our warehouse in Rajkot, Gujarat via trusted logistics partners.</p>
+                </div>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Processing time</h2>
+                    <p class="sp-policy-text">Orders are processed within <strong>1&ndash;2 business days</strong> from the date of order confirmation. Orders placed on weekends or public holidays are processed on the next business day.</p>
+                </div>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Delivery timelines</h2>
+                    <ul class="sp-policy-list">
+                        <li><strong>Metro cities</strong> (Delhi, Mumbai, Bangalore, Chennai, Hyderabad, Kolkata, Pune, Ahmedabad) &mdash; 3&ndash;5 business days</li>
+                        <li><strong>Tier 2 cities</strong> &mdash; 5&ndash;7 business days</li>
+                        <li><strong>Other locations</strong> &mdash; 7&ndash;10 business days</li>
+                    </ul>
+                    <p class="sp-policy-text sp-policy-note">Delivery timelines are estimates and may vary depending on your location and logistics conditions.</p>
+                </div>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Shipping charges</h2>
+                    <p class="sp-policy-text">We offer <strong>free shipping</strong> on all Hawaa Edge air purifier orders. Replacement filter and accessory orders above &#8377;499 also qualify for free shipping. A flat shipping charge of &#8377;49 applies to orders below &#8377;499.</p>
+                </div>
+
+                <div class="sp-policy-divider"></div>
+
+                <div class="sp-policy-section">
+                    <h2 class="sp-policy-heading">Order tracking</h2>
+                    <p class="sp-policy-text">Once your order ships, you&rsquo;ll receive tracking details via SMS and email. You can also track your order status through the Hawaa app or by contacting our support team.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Get in Touch Section -->
+    <section class="sp-contact">
+        <div class="sp-contact-container">
+            <div class="sp-contact-header">
+                <h2 class="sp-contact-title">Get in touch</h2>
+                <p class="sp-contact-label">Support</p>
+            </div>
+
+            <div class="sp-contact-grid">
+                <!-- Contact Form -->
+                <div class="sp-contact-form-wrap">
+                    <form class="sp-contact-form" id="sp-contact-form" novalidate>
+                        <div class="sp-field">
+                            <label class="sp-field-label" for="sp-name">Full Name</label>
+                            <input type="text" class="sp-input" id="sp-name" placeholder="Your full name" autocomplete="name">
+                        </div>
+                        <div class="sp-field">
+                            <label class="sp-field-label" for="sp-email">Email</label>
+                            <input type="email" class="sp-input" id="sp-email" placeholder="you@email.com" autocomplete="email">
+                        </div>
+                        <div class="sp-field">
+                            <label class="sp-field-label" for="sp-message">Message</label>
+                            <textarea class="sp-input sp-textarea" id="sp-message" placeholder="How can we help?" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="sp-submit" id="sp-submit">Send Message</button>
+                    </form>
+
+                    <!-- Success State -->
+                    <div class="sp-form-success hidden" id="sp-form-success">
+                        <div class="sp-success-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="sp-success-title">Message sent</h3>
+                        <p class="sp-success-text">Our support team will get back to you within 24 hours.</p>
+                        <button type="button" class="sp-success-another" id="sp-send-another">Send another message</button>
+                    </div>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="sp-contact-details">
+                    <div class="sp-contact-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
                         </svg>
                         <div>
-                            <span class="support-contact-label">Phone</span>
-                            <span class="support-contact-value">+91 0000000000</span>
+                            <p class="sp-detail-label">Phone</p>
+                            <p class="sp-detail-value">+91 0000000000</p>
                         </div>
                     </div>
-                    <div class="support-contact-item">
+                    <div class="sp-contact-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                             <polyline points="22,6 12,13 2,6"/>
                         </svg>
                         <div>
-                            <span class="support-contact-label">Email</span>
-                            <span class="support-contact-value">support@hawaa.in</span>
+                            <p class="sp-detail-label">Email</p>
+                            <p class="sp-detail-value">support@hawaa.in</p>
                         </div>
                     </div>
-                    <div class="support-contact-item">
+                    <div class="sp-contact-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <polyline points="12 6 12 12 16 14"/>
                         </svg>
                         <div>
-                            <span class="support-contact-label">Support hours</span>
-                            <span class="support-contact-value">Mon – Sat, 10 AM – 6 PM IST</span>
+                            <p class="sp-detail-label">Support hours</p>
+                            <p class="sp-detail-value">Mon &ndash; Sat, 10 AM &ndash; 6 PM IST</p>
+                        </div>
+                    </div>
+                    <div class="sp-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <div>
+                            <p class="sp-detail-label">Address</p>
+                            <p class="sp-detail-value">Royal Complex, Bhutkhana Chowk, Rajkot, 360001, Gujarat, India</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer" id="contact">
@@ -287,7 +423,7 @@
                     <ul class="footer-links-list">
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="#">Sustainability</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="blogs.html">Blog</a></li>
                         <li><a href="#">Press & Media</a></li>
                     </ul>
                 </div>
