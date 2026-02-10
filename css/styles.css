@@ -5903,11 +5903,11 @@ body.faq-page .header-profile-btn {
 }
 
 .bl-cat {
-    padding: 8px 18px;
-    background: #111827;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    padding: 10px 22px;
+    background: #f5f5f5;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
     font-family: 'Outfit', sans-serif;
     font-size: 0.85rem;
     font-weight: 500;
@@ -5918,16 +5918,18 @@ body.faq-page .header-profile-btn {
 }
 
 .bl-cat:hover {
-    background: #374151;
+    background: #ebebeb;
+    border-color: #d1d5db;
 }
 
 .bl-cat.active {
-    background: transparent;
+    background: white;
     color: #111827;
+    border-color: #111827;
 }
 
 .bl-cat.active:hover {
-    background: rgba(17, 24, 39, 0.05);
+    background: white;
 }
 
 /* Blog Listing Section */
