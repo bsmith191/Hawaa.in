@@ -112,11 +112,11 @@ body.support-page .header-profile-btn {
 }
 
 .sp-tab {
-    padding: 10px 20px;
-    background: #111827;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    padding: 10px 22px;
+    background: #f5f5f5;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
     font-family: 'Outfit', sans-serif;
     font-size: 0.85rem;
     font-weight: 500;
@@ -128,22 +128,24 @@ body.support-page .header-profile-btn {
 }
 
 .sp-tab:hover {
-    background: #374151;
+    background: #ebebeb;
+    border-color: #d1d5db;
 }
 
 .sp-tab.active {
-    background: transparent;
+    background: white;
     color: #111827;
+    border-color: #111827;
 }
 
 .sp-tab.active:hover {
-    background: rgba(17, 24, 39, 0.05);
+    background: white;
 }
 
 @media (min-width: 640px) {
     .sp-tab {
         font-size: 0.9rem;
-        padding: 10px 22px;
+        padding: 10px 24px;
     }
 }
 
