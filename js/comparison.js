@@ -5,13 +5,11 @@
 (function () {
     'use strict';
 
-    // ---- BRAND ORDER (matching provided comparison table) ----
+    // ---- BRAND ORDER ----
     var BRANDS = ['Hawaa Edge', 'Dyson', 'Coway', 'Xiaomi'];
-    var BRAND_KEYS = ['hawaa', 'dyson', 'coway', 'xiaomi'];
     var BRAND_COUNT = BRANDS.length;
 
     // ---- COMPARISON DATA ----
-    // Each row: { attr, best (brand index, -1 = no best), values: [{ specs, outcome }] }
     var CATEGORIES = [
         {
             name: 'Cleaning Performance',
@@ -20,20 +18,20 @@
                     attr: 'CADR Rating',
                     best: 0,
                     values: [
-                        { specs: '410 m³/h', outcome: 'Cleans a large room in under 10 min' },
-                        { specs: '370 m³/h', outcome: 'Good speed for medium rooms' },
-                        { specs: '370 m³/h', outcome: 'Good speed for medium rooms' },
-                        { specs: '400 m³/h', outcome: 'Fast cleaning for most rooms' }
+                        { specs: '410 m³/h' },
+                        { specs: '370 m³/h' },
+                        { specs: '370 m³/h' },
+                        { specs: '400 m³/h' }
                     ]
                 },
                 {
                     attr: 'Room coverage',
                     best: 0,
                     values: [
-                        { specs: 'Up to 500 sq ft', outcome: 'Covers large living rooms easily' },
-                        { specs: 'Up to 400 sq ft', outcome: 'Best for medium-sized rooms' },
-                        { specs: 'Up to 430 sq ft', outcome: 'Covers most bedrooms and halls' },
-                        { specs: 'Up to 480 sq ft', outcome: 'Covers large rooms' }
+                        { specs: 'Up to 500 sq ft' },
+                        { specs: 'Up to 400 sq ft' },
+                        { specs: 'Up to 430 sq ft' },
+                        { specs: 'Up to 480 sq ft' }
                     ]
                 }
             ]
@@ -45,20 +43,20 @@
                     attr: 'Noise level',
                     best: 0,
                     values: [
-                        { specs: '24 dB (sleep mode)', outcome: 'Quieter than a whisper — sleep-friendly' },
-                        { specs: '42 dB', outcome: 'Noticeable hum, may disturb light sleepers' },
-                        { specs: '42 dB', outcome: 'Noticeable hum, may disturb light sleepers' },
-                        { specs: '40 dB', outcome: 'Faint fan sound, acceptable for most' }
+                        { specs: '24 dB (sleep mode)' },
+                        { specs: '42 dB' },
+                        { specs: '42 dB' },
+                        { specs: '40 dB' }
                     ]
                 },
                 {
                     attr: 'Fan speed modes',
                     best: -1,
                     values: [
-                        { specs: '4 speeds + auto', outcome: 'Flexible control for day & night' },
-                        { specs: '10-speed airflow', outcome: 'Very granular speed control' },
-                        { specs: '3 speeds + auto', outcome: 'Standard speed options' },
-                        { specs: '3 speeds + auto', outcome: 'Standard speed options' }
+                        { specs: '4 speeds + auto' },
+                        { specs: '10-speed airflow' },
+                        { specs: '3 speeds + auto' },
+                        { specs: '3 speeds + auto' }
                     ]
                 }
             ]
@@ -70,30 +68,30 @@
                     attr: 'Filter type',
                     best: -1,
                     values: [
-                        { specs: 'H13 HEPA 3-in-1', outcome: 'Pre-filter + HEPA + carbon in one unit' },
-                        { specs: 'HEPA + carbon', outcome: 'Sealed filtration system' },
-                        { specs: 'HEPA + carbon', outcome: 'Multi-stage filtration' },
-                        { specs: 'H13 HEPA 3-in-1', outcome: 'Standard combo filter' }
+                        { specs: 'H13 HEPA 3-in-1' },
+                        { specs: 'HEPA + carbon' },
+                        { specs: 'HEPA + carbon' },
+                        { specs: 'H13 HEPA 3-in-1' }
                     ]
                 },
                 {
                     attr: 'Filter replacement cost',
                     best: 0,
                     values: [
-                        { specs: '₹1,499', outcome: 'Very affordable replacements' },
-                        { specs: '₹5,490', outcome: 'Expensive — adds up over time' },
-                        { specs: '₹5,400', outcome: 'Expensive — adds up over time' },
-                        { specs: '₹3,200', outcome: 'Moderate replacement cost' }
+                        { specs: '₹1,499' },
+                        { specs: '₹5,490' },
+                        { specs: '₹5,400' },
+                        { specs: '₹3,200' }
                     ]
                 },
                 {
                     attr: 'Filter life',
                     best: -1,
                     values: [
-                        { specs: '~12 months', outcome: 'Replace about once a year' },
-                        { specs: '~12 months', outcome: 'Replace about once a year' },
-                        { specs: '~12 months', outcome: 'Replace about once a year' },
-                        { specs: '6–12 months', outcome: 'Varies with pollution level' }
+                        { specs: '~12 months' },
+                        { specs: '~12 months' },
+                        { specs: '~12 months' },
+                        { specs: '6–12 months' }
                     ]
                 }
             ]
@@ -105,30 +103,30 @@
                     attr: 'Smart features',
                     best: 0,
                     values: [
-                        { specs: 'Gesture + voice control', outcome: 'Wave to control — no app needed' },
-                        { specs: 'App + voice control', outcome: 'App control with Alexa/Google' },
-                        { specs: 'None', outcome: 'No smart features available' },
-                        { specs: 'App + voice control', outcome: 'App control with Alexa/Google' }
+                        { specs: 'Gesture + voice control' },
+                        { specs: 'App + voice control' },
+                        { specs: 'None' },
+                        { specs: 'App + voice control' }
                     ]
                 },
                 {
                     attr: 'Real-time AQI display',
                     best: -1,
                     values: [
-                        { specs: 'Yes — PM2.5 numeric', outcome: 'See exact pollution level on device' },
-                        { specs: 'Yes — LCD display', outcome: 'Real-time air quality readout' },
-                        { specs: 'LED color indicator', outcome: 'Color hint, no exact number' },
-                        { specs: 'Yes — OLED display', outcome: 'Real-time readout with graphs' }
+                        { specs: 'Yes — PM2.5 numeric' },
+                        { specs: 'Yes — LCD display' },
+                        { specs: 'LED color indicator' },
+                        { specs: 'Yes — OLED display' }
                     ]
                 },
                 {
                     attr: 'Auto mode',
                     best: -1,
                     values: [
-                        { specs: 'Yes — laser sensor', outcome: 'Reacts to cooking smoke in seconds' },
-                        { specs: 'Yes — sensor-based', outcome: 'Auto adjusts based on air quality' },
-                        { specs: 'Yes — sensor-based', outcome: 'Auto adjusts based on air quality' },
-                        { specs: 'Yes — sensor-based', outcome: 'Auto adjusts based on air quality' }
+                        { specs: 'Yes — laser sensor' },
+                        { specs: 'Yes — sensor-based' },
+                        { specs: 'Yes — sensor-based' },
+                        { specs: 'Yes — sensor-based' }
                     ]
                 }
             ]
@@ -140,20 +138,20 @@
                     attr: 'Price',
                     best: 0,
                     values: [
-                        { specs: 'Best Value', outcome: 'Best performance per rupee spent' },
-                        { specs: '₹41,900', outcome: 'Premium price — 7x more expensive' },
-                        { specs: '₹28,900', outcome: 'High-end pricing' },
-                        { specs: '₹11,499', outcome: 'Budget-friendly entry point' }
+                        { specs: 'Best Value' },
+                        { specs: '₹41,900' },
+                        { specs: '₹28,900' },
+                        { specs: '₹11,499' }
                     ]
                 },
                 {
                     attr: 'Subscription option',
                     best: 0,
                     values: [
-                        { specs: 'Yes — auto filter delivery', outcome: 'Never forget a filter change' },
-                        { specs: 'No', outcome: 'Manual reorder each time' },
-                        { specs: 'No', outcome: 'Manual reorder each time' },
-                        { specs: 'No', outcome: 'Manual reorder each time' }
+                        { specs: 'Yes — auto filter delivery' },
+                        { specs: 'No' },
+                        { specs: 'No' },
+                        { specs: 'No' }
                     ]
                 }
             ]
@@ -165,51 +163,90 @@
                     attr: 'Warranty coverage',
                     best: 0,
                     values: [
-                        { specs: '2 years', outcome: '2 years of full coverage' },
-                        { specs: '1 year', outcome: '1 year standard warranty' },
-                        { specs: '1 year', outcome: '1 year standard warranty' },
-                        { specs: '2 years', outcome: '2 years coverage' }
+                        { specs: '2 years' },
+                        { specs: '1 year' },
+                        { specs: '1 year' },
+                        { specs: '2 years' }
                     ]
                 },
                 {
                     attr: 'Support type',
                     best: 0,
                     values: [
-                        { specs: 'Direct brand support', outcome: 'Talk directly to Hawaa — no middlemen' },
-                        { specs: 'Service centers', outcome: 'Limited authorized service locations' },
-                        { specs: 'Service centers', outcome: 'Service centers in select cities' },
-                        { specs: 'Service centers', outcome: 'Service centers in metro cities' }
+                        { specs: 'Direct brand support' },
+                        { specs: 'Service centers' },
+                        { specs: 'Service centers' },
+                        { specs: 'Service centers' }
                     ]
                 },
                 {
                     attr: 'PAN India service',
                     best: 0,
                     values: [
-                        { specs: 'Yes', outcome: 'Support across India, no pin-code limits' },
-                        { specs: 'Limited', outcome: 'Major cities only' },
-                        { specs: 'Limited', outcome: 'Select cities with service presence' },
-                        { specs: 'Yes', outcome: 'Wide service network via Xiaomi stores' }
+                        { specs: 'Yes' },
+                        { specs: 'Limited' },
+                        { specs: 'Limited' },
+                        { specs: 'Yes' }
                     ]
                 }
             ]
         }
     ];
 
+    // ---- LAB REPORTS DATA ----
+    var LAB_DATA = {
+        filtration: {
+            label: 'PARTICLE FILTRATION TEST',
+            title: 'H13 HEPA Particle Filtration',
+            desc: 'H13 HEPA filter tested for PM2.5 and PM10 removal efficiency under controlled lab conditions. The filter captures particles as small as 0.3 microns with certified efficiency.',
+            stats: [
+                { value: '>99.95%', label: 'Filtration efficiency for 0.3μm particles' },
+                { value: '99.97%', label: 'PM2.5 removal rate in 30 minutes' },
+                { value: 'H13', label: 'HEPA grade certification' }
+            ]
+        },
+        cadr: {
+            label: 'AIRFLOW & CADR TEST',
+            title: 'Clean Air Delivery Rate',
+            desc: 'Clean Air Delivery Rate measured across all fan speeds, validating room coverage claims. Testing performed in a sealed chamber following industry-standard protocols.',
+            stats: [
+                { value: '410 m³/h', label: 'Maximum CADR at highest fan speed' },
+                { value: '500 sq ft', label: 'Effective room coverage verified' },
+                { value: '<10 min', label: 'Full room air cycle time' }
+            ]
+        },
+        noise: {
+            label: 'NOISE LEVEL TEST',
+            title: 'Acoustic Performance',
+            desc: 'Decibel levels measured at sleep mode and maximum speed from 1 metre distance in an anechoic chamber. Verified to be quieter than ambient room noise.',
+            stats: [
+                { value: '24 dB', label: 'Sleep mode noise level (whisper-quiet)' },
+                { value: '52 dB', label: 'Maximum speed noise level' },
+                { value: '1 metre', label: 'Standard measurement distance' }
+            ]
+        },
+        energy: {
+            label: 'ENERGY CONSUMPTION TEST',
+            title: 'Power Efficiency',
+            desc: 'Power draw measured across all fan speeds to verify energy efficiency claims. Designed to run 24/7 without a noticeable impact on your electricity bill.',
+            stats: [
+                { value: '45W', label: 'Maximum power consumption' },
+                { value: '7W', label: 'Sleep mode power draw' },
+                { value: '~₹2/day', label: 'Estimated daily running cost' }
+            ]
+        }
+    };
+
     // ---- SVG TEMPLATES ----
     var SVG_YES = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
     var SVG_NO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
 
-    // ---- STATE ----
-    var showDiffOnly = false;
-    var showOutcomes = false;
-
     // ---- DOM REFS ----
     var progressBar = document.getElementById('cmp-progress');
     var progressFill = document.getElementById('cmp-progress-fill');
-    var toggleDiff = document.getElementById('toggle-diff');
-    var toggleView = document.getElementById('toggle-view');
 
     // ---- RENDER TABLES ----
+    // All brands in same row, Hawaa sticky on mobile
     function renderTables() {
         var tableEls = document.querySelectorAll('.cmp-table');
         tableEls.forEach(function (el) {
@@ -218,7 +255,6 @@
             if (!cat) return;
             el.innerHTML = buildCategoryTable(cat);
         });
-        applyDiffFilter();
     }
 
     function buildCategoryTable(cat) {
@@ -235,7 +271,7 @@
         });
         html += '</div>';
 
-        // Data rows
+        // Data rows — all brands in same container
         cat.rows.forEach(function (row) {
             var allSame = row.values.every(function (v) {
                 return v.specs === row.values[0].specs;
@@ -243,33 +279,23 @@
 
             html += '<div class="cmp-table-row' + (allSame ? ' all-same' : '') + '">';
 
-            // Attribute label (sticky left on mobile + desktop)
+            // Attribute label
             html += '<div class="cmp-row-attr">' + row.attr + '</div>';
 
-            // Hawaa cell (sticky on mobile)
-            var hawaaVal = row.values[0];
-            var hawaaBest = row.best === 0;
-            var hawaaDisplay = showOutcomes ? hawaaVal.outcome : hawaaVal.specs;
-            var hawaaCellContent = formatCellContent(hawaaVal, hawaaDisplay);
-            html += '<div class="cmp-row-cell is-hawaa' + (hawaaBest ? ' is-best' : '') + '">';
-            html += '<span class="cmp-cell-brand">' + BRANDS[0] + '</span>';
-            html += '<span class="cmp-cell-value">' + hawaaCellContent + '</span>';
-            html += '</div>';
-
-            // Other brand cells (scrollable on mobile)
-            html += '<div class="cmp-row-scroll">';
-            for (var i = 1; i < BRAND_COUNT; i++) {
+            // All brand cells in one scrollable container
+            html += '<div class="cmp-row-brands">';
+            for (var i = 0; i < BRAND_COUNT; i++) {
                 var v = row.values[i];
                 var isBest = row.best === i;
-                var displayVal = showOutcomes ? v.outcome : v.specs;
-                var cellContent = formatCellContent(v, displayVal);
+                var isHawaa = i === 0;
+                var cellContent = formatCellContent(v);
 
-                html += '<div class="cmp-row-cell' + (isBest ? ' is-best' : '') + '">';
+                html += '<div class="cmp-row-cell' + (isHawaa ? ' is-hawaa' : '') + (isBest ? ' is-best' : '') + '">';
                 html += '<span class="cmp-cell-brand">' + BRANDS[i] + '</span>';
                 html += '<span class="cmp-cell-value">' + cellContent + '</span>';
                 html += '</div>';
             }
-            html += '</div>'; // scroll
+            html += '</div>'; // brands
 
             html += '</div>'; // row
         });
@@ -277,27 +303,17 @@
         return html;
     }
 
-    function formatCellContent(v, displayVal) {
-        if (v.specs === 'Yes' && !showOutcomes) {
-            return '<span class="cmp-cell-yes">' + SVG_YES + ' Yes</span>';
-        } else if (v.specs === 'No' && !showOutcomes) {
+    function formatCellContent(v) {
+        if (v.specs === 'Yes' || v.specs.indexOf('Yes') === 0) {
+            return '<span class="cmp-cell-yes">' + SVG_YES + ' ' + v.specs + '</span>';
+        } else if (v.specs === 'No') {
             return '<span class="cmp-cell-no">' + SVG_NO + ' No</span>';
-        } else if (v.specs === 'None' && !showOutcomes) {
+        } else if (v.specs === 'None') {
             return '<span class="cmp-cell-no">' + SVG_NO + ' None</span>';
+        } else if (v.specs === 'Limited') {
+            return '<span class="cmp-cell-no">' + SVG_NO + ' Limited</span>';
         }
-        return displayVal;
-    }
-
-    // ---- DIFF FILTER ----
-    function applyDiffFilter() {
-        var rows = document.querySelectorAll('.cmp-table-row');
-        rows.forEach(function (row) {
-            if (showDiffOnly && row.classList.contains('all-same')) {
-                row.classList.add('diff-hidden');
-            } else {
-                row.classList.remove('diff-hidden');
-            }
-        });
+        return v.specs;
     }
 
     // ---- SCROLL PROGRESS ----
@@ -351,28 +367,138 @@
         });
     }
 
-    // ---- TOGGLE HANDLERS ----
-    function initToggles() {
-        if (toggleDiff) {
-            toggleDiff.addEventListener('change', function () {
-                showDiffOnly = this.checked;
-                applyDiffFilter();
-            });
+    // ---- KEY DIFF SLIDER ----
+    function initKeydiffSlider() {
+        var slider = document.getElementById('keydiff-slider');
+        var prevBtn = document.getElementById('keydiff-prev');
+        var nextBtn = document.getElementById('keydiff-next');
+        var progressBarEl = document.getElementById('keydiff-progress-bar');
+
+        if (!slider) return;
+
+        function updateProgress() {
+            if (!progressBarEl) return;
+            var maxScroll = slider.scrollWidth - slider.clientWidth;
+            if (maxScroll <= 0) {
+                progressBarEl.style.width = '100%';
+                return;
+            }
+            var scrollPercent = slider.scrollLeft / maxScroll;
+            var progressWidth = 16 + (scrollPercent * 84);
+            progressBarEl.style.width = progressWidth + '%';
         }
 
-        if (toggleView) {
-            toggleView.addEventListener('change', function () {
-                showOutcomes = this.checked;
-                renderTables();
-            });
+        function scrollSlider(direction) {
+            var cards = slider.querySelectorAll('.cmp-keydiff-card');
+            if (!cards.length) return;
+            var cardWidth = cards[0].offsetWidth + 16;
+            var maxScroll = slider.scrollWidth - slider.clientWidth;
+            var newScrollLeft = slider.scrollLeft + (direction * cardWidth);
+            newScrollLeft = Math.max(0, Math.min(newScrollLeft, maxScroll));
+            slider.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
         }
+
+        if (prevBtn) prevBtn.addEventListener('click', function () { scrollSlider(-1); });
+        if (nextBtn) nextBtn.addEventListener('click', function () { scrollSlider(1); });
+        slider.addEventListener('scroll', updateProgress);
+        updateProgress();
+    }
+
+    // ---- LAB REPORTS SLIDER ----
+    function initLabSlider() {
+        var slider = document.getElementById('lab-slider');
+        var prevBtn = document.getElementById('lab-prev');
+        var nextBtn = document.getElementById('lab-next');
+        var progressBarEl = document.getElementById('lab-progress-bar');
+
+        if (!slider) return;
+
+        function updateProgress() {
+            if (!progressBarEl) return;
+            var maxScroll = slider.scrollWidth - slider.clientWidth;
+            if (maxScroll <= 0) {
+                progressBarEl.style.width = '100%';
+                return;
+            }
+            var scrollPercent = slider.scrollLeft / maxScroll;
+            var progressWidth = 25 + (scrollPercent * 75);
+            progressBarEl.style.width = progressWidth + '%';
+        }
+
+        function scrollSlider(direction) {
+            var cards = slider.querySelectorAll('.cmp-lab-card');
+            if (!cards.length) return;
+            var cardWidth = cards[0].offsetWidth + 16;
+            var maxScroll = slider.scrollWidth - slider.clientWidth;
+            var newScrollLeft = slider.scrollLeft + (direction * cardWidth);
+            newScrollLeft = Math.max(0, Math.min(newScrollLeft, maxScroll));
+            slider.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', function () { scrollSlider(-1); });
+        if (nextBtn) nextBtn.addEventListener('click', function () { scrollSlider(1); });
+        slider.addEventListener('scroll', updateProgress);
+        updateProgress();
+    }
+
+    // ---- LAB REPORT EXPAND/COLLAPSE ----
+    function initLabExpand() {
+        var overlay = document.getElementById('cmp-lab-overlay');
+        var closeBtn = document.getElementById('cmp-lab-close');
+        var labelEl = document.getElementById('cmp-lab-expanded-label');
+        var titleEl = document.getElementById('cmp-lab-expanded-title');
+        var descEl = document.getElementById('cmp-lab-expanded-desc');
+        var statsEl = document.getElementById('cmp-lab-expanded-stats');
+        var imageEl = document.getElementById('cmp-lab-expanded-image');
+
+        if (!overlay) return;
+
+        // Expand buttons
+        document.querySelectorAll('.cmp-lab-expand-btn').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var labKey = btn.getAttribute('data-lab-expand');
+                var data = LAB_DATA[labKey];
+                if (!data) return;
+
+                labelEl.textContent = data.label;
+                titleEl.textContent = data.title;
+                descEl.textContent = data.desc;
+
+                // Render stats
+                var statsHtml = '';
+                data.stats.forEach(function (stat) {
+                    statsHtml += '<div class="cmp-lab-expanded-stat">';
+                    statsHtml += '<span class="cmp-lab-expanded-stat-value">' + stat.value + '</span>';
+                    statsHtml += '<span class="cmp-lab-expanded-stat-label">' + stat.label + '</span>';
+                    statsHtml += '</div>';
+                });
+                statsEl.innerHTML = statsHtml;
+
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeOverlay() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) closeOverlay();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) closeOverlay();
+        });
     }
 
     // ---- MOBILE SWIPE EDGE DETECTION ----
     function initSwipeEdge() {
         document.addEventListener('scroll', function (e) {
             var el = e.target;
-            if (!el.classList || !el.classList.contains('cmp-row-scroll')) return;
+            if (!el.classList || !el.classList.contains('cmp-row-brands')) return;
             var wrap = el.closest('.cmp-table-wrap');
             if (!wrap) return;
             var atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
@@ -380,13 +506,12 @@
         }, true);
     }
 
-    // ---- HEADER SCROLL CLASS (for this page — always apply .scrolled) ----
+    // ---- HEADER — always scrolled + sticky ----
     function updateHeader() {
         var header = document.getElementById('header');
         if (!header) return;
-        if (window.scrollY > 10) {
-            header.classList.add('scrolled');
-        }
+        // Always keep the header in scrolled (white bg) state on comparison page
+        header.classList.add('scrolled');
     }
 
     // ---- SCROLL LISTENER ----
@@ -405,9 +530,11 @@
     // ---- INIT ----
     function init() {
         renderTables();
-        initToggles();
         initProgressClicks();
         initSwipeEdge();
+        initKeydiffSlider();
+        initLabSlider();
+        initLabExpand();
 
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
