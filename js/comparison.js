@@ -441,50 +441,95 @@
         updateProgress();
     }
 
-    // ---- LAB REPORT EXPAND/COLLAPSE ----
+    // ---- LAB REPORT EXPAND (matches home page feature popup) ----
+    var LAB_KEYS = ['filtration', 'cadr', 'noise', 'energy'];
+    var currentLabCard = 0;
+
     function initLabExpand() {
         var overlay = document.getElementById('cmp-lab-overlay');
         var closeBtn = document.getElementById('cmp-lab-close');
-        var labelEl = document.getElementById('cmp-lab-expanded-label');
+        var tagEl = document.getElementById('cmp-lab-expanded-tag');
         var titleEl = document.getElementById('cmp-lab-expanded-title');
         var descEl = document.getElementById('cmp-lab-expanded-desc');
         var statsEl = document.getElementById('cmp-lab-expanded-stats');
         var imageEl = document.getElementById('cmp-lab-expanded-image');
+        var prevBtn = document.getElementById('cmp-lab-prev-expanded');
+        var nextBtn = document.getElementById('cmp-lab-next-expanded');
 
         if (!overlay) return;
 
-        // Expand buttons
-        document.querySelectorAll('.cmp-lab-expand-btn').forEach(function (btn) {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                var labKey = btn.getAttribute('data-lab-expand');
-                var data = LAB_DATA[labKey];
-                if (!data) return;
+        function openLabExpanded(index) {
+            var labKey = LAB_KEYS[index];
+            var data = LAB_DATA[labKey];
+            if (!data) return;
 
-                labelEl.textContent = data.label;
-                titleEl.textContent = data.title;
-                descEl.textContent = data.desc;
+            currentLabCard = index;
 
-                // Render stats
-                var statsHtml = '';
-                data.stats.forEach(function (stat) {
-                    statsHtml += '<div class="cmp-lab-expanded-stat">';
-                    statsHtml += '<span class="cmp-lab-expanded-stat-value">' + stat.value + '</span>';
-                    statsHtml += '<span class="cmp-lab-expanded-stat-label">' + stat.label + '</span>';
-                    statsHtml += '</div>';
-                });
-                statsEl.innerHTML = statsHtml;
+            // Get the tag icon from the card
+            var card = document.querySelector('.cmp-lab-card[data-lab="' + labKey + '"]');
+            var tagHtml = '';
+            if (card) {
+                var tagSvg = card.querySelector('.cmp-lab-tag svg');
+                var tagSpan = card.querySelector('.cmp-lab-tag span');
+                if (tagSvg) tagHtml += tagSvg.outerHTML;
+                if (tagSpan) tagHtml += tagSpan.outerHTML;
+            }
+            tagEl.innerHTML = tagHtml;
 
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
+            titleEl.textContent = data.title;
+            descEl.textContent = data.desc;
+
+            // Set image gradient from card
+            if (card) {
+                var cardImage = card.querySelector('.cmp-lab-card-image');
+                if (cardImage) {
+                    var gradient = getComputedStyle(cardImage).getPropertyValue('background');
+                    imageEl.style.background = gradient;
+                }
+            }
+
+            // Render stats in testimonial-style box
+            var statsHtml = '';
+            data.stats.forEach(function (stat) {
+                statsHtml += '<p class="testimonial-name">' + stat.value + '</p>';
+                statsHtml += '<p class="testimonial-label" style="margin-bottom: 12px;">' + stat.label + '</p>';
             });
-        });
+            statsEl.innerHTML = statsHtml;
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
         function closeOverlay() {
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         }
 
+        // Expand buttons on cards
+        document.querySelectorAll('.cmp-lab-expand-btn').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var labKey = btn.getAttribute('data-lab-expand');
+                var index = LAB_KEYS.indexOf(labKey);
+                if (index >= 0) openLabExpanded(index);
+            });
+        });
+
+        // Navigation arrows
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function () {
+                var newIndex = currentLabCard > 0 ? currentLabCard - 1 : LAB_KEYS.length - 1;
+                openLabExpanded(newIndex);
+            });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function () {
+                var newIndex = currentLabCard < LAB_KEYS.length - 1 ? currentLabCard + 1 : 0;
+                openLabExpanded(newIndex);
+            });
+        }
+
+        // Close handlers
         if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
         overlay.addEventListener('click', function (e) {
             if (e.target === overlay) closeOverlay();
@@ -506,12 +551,15 @@
         }, true);
     }
 
-    // ---- HEADER — always scrolled + sticky ----
+    // ---- HEADER SCROLL EFFECT (transparent → fixed, like blog page) ----
     function updateHeader() {
         var header = document.getElementById('header');
         if (!header) return;
-        // Always keep the header in scrolled (white bg) state on comparison page
-        header.classList.add('scrolled');
+        if (window.scrollY > 80) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     }
 
     // ---- SCROLL LISTENER ----
@@ -539,9 +587,8 @@
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
 
-        // Force header to scrolled state on this page (dark hero)
-        var header = document.getElementById('header');
-        if (header) header.classList.add('scrolled');
+        // Run header scroll check on load
+        updateHeader();
     }
 
     if (document.readyState === 'loading') {
