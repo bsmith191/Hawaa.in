@@ -1078,6 +1078,73 @@
 }
 
 
+/* Lab Controls */
+.cmp-lab-controls {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+@media (min-width: 640px) {
+    .cmp-lab-controls {
+        margin-top: 40px;
+    }
+}
+
+.cmp-lab-progress {
+    flex: 1;
+    height: 2px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.cmp-lab-progress-bar {
+    height: 100%;
+    width: 25%;
+    background: #111827;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.cmp-lab-arrows {
+    display: flex;
+    gap: 8px;
+}
+
+.cmp-lab-arrow {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.cmp-lab-arrow:hover {
+    background: #111827;
+    border-color: #111827;
+}
+
+.cmp-lab-arrow:hover svg {
+    color: white;
+}
+
+.cmp-lab-arrow svg {
+    width: 20px;
+    height: 20px;
+    color: #374151;
+    transition: color 0.2s ease;
+}
+
 .cmp-lab-disclaimer {
     margin-top: 28px;
     font-size: 0.75rem;
