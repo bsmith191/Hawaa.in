@@ -18,7 +18,6 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 60%, #111827 100%);
-    opacity: 1;
 }
 
 .cmp-hero-bg::after {
@@ -33,7 +32,7 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 120px 16px 60px;
+    padding: 120px 16px 80px;
     max-width: 720px;
     margin: 0 auto;
 }
@@ -76,7 +75,6 @@
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 40px;
 }
 
 .cmp-cta-primary {
@@ -126,57 +124,20 @@
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Hero product visual */
-.cmp-hero-visual {
-    display: flex;
-    justify-content: center;
+/* Scroll hint at bottom of hero */
+.cmp-hero-scroll-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.35);
+    animation: cmp-bounce 2s ease-in-out infinite;
 }
 
-.cmp-hero-product {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 12px 16px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-}
-
-.cmp-hero-product-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.cmp-hero-product-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.cmp-hero-product-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    text-align: left;
-}
-
-.cmp-hero-product-name {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: white;
-    text-transform: uppercase;
-}
-
-.cmp-hero-product-price {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 400;
+@keyframes cmp-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
 }
 
 @media (min-width: 768px) {
@@ -189,87 +150,24 @@
     }
 
     .cmp-hero-content {
-        padding: 160px 24px 80px;
+        padding: 160px 24px 100px;
     }
 }
 
-/* ---- STICKY COMPARE BAR ---- */
-.cmp-sticky-bar {
-    position: sticky;
-    top: 0;
-    z-index: 90;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    pointer-events: none;
-}
-
-.cmp-sticky-bar.visible {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.cmp-sticky-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-}
-
-.cmp-sticky-brands {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    flex-shrink: 1;
-    min-width: 0;
-}
-
-.cmp-sticky-brands::-webkit-scrollbar {
-    display: none;
-}
-
-.cmp-brand-chip {
-    flex-shrink: 0;
-    padding: 6px 14px;
-    border: 1px solid #e5e7eb;
-    border-radius: 9999px;
+/* ---- COMPARE CONTROLS (inline bar below hero) ---- */
+.cmp-controls {
     background: white;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #6b7280;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 12px 16px;
 }
 
-.cmp-brand-chip:hover {
-    border-color: #d1d5db;
-    color: #111827;
-}
-
-.cmp-brand-chip.active {
-    background: #111827;
-    border-color: #111827;
-    color: white;
-}
-
-.cmp-sticky-controls {
-    display: none;
+.cmp-controls-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
     align-items: center;
-    gap: 16px;
-    flex-shrink: 0;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .cmp-toggle {
@@ -322,29 +220,9 @@
     white-space: nowrap;
 }
 
-.cmp-back-top {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: #9ca3af;
-    text-decoration: none;
-    transition: color 0.2s ease;
-    white-space: nowrap;
-}
-
-.cmp-back-top:hover {
-    color: #111827;
-}
-
 @media (min-width: 768px) {
-    .cmp-sticky-inner {
-        padding: 12px 24px;
-    }
-
-    .cmp-sticky-controls {
-        display: flex;
+    .cmp-controls {
+        padding: 14px 24px;
     }
 }
 
@@ -461,7 +339,7 @@
 /* ---- SCROLL PROGRESS INDICATOR ---- */
 .cmp-progress {
     position: sticky;
-    top: 0;
+    top: 64px;
     z-index: 85;
     background: white;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
@@ -477,14 +355,9 @@
     pointer-events: auto;
 }
 
-/* When sticky bar is also visible, progress sits below it */
-.cmp-sticky-bar.visible ~ .cmp-progress.visible {
-    top: 52px;
-}
-
-@media (min-width: 768px) {
-    .cmp-sticky-bar.visible ~ .cmp-progress.visible {
-        top: 56px;
+@media (min-width: 640px) {
+    .cmp-progress {
+        top: 80px;
     }
 }
 
@@ -623,7 +496,7 @@
 
     .cmp-category-context {
         position: sticky;
-        top: 130px;
+        top: 160px;
         margin-bottom: 0;
     }
 
@@ -645,14 +518,14 @@
     overflow: hidden;
 }
 
-/* Swipe gradient cues (mobile only) */
+/* Swipe gradient cue on right edge (mobile) */
 .cmp-table-wrap::after {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
-    width: 32px;
+    width: 28px;
     background: linear-gradient(to left, rgba(249, 250, 251, 0.95), transparent);
     pointer-events: none;
     z-index: 5;
@@ -670,7 +543,7 @@
     }
 }
 
-/* Mobile swipe arrow cue */
+/* Swipe cue text */
 .cmp-swipe-cue {
     display: flex;
     align-items: center;
@@ -700,14 +573,17 @@
 /* Table structure */
 .cmp-table {
     width: 100%;
-    overflow: visible;
 }
 
 .cmp-table-header {
     display: none;
 }
 
-/* Mobile: card-style layout */
+/* ==============================
+   MOBILE TABLE LAYOUT
+   Hawaa column is STICKY (not scrollable)
+   Other brands scroll horizontally
+============================== */
 .cmp-table-row {
     display: grid;
     grid-template-columns: 1fr;
@@ -723,36 +599,47 @@
     display: none;
 }
 
+/* Attribute label */
 .cmp-row-attr {
-    padding: 12px 16px 4px;
-    font-size: 0.75rem;
+    padding: 12px 12px 2px;
+    font-size: 0.7rem;
     font-weight: 600;
-    color: #111827;
+    color: #9ca3af;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
-.cmp-row-cells {
+/* Hawaa cell — always visible, not inside scroll */
+.cmp-row-cell.is-hawaa {
+    padding: 6px 12px 4px;
+}
+
+/* Scrollable competitor cells */
+.cmp-row-scroll {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 0 0 12px;
+    padding: 0 0 10px;
 }
 
-.cmp-row-cells::-webkit-scrollbar {
+.cmp-row-scroll::-webkit-scrollbar {
     display: none;
 }
 
 .cmp-row-cell {
-    flex: 0 0 50%;
-    min-width: 0;
-    scroll-snap-align: start;
-    padding: 8px 16px;
     display: flex;
     flex-direction: column;
     gap: 2px;
+}
+
+/* Competitor cells inside scroll */
+.cmp-row-scroll .cmp-row-cell {
+    flex: 0 0 45%;
+    min-width: 0;
+    scroll-snap-align: start;
+    padding: 6px 12px 4px;
 }
 
 .cmp-cell-brand {
@@ -773,14 +660,14 @@
     color: #0891b2;
 }
 
-.cmp-row-cell.is-best .cmp-cell-value {
+.cmp-row-cell.is-hawaa .cmp-cell-value {
     color: #111827;
     font-weight: 600;
 }
 
-.cmp-row-cell.is-best::before {
-    content: '';
-    display: none;
+.cmp-row-cell.is-best .cmp-cell-value {
+    color: #111827;
+    font-weight: 600;
 }
 
 /* Yes/No icons */
@@ -803,13 +690,16 @@
     color: #d1d5db;
 }
 
-/* Desktop: proper table layout */
+/* ==============================
+   DESKTOP TABLE LAYOUT
+   Proper grid columns
+============================== */
 @media (min-width: 768px) {
     .cmp-table-header {
         display: grid;
-        grid-template-columns: 180px repeat(6, 1fr);
+        grid-template-columns: 180px repeat(4, 1fr);
         position: sticky;
-        top: 108px;
+        top: 128px;
         z-index: 10;
         background: rgba(249, 250, 251, 0.97);
         backdrop-filter: blur(8px);
@@ -838,7 +728,8 @@
     }
 
     .cmp-table-row {
-        grid-template-columns: 180px repeat(6, 1fr);
+        display: grid;
+        grid-template-columns: 180px repeat(4, 1fr);
         border-radius: 0;
         margin-bottom: 0;
         border: none;
@@ -862,16 +753,26 @@
         text-transform: none;
         font-size: 0.8rem;
         font-weight: 500;
+        color: #111827;
         letter-spacing: 0;
     }
 
-    .cmp-row-cells {
-        display: contents;
-        overflow: visible;
-        padding: 0;
+    /* Hawaa cell — part of the grid */
+    .cmp-row-cell.is-hawaa {
+        padding: 14px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        background: rgba(8, 145, 178, 0.04);
     }
 
-    .cmp-row-cell {
+    /* Scroll container becomes grid contents on desktop */
+    .cmp-row-scroll {
+        display: contents;
+        overflow: visible;
+    }
+
+    .cmp-row-scroll .cmp-row-cell {
         flex: none;
         padding: 14px;
         text-align: center;
@@ -887,17 +788,12 @@
         font-size: 0.8rem;
     }
 
-    .cmp-row-cell.is-hawaa {
-        background: rgba(8, 145, 178, 0.04);
-    }
-
     .cmp-row-cell.is-best {
         position: relative;
     }
 
-    .cmp-row-cell.is-best::before {
+    .cmp-row-cell.is-best::after {
         content: '';
-        display: block;
         position: absolute;
         bottom: 4px;
         left: 50%;
@@ -909,75 +805,131 @@
     }
 }
 
+@media (min-width: 640px) {
+    .cmp-table-header {
+        top: 128px;
+    }
+}
+
 @media (min-width: 1024px) {
     .cmp-table-header {
-        grid-template-columns: 200px repeat(6, 1fr);
+        grid-template-columns: 200px repeat(4, 1fr);
     }
 
     .cmp-table-row {
-        grid-template-columns: 200px repeat(6, 1fr);
+        grid-template-columns: 200px repeat(4, 1fr);
     }
 }
 
-/* ---- MOBILE BRAND SELECTOR ---- */
-.cmp-mobile-selector {
-    display: flex;
-    gap: 4px;
-    padding: 8px 0 12px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-}
-
-.cmp-mobile-selector::-webkit-scrollbar {
-    display: none;
-}
-
-.cmp-mobile-selector-btn {
-    flex-shrink: 0;
-    padding: 5px 12px;
-    border: 1px solid #e5e7eb;
-    border-radius: 9999px;
+/* ---- LAB REPORTS SECTION ---- */
+.cmp-lab-reports {
+    padding: 60px 0;
     background: white;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 500;
+}
+
+.cmp-lab-reports-desc {
+    font-size: 0.9rem;
     color: #6b7280;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 560px;
 }
 
-.cmp-mobile-selector-btn.active {
-    background: #111827;
-    border-color: #111827;
-    color: white;
+.cmp-lab-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
 }
 
-@media (min-width: 768px) {
-    .cmp-mobile-selector {
-        display: none;
+.cmp-lab-card {
+    background: #f9fafb;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.cmp-lab-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+
+.cmp-lab-card-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    color: #0891b2;
+}
+
+.cmp-lab-card-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.cmp-lab-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.cmp-lab-card p {
+    font-size: 0.85rem;
+    color: #6b7280;
+    line-height: 1.55;
+    margin-bottom: 16px;
+}
+
+.cmp-lab-card-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.cmp-lab-stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1;
+}
+
+.cmp-lab-stat-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.cmp-lab-disclaimer {
+    margin-top: 28px;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    line-height: 1.5;
+}
+
+@media (min-width: 640px) {
+    .cmp-lab-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
     }
 }
 
-/* ---- MOBILE TOGGLES (shown below hero on small screens) ---- */
-.cmp-mobile-toggles {
-    display: flex;
-    gap: 16px;
-    padding: 12px 16px;
-    background: white;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
 @media (min-width: 768px) {
-    .cmp-mobile-toggles {
-        display: none;
+    .cmp-lab-reports {
+        padding: 80px 0;
+    }
+
+    .cmp-lab-grid {
+        gap: 20px;
     }
 }
 
 /* ---- BOTTOM CTA ---- */
 .cmp-bottom-cta {
     padding: 60px 0;
-    background: white;
+    background: #f9fafb;
     text-align: center;
 }
 
