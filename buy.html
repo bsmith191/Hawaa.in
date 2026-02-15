@@ -142,124 +142,127 @@
             </div>
         </div>
 
-        <!-- Step Navigation -->
-        <nav class="buy-steps" id="buy-steps">
-            <button class="buy-step active" data-step="1" id="step-1">
-                <span class="buy-step-num">1.</span> Purifier
-            </button>
-            <button class="buy-step" data-step="2" id="step-2">
-                <span class="buy-step-num">2.</span> Accessories
-            </button>
-        </nav>
+        <!-- Right Side: Steps + Content (wrapped for desktop layout) -->
+        <div class="buy-details-column">
+            <!-- Step Navigation -->
+            <nav class="buy-steps" id="buy-steps">
+                <button class="buy-step active" data-step="1" id="step-1">
+                    <span class="buy-step-num">1.</span> Purifier
+                </button>
+                <button class="buy-step" data-step="2" id="step-2">
+                    <span class="buy-step-num">2.</span> Accessories
+                </button>
+            </nav>
 
-        <!-- Step 1: Purifier -->
-        <section class="buy-step-content active" id="step-content-1">
-            <div class="buy-content-inner">
-                <!-- Product Title -->
-                <h1 class="buy-title">Hawaa Edge</h1>
-                <p class="buy-subtitle-text">Air Purifier</p>
+            <!-- Step 1: Purifier -->
+            <section class="buy-step-content active" id="step-content-1">
+                <div class="buy-content-inner">
+                    <!-- Product Title -->
+                    <h1 class="buy-title">Hawaa Edge</h1>
+                    <p class="buy-subtitle-text">Air Purifier</p>
 
-                <!-- Price -->
-                <p class="buy-price" id="buy-price">&#8377;5,999</p>
+                    <!-- Price -->
+                    <p class="buy-price" id="buy-price">&#8377;5,999</p>
 
-                <!-- Purchase Type Cards (Veloretti-style side-by-side) -->
-                <div class="buy-variant-cards">
-                    <button class="buy-variant-card active" data-type="onetime" id="btn-onetime">
-                        <span class="buy-variant-name">One-time</span>
-                        <p class="buy-variant-desc">Premium air purifier with H13 HEPA filter included.</p>
-                        <span class="buy-variant-price">&#8377;5,999</span>
-                    </button>
-                    <button class="buy-variant-card" data-type="subscribe" id="btn-subscribe">
-                        <span class="buy-variant-name">Subscribe</span>
-                        <p class="buy-variant-desc">Save &#8377;500 with auto filter delivery plan.</p>
-                        <span class="buy-variant-price">&#8377;5,499</span>
-                    </button>
-                </div>
-
-                <!-- Subscription Filter Plan (shown when Subscribe selected) -->
-                <div class="buy-filter-plans" id="buy-filter-plans">
-                    <p class="buy-filter-plans-title">Filter Delivery Plan</p>
-                    <p class="buy-filter-plans-desc">Replacement filters delivered to your door automatically</p>
-                    <div class="buy-filter-plan-cards">
-                        <button class="buy-filter-plan-card active" data-interval="5" id="filter-5">
-                            <span class="buy-filter-plan-name">Every 5 months</span>
-                            <span class="buy-filter-plan-detail">Recommended for high-pollution areas</span>
-                            <span class="buy-filter-plan-tag">Recommended</span>
+                    <!-- Purchase Type Cards (Veloretti-style side-by-side) -->
+                    <div class="buy-variant-cards">
+                        <button class="buy-variant-card active" data-type="onetime" id="btn-onetime">
+                            <span class="buy-variant-name">One-time</span>
+                            <p class="buy-variant-desc">Premium air purifier with H13 HEPA filter included.</p>
+                            <span class="buy-variant-price">&#8377;5,999</span>
                         </button>
-                        <button class="buy-filter-plan-card" data-interval="6" id="filter-6">
-                            <span class="buy-filter-plan-name">Every 6 months</span>
-                            <span class="buy-filter-plan-detail">Standard usage cycle</span>
+                        <button class="buy-variant-card" data-type="subscribe" id="btn-subscribe">
+                            <span class="buy-variant-name">Subscribe</span>
+                            <p class="buy-variant-desc">Save &#8377;500 with auto filter delivery plan.</p>
+                            <span class="buy-variant-price">&#8377;5,499</span>
                         </button>
                     </div>
-                </div>
 
-                <!-- Colour Info (Single colour - Almond Beige) -->
-                <div class="buy-colour-info">
-                    <span class="buy-colour-label">Colour</span>
-                    <div class="buy-colour-display">
-                        <span class="buy-colour-dot" style="background: #d4c5a9;"></span>
-                        <span class="buy-colour-name-static">Almond Beige</span>
+                    <!-- Subscription Filter Plan (shown when Subscribe selected) -->
+                    <div class="buy-filter-plans" id="buy-filter-plans">
+                        <p class="buy-filter-plans-title">Filter Delivery Plan</p>
+                        <p class="buy-filter-plans-desc">Replacement filters delivered to your door automatically</p>
+                        <div class="buy-filter-plan-cards">
+                            <button class="buy-filter-plan-card active" data-interval="5" id="filter-5">
+                                <span class="buy-filter-plan-name">Every 5 months</span>
+                                <span class="buy-filter-plan-detail">Recommended for high-pollution areas</span>
+                                <span class="buy-filter-plan-tag">Recommended</span>
+                            </button>
+                            <button class="buy-filter-plan-card" data-interval="6" id="filter-6">
+                                <span class="buy-filter-plan-name">Every 6 months</span>
+                                <span class="buy-filter-plan-detail">Standard usage cycle</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Colour Info (Single colour - Almond Beige) -->
+                    <div class="buy-colour-info">
+                        <span class="buy-colour-label">Colour</span>
+                        <div class="buy-colour-display">
+                            <span class="buy-colour-dot" style="background: #d4c5a9;"></span>
+                            <span class="buy-colour-name-static">Almond Beige</span>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="buy-divider"></div>
+
+                    <!-- Trust Indicators -->
+                    <div class="buy-trust-row">
+                        <div class="buy-trust-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                            <span>Free Delivery</span>
+                        </div>
+                        <div class="buy-trust-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                            <span>1-Year Warranty</span>
+                        </div>
+                        <div class="buy-trust-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="1 4 1 10 7 10"/>
+                                <path d="M3.51 15a9 9 0 102.13-9.36L1 10"/>
+                            </svg>
+                            <span>14-Day Returns</span>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Divider -->
-                <div class="buy-divider"></div>
+            <!-- Step 2: Accessories -->
+            <section class="buy-step-content" id="step-content-2">
+                <div class="buy-content-inner">
+                    <h2 class="buy-section-heading">Accessories</h2>
+                    <p class="buy-section-subtext">Hawaa Edge</p>
 
-                <!-- Trust Indicators -->
-                <div class="buy-trust-row">
-                    <div class="buy-trust-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                        <span>Free Delivery</span>
+                    <!-- Replacement Filters -->
+                    <div class="buy-accessory-card">
+                        <div class="buy-accessory-info">
+                            <span class="buy-accessory-name">Replacement Filter</span>
+                            <span class="buy-accessory-detail">3-in-1 H13 HEPA + Activated Carbon</span>
+                        </div>
+                        <div class="buy-accessory-action">
+                            <span class="buy-accessory-price">&#8377;1,499</span>
+                            <button class="buy-accessory-add" id="acc-filter-btn">Add</button>
+                        </div>
                     </div>
-                    <div class="buy-trust-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                        <span>1-Year Warranty</span>
-                    </div>
-                    <div class="buy-trust-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="1 4 1 10 7 10"/>
-                            <path d="M3.51 15a9 9 0 102.13-9.36L1 10"/>
-                        </svg>
-                        <span>14-Day Returns</span>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Step 2: Accessories -->
-        <section class="buy-step-content" id="step-content-2">
-            <div class="buy-content-inner">
-                <h2 class="buy-section-heading">Accessories</h2>
-                <p class="buy-section-subtext">Hawaa Edge</p>
-
-                <!-- Replacement Filters -->
-                <div class="buy-accessory-card">
-                    <div class="buy-accessory-info">
-                        <span class="buy-accessory-name">Replacement Filter</span>
-                        <span class="buy-accessory-detail">3-in-1 H13 HEPA + Activated Carbon</span>
-                    </div>
-                    <div class="buy-accessory-action">
-                        <span class="buy-accessory-price">&#8377;1,499</span>
-                        <button class="buy-accessory-add" id="acc-filter-btn">Add</button>
+                    <!-- What's in the Box -->
+                    <div class="buy-inbox-section">
+                        <p class="buy-inbox-title">What's in the box</p>
+                        <ul class="buy-inbox-list">
+                            <li>Hawaa EDGE Air Purifier</li>
+                            <li>3-in-1 Filter (Pre-installed)</li>
+                            <li>Power Adapter & Cable</li>
+                            <li>Quick Start Guide</li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- What's in the Box -->
-                <div class="buy-inbox-section">
-                    <p class="buy-inbox-title">What's in the box</p>
-                    <ul class="buy-inbox-list">
-                        <li>Hawaa EDGE Air Purifier</li>
-                        <li>3-in-1 Filter (Pre-installed)</li>
-                        <li>Power Adapter & Cable</li>
-                        <li>Quick Start Guide</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <!-- Details Modal -->

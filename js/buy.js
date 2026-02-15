@@ -486,15 +486,9 @@
     }
 
     if (cartOverlay) {
+        // Close cart only when clicking the backdrop (overlay itself), not the panel or its children
         cartOverlay.addEventListener('click', function(e) {
-            if (e.target === cartOverlay || e.target === cartOverlay.querySelector('.cart-overlay::before')) {
-                closeCart();
-            }
-        });
-        // Close on clicking the backdrop area (outside panel)
-        cartOverlay.addEventListener('click', function(e) {
-            var panel = document.getElementById('cart-panel');
-            if (panel && !panel.contains(e.target)) {
+            if (e.target === cartOverlay) {
                 closeCart();
             }
         });
