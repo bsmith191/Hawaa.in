@@ -12,12 +12,16 @@
     var totalSteps = 2;
     var purchaseType = 'onetime'; // 'onetime' or 'subscribe'
     var filterInterval = 5; // 5 or 6 months
-    var selectedColour = 'Matte Black';
 
     var PRICES = {
         onetime: 5999,
         subscribe: 5499
     };
+
+    var FILTER_PRICE = 1499;
+
+    // Cart state
+    var cart = []; // Array of { id, name, variant, price, qty, img }
 
     // ========================================
     // DOM ELEMENTS
@@ -43,10 +47,6 @@
     var filter5 = document.getElementById('filter-5');
     var filter6 = document.getElementById('filter-6');
 
-    // Colour
-    var colourSwatches = document.querySelectorAll('.buy-colour-swatch');
-    var colourName = document.getElementById('buy-colour-name');
-
     // Price displays
     var priceDisplay = document.getElementById('buy-price');
     var stickyPrice = document.getElementById('buy-sticky-price');
@@ -67,6 +67,24 @@
 
     // Accessory
     var accFilterBtn = document.getElementById('acc-filter-btn');
+
+    // Cart elements
+    var cartBtn = document.getElementById('cart-btn');
+    var cartBadge = document.getElementById('cart-badge');
+    var cartOverlay = document.getElementById('cart-overlay');
+    var cartClose = document.getElementById('cart-close');
+    var cartEmpty = document.getElementById('cart-empty');
+    var cartItems = document.getElementById('cart-items');
+    var cartFooter = document.getElementById('cart-footer');
+    var cartUpsell = document.getElementById('cart-upsell');
+    var cartAddFilter = document.getElementById('cart-add-filter');
+    var cartBreakdownToggle = document.getElementById('cart-breakdown-toggle');
+    var cartBreakdown = document.getElementById('cart-breakdown');
+    var cartSubtotal = document.getElementById('cart-subtotal');
+    var cartGst = document.getElementById('cart-gst');
+    var cartDelivery = document.getElementById('cart-delivery');
+    var cartShipping = document.getElementById('cart-shipping');
+    var cartTotal = document.getElementById('cart-total');
 
     // ========================================
     // UTILITY
@@ -96,7 +114,7 @@
         var touchStartY = 0;
         var touchDiffX = 0;
         var isSwiping = false;
-        var swipeDirection = null; // null = undetermined, 'h' = horizontal, 'v' = vertical
+        var swipeDirection = null;
 
         carousel.addEventListener('touchstart', function(e) {
             touchStartX = e.touches[0].clientX;
@@ -104,7 +122,6 @@
             touchDiffX = 0;
             isSwiping = true;
             swipeDirection = null;
-            // Remove transition during drag for immediate feedback
             if (carouselTrack) {
                 carouselTrack.style.transition = 'none';
             }
@@ -118,7 +135,6 @@
             var diffX = currentX - touchStartX;
             var diffY = currentY - touchStartY;
 
-            // Determine direction on first significant movement
             if (swipeDirection === null && (Math.abs(diffX) > 8 || Math.abs(diffY) > 8)) {
                 swipeDirection = Math.abs(diffX) > Math.abs(diffY) ? 'h' : 'v';
             }
@@ -126,7 +142,6 @@
             if (swipeDirection === 'h') {
                 e.preventDefault();
                 touchDiffX = diffX;
-                // Move track with finger
                 var baseOffset = -(currentSlide * 100);
                 var dragPercent = (touchDiffX / carousel.offsetWidth) * 100;
                 if (carouselTrack) {
@@ -139,7 +154,6 @@
             if (!isSwiping) return;
             isSwiping = false;
 
-            // Restore transition
             if (carouselTrack) {
                 carouselTrack.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             }
@@ -151,7 +165,7 @@
                 } else if (touchDiffX > threshold) {
                     goToSlide(currentSlide - 1);
                 } else {
-                    goToSlide(currentSlide); // snap back
+                    goToSlide(currentSlide);
                 }
             }
         }, { passive: true });
@@ -164,7 +178,6 @@
         if (step < 1 || step > totalSteps) return;
         currentStep = step;
 
-        // Update step buttons
         stepBtns.forEach(function(btn) {
             var btnStep = parseInt(btn.getAttribute('data-step'));
             btn.classList.remove('active', 'completed');
@@ -175,7 +188,6 @@
             }
         });
 
-        // Update step content
         stepContents.forEach(function(content) {
             content.classList.remove('active');
         });
@@ -184,14 +196,12 @@
             activeContent.classList.add('active');
         }
 
-        // Scroll to steps bar
         var stepsBar = document.getElementById('buy-steps');
         if (stepsBar) {
             stepsBar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     }
 
-    // Step button clicks
     stepBtns.forEach(function(btn) {
         btn.addEventListener('click', function() {
             var step = parseInt(this.getAttribute('data-step'));
@@ -208,7 +218,6 @@
         if (btnOnetime) btnOnetime.classList.toggle('active', type === 'onetime');
         if (btnSubscribe) btnSubscribe.classList.toggle('active', type === 'subscribe');
 
-        // Show/hide filter plans
         if (filterPlans) {
             if (type === 'subscribe') {
                 filterPlans.classList.add('visible');
@@ -244,18 +253,6 @@
     }
 
     // ========================================
-    // COLOUR SELECTOR
-    // ========================================
-    colourSwatches.forEach(function(swatch) {
-        swatch.addEventListener('click', function() {
-            colourSwatches.forEach(function(s) { s.classList.remove('active'); });
-            this.classList.add('active');
-            selectedColour = this.getAttribute('data-colour');
-            if (colourName) colourName.textContent = selectedColour;
-        });
-    });
-
-    // ========================================
     // PRICE UPDATES
     // ========================================
     function updatePrices() {
@@ -267,16 +264,303 @@
     }
 
     // ========================================
-    // STICKY BAR - Always "Add to Cart"
+    // CART FUNCTIONALITY
+    // ========================================
+
+    function findCartItem(id) {
+        for (var i = 0; i < cart.length; i++) {
+            if (cart[i].id === id) return i;
+        }
+        return -1;
+    }
+
+    function addToCart(item) {
+        var idx = findCartItem(item.id);
+        if (idx >= 0) {
+            cart[idx].qty += 1;
+            cart[idx].price = item.price;
+        } else {
+            cart.push({
+                id: item.id,
+                name: item.name,
+                variant: item.variant,
+                price: item.price,
+                qty: item.qty || 1,
+                img: item.img
+            });
+        }
+        updateCartUI();
+    }
+
+    function removeFromCart(id) {
+        var idx = findCartItem(id);
+        if (idx >= 0) {
+            cart.splice(idx, 1);
+        }
+        updateCartUI();
+    }
+
+    function updateQty(id, delta) {
+        var idx = findCartItem(id);
+        if (idx >= 0) {
+            cart[idx].qty += delta;
+            if (cart[idx].qty <= 0) {
+                cart.splice(idx, 1);
+            }
+        }
+        updateCartUI();
+    }
+
+    function getCartCount() {
+        var count = 0;
+        for (var i = 0; i < cart.length; i++) {
+            count += cart[i].qty;
+        }
+        return count;
+    }
+
+    function getSubtotal() {
+        var total = 0;
+        for (var i = 0; i < cart.length; i++) {
+            total += cart[i].price * cart[i].qty;
+        }
+        return total;
+    }
+
+    function updateCartUI() {
+        var count = getCartCount();
+
+        // Update badge
+        if (cartBadge) {
+            if (count > 0) {
+                cartBadge.textContent = count;
+                cartBadge.classList.add('visible');
+            } else {
+                cartBadge.classList.remove('visible');
+            }
+        }
+
+        // Update empty/items state
+        if (cartEmpty) {
+            if (cart.length === 0) {
+                cartEmpty.classList.remove('hidden');
+            } else {
+                cartEmpty.classList.add('hidden');
+            }
+        }
+
+        // Show/hide footer
+        if (cartFooter) {
+            if (cart.length === 0) {
+                cartFooter.classList.add('hidden');
+            } else {
+                cartFooter.classList.remove('hidden');
+            }
+        }
+
+        // Show/hide filter upsell (hide if filter already in cart)
+        if (cartUpsell) {
+            var hasFilter = findCartItem('filter') >= 0;
+            if (hasFilter || cart.length === 0) {
+                cartUpsell.classList.add('hidden');
+            } else {
+                cartUpsell.classList.remove('hidden');
+            }
+        }
+
+        // Render cart items
+        renderCartItems();
+
+        // Update price breakdown
+        updatePriceBreakdown();
+
+        // Sync accessory button state on buy page
+        syncAccessoryBtn();
+    }
+
+    function renderCartItems() {
+        if (!cartItems) return;
+        cartItems.innerHTML = '';
+
+        for (var i = 0; i < cart.length; i++) {
+            var item = cart[i];
+            var div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML =
+                '<div class="cart-item-img"><img src="' + item.img + '" alt="' + item.name + '"></div>' +
+                '<div class="cart-item-details">' +
+                    '<div class="cart-item-name">' + item.name + '</div>' +
+                    '<div class="cart-item-variant">' + item.variant + '</div>' +
+                    '<div class="cart-item-bottom">' +
+                        '<div class="cart-qty">' +
+                            '<button class="cart-qty-btn" data-id="' + item.id + '" data-action="minus">&minus;</button>' +
+                            '<span class="cart-qty-val">' + item.qty + '</span>' +
+                            '<button class="cart-qty-btn" data-id="' + item.id + '" data-action="plus">+</button>' +
+                        '</div>' +
+                        '<span class="cart-item-price">' + formatPrice(item.price * item.qty) + '</span>' +
+                    '</div>' +
+                '</div>';
+            cartItems.appendChild(div);
+        }
+
+        // Bind qty buttons
+        var qtyBtns = cartItems.querySelectorAll('.cart-qty-btn');
+        for (var j = 0; j < qtyBtns.length; j++) {
+            qtyBtns[j].addEventListener('click', function() {
+                var id = this.getAttribute('data-id');
+                var action = this.getAttribute('data-action');
+                if (action === 'plus') {
+                    updateQty(id, 1);
+                } else {
+                    updateQty(id, -1);
+                }
+            });
+        }
+    }
+
+    function updatePriceBreakdown() {
+        var subtotal = getSubtotal();
+        var gst = Math.round(subtotal * 0.18);
+        var delivery = 0;
+        var shipping = 0;
+        var total = subtotal + gst + delivery + shipping;
+
+        if (cartSubtotal) cartSubtotal.textContent = formatPrice(subtotal);
+        if (cartGst) cartGst.textContent = formatPrice(gst);
+        if (cartDelivery) {
+            if (delivery === 0) {
+                cartDelivery.textContent = 'Free';
+                cartDelivery.className = 'cart-free';
+            } else {
+                cartDelivery.textContent = formatPrice(delivery);
+                cartDelivery.className = '';
+            }
+        }
+        if (cartShipping) {
+            if (shipping === 0) {
+                cartShipping.textContent = 'Free';
+                cartShipping.className = 'cart-free';
+            } else {
+                cartShipping.textContent = formatPrice(shipping);
+                cartShipping.className = '';
+            }
+        }
+        if (cartTotal) cartTotal.textContent = formatPrice(total);
+    }
+
+    function syncAccessoryBtn() {
+        if (!accFilterBtn) return;
+        var hasFilter = findCartItem('filter') >= 0;
+        if (hasFilter) {
+            accFilterBtn.textContent = 'Added';
+            accFilterBtn.classList.add('added');
+        } else {
+            accFilterBtn.textContent = 'Add';
+            accFilterBtn.classList.remove('added');
+        }
+    }
+
+    // ========================================
+    // CART OVERLAY
+    // ========================================
+    function openCart() {
+        if (cartOverlay) {
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeCart() {
+        if (cartOverlay) {
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (cartBtn) {
+        cartBtn.addEventListener('click', openCart);
+    }
+
+    if (cartClose) {
+        cartClose.addEventListener('click', closeCart);
+    }
+
+    if (cartOverlay) {
+        cartOverlay.addEventListener('click', function(e) {
+            if (e.target === cartOverlay || e.target === cartOverlay.querySelector('.cart-overlay::before')) {
+                closeCart();
+            }
+        });
+        // Close on clicking the backdrop area (outside panel)
+        cartOverlay.addEventListener('click', function(e) {
+            var panel = document.getElementById('cart-panel');
+            if (panel && !panel.contains(e.target)) {
+                closeCart();
+            }
+        });
+    }
+
+    // ========================================
+    // CART PRICE BREAKDOWN TOGGLE
+    // ========================================
+    if (cartBreakdownToggle) {
+        cartBreakdownToggle.addEventListener('click', function() {
+            var isOpen = cartBreakdownToggle.classList.contains('open');
+            if (isOpen) {
+                cartBreakdownToggle.classList.remove('open');
+                if (cartBreakdown) cartBreakdown.classList.remove('visible');
+            } else {
+                cartBreakdownToggle.classList.add('open');
+                if (cartBreakdown) cartBreakdown.classList.add('visible');
+            }
+        });
+    }
+
+    // ========================================
+    // CART UPSELL - ADD FILTER FROM CART
+    // ========================================
+    if (cartAddFilter) {
+        cartAddFilter.addEventListener('click', function() {
+            addToCart({
+                id: 'filter',
+                name: 'Replacement Filter',
+                variant: '3-in-1 H13 HEPA + Activated Carbon',
+                price: FILTER_PRICE,
+                qty: 1,
+                img: 'public/images/hero-poster.webp'
+            });
+        });
+    }
+
+    // ========================================
+    // STICKY BAR - Add to Cart
     // ========================================
     if (stickyBtn) {
         stickyBtn.addEventListener('click', function() {
+            var price = PRICES[purchaseType];
+            var variant = purchaseType === 'subscribe'
+                ? 'Subscribe \u00B7 Almond Beige'
+                : 'One-time \u00B7 Almond Beige';
+
+            addToCart({
+                id: 'purifier-' + purchaseType,
+                name: 'Hawaa Edge',
+                variant: variant,
+                price: price,
+                qty: 1,
+                img: 'public/images/hero-poster.webp'
+            });
+
+            // Show feedback
             stickyBtn.textContent = 'Added!';
             stickyBtn.style.background = '#059669';
             setTimeout(function() {
                 stickyBtn.textContent = 'Add to Cart';
                 stickyBtn.style.background = '';
-            }, 1500);
+            }, 1200);
+
+            // Open cart after short delay
+            setTimeout(openCart, 600);
         });
     }
 
@@ -284,15 +568,19 @@
     // ACCESSORY ADD BUTTON
     // ========================================
     if (accFilterBtn) {
-        var accAdded = false;
         accFilterBtn.addEventListener('click', function() {
-            accAdded = !accAdded;
-            if (accAdded) {
-                accFilterBtn.textContent = 'Added';
-                accFilterBtn.classList.add('added');
+            var hasFilter = findCartItem('filter') >= 0;
+            if (hasFilter) {
+                removeFromCart('filter');
             } else {
-                accFilterBtn.textContent = 'Add';
-                accFilterBtn.classList.remove('added');
+                addToCart({
+                    id: 'filter',
+                    name: 'Replacement Filter',
+                    variant: '3-in-1 H13 HEPA + Activated Carbon',
+                    price: FILTER_PRICE,
+                    qty: 1,
+                    img: 'public/images/hero-poster.webp'
+                });
             }
         });
     }
@@ -348,14 +636,18 @@
         });
     }
 
-    // Close details on Escape
+    // Close on Escape
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeDetails();
+        if (e.key === 'Escape') {
+            closeDetails();
+            closeCart();
+        }
     });
 
     // ========================================
     // INITIALIZE
     // ========================================
     updatePrices();
+    updateCartUI();
 
 })();
