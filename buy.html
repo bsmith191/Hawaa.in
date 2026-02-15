@@ -35,6 +35,14 @@
                         <circle cx="12" cy="7" r="4"/>
                     </svg>
                 </button>
+                <button class="header-cart-btn" id="cart-btn" aria-label="Cart">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 01-8 0"/>
+                    </svg>
+                    <span class="cart-badge" id="cart-badge"></span>
+                </button>
                 <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -185,19 +193,12 @@
                     </div>
                 </div>
 
-                <!-- Colour Selector -->
-                <div class="buy-colour-section">
-                    <div class="buy-colour-header">
-                        <span class="buy-colour-label">Colour</span>
-                        <span class="buy-colour-name" id="buy-colour-name">Matte Black</span>
-                    </div>
-                    <div class="buy-colour-swatches">
-                        <button class="buy-colour-swatch active" data-colour="Matte Black" data-hex="#1a1a1a" aria-label="Matte Black">
-                            <span class="buy-swatch-fill" style="background: #1a1a1a;"></span>
-                        </button>
-                        <button class="buy-colour-swatch" data-colour="Almond Beige" data-hex="#d4c5a9" aria-label="Almond Beige">
-                            <span class="buy-swatch-fill" style="background: #d4c5a9;"></span>
-                        </button>
+                <!-- Colour Info (Single colour - Almond Beige) -->
+                <div class="buy-colour-info">
+                    <span class="buy-colour-label">Colour</span>
+                    <div class="buy-colour-display">
+                        <span class="buy-colour-dot" style="background: #d4c5a9;"></span>
+                        <span class="buy-colour-name-static">Almond Beige</span>
                     </div>
                 </div>
 
@@ -329,6 +330,83 @@
                         </svg>
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay">
+        <div class="cart-panel" id="cart-panel">
+            <div class="cart-header">
+                <h2 class="cart-title">Cart</h2>
+                <button class="cart-close" id="cart-close" aria-label="Close cart">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Cart Items -->
+            <div class="cart-body" id="cart-body">
+                <div class="cart-empty" id="cart-empty">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 01-8 0"/>
+                    </svg>
+                    <p>Your cart is empty</p>
+                </div>
+                <div class="cart-items" id="cart-items"></div>
+            </div>
+
+            <!-- Cart Footer with Price Breakdown -->
+            <div class="cart-footer" id="cart-footer">
+                <!-- Add Filter Upsell -->
+                <div class="cart-upsell" id="cart-upsell">
+                    <div class="cart-upsell-info">
+                        <span class="cart-upsell-name">Add Replacement Filter</span>
+                        <span class="cart-upsell-detail">3-in-1 H13 HEPA + Activated Carbon</span>
+                    </div>
+                    <div class="cart-upsell-action">
+                        <span class="cart-upsell-price">&#8377;1,499</span>
+                        <button class="cart-upsell-btn" id="cart-add-filter">Add</button>
+                    </div>
+                </div>
+
+                <!-- Price Breakdown Toggle -->
+                <button class="cart-breakdown-toggle" id="cart-breakdown-toggle">
+                    <span>Price Details</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="cart-breakdown" id="cart-breakdown">
+                    <div class="cart-breakdown-row">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">&#8377;0</span>
+                    </div>
+                    <div class="cart-breakdown-row">
+                        <span>GST (18%)</span>
+                        <span id="cart-gst">&#8377;0</span>
+                    </div>
+                    <div class="cart-breakdown-row">
+                        <span>Delivery Fee</span>
+                        <span id="cart-delivery" class="cart-free">Free</span>
+                    </div>
+                    <div class="cart-breakdown-row">
+                        <span>Shipping Fee</span>
+                        <span id="cart-shipping" class="cart-free">Free</span>
+                    </div>
+                </div>
+
+                <!-- Total -->
+                <div class="cart-total-row">
+                    <span>Total</span>
+                    <span id="cart-total">&#8377;0</span>
+                </div>
+
+                <button class="cart-checkout-btn" id="cart-checkout-btn">Checkout</button>
             </div>
         </div>
     </div>
